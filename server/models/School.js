@@ -7,7 +7,7 @@ var schoolSchema = new Schema({
 	teachers : [{type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}],
 	cooks    : [{type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}],
 	students : [{type: mongoose.Schema.Types.ObjectId, ref: 'Student', required: true}],
-  totalStudentsPresent : {type: Int, default: 0, required: true}
+	totalStudentsPresent : {type: Int, default: 0, required: true}
 });
 
 module.exports = mongoose.model('School', schoolSchema);
