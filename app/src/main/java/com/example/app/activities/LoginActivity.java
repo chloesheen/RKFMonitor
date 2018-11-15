@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -28,6 +28,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.app.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -304,6 +306,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPassword = password;
         }
 
+
+        //retrieve the webtoken from the server
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
