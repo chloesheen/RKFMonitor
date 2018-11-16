@@ -12,4 +12,10 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_teacher_dashboard">TeacherDashboard</string>
+
+    <!-- Teachers Dashboard -->
+    <string name="school_name">Test School</string>
+    <string name="class_name">Test Class</string>
+    <string name="class_size">20</string>
 </resources>
