@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.interfaces.OnItemClickListener;
-import com.example.app.util.Pair;
+import com.example.app.models.Class;
 
 import java.util.ArrayList;
 
@@ -18,11 +18,11 @@ import java.util.ArrayList;
 public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ClassListViewHolder> {
 
     private  Activity mContext;
-    private  ArrayList<Pair> mClasses;
+    private  ArrayList<Class> mClasses;
     private  OnItemClickListener mListener;
 
 
-    public ClassListAdapter(Activity context, ArrayList<Pair> classes_list, OnItemClickListener listener) {
+    public ClassListAdapter(Activity context, ArrayList<Class> classes_list, OnItemClickListener listener) {
         mClasses = classes_list;
         mContext = context;
         mListener = listener;
@@ -32,8 +32,7 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
     //populates the class_item view. i.e the view for each class in the dashboard
     @Override
     public void onBindViewHolder (ClassListViewHolder viewHolder, int position) {
-        Pair class_info = mClasses.get(position);
-        Class mClass = (Class) class_info.getSecond();
+        Class class_info = mClasses.get(position);
     }
 
     @Override
