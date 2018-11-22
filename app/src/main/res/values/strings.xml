@@ -26,4 +26,6 @@
     <string name="add_student"> Add Student</string>
     <string name="logo"> Organization logo </string>
     <string name="teach_username">lgoloh</string>
+    <string name="title_activity_add_student">AddStudentActivity</string>
+    <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
 </resources>

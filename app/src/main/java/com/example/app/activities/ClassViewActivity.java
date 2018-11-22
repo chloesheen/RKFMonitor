@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
@@ -16,13 +19,17 @@ import com.example.app.models.Student;
 
 import java.util.ArrayList;
 
-public class ClassViewActivity extends AppCompatActivity implements OnItemClickListener {
+public class ClassViewActivity extends AppCompatActivity implements OnItemClickListener,
+        View.OnClickListener{
 
     ArrayList<Student> mStudents;
     RecyclerView.LayoutManager mLayoutManager;
     StudentListAdapter mStudentListAdapter;
     RecyclerView mStudentView;
     OnItemClickListener mListener;
+
+    Button mAddStudents;
+    TextView mProfileName;
 
 
     @Override
@@ -39,6 +46,11 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
         mStudentListAdapter = new StudentListAdapter(mStudents, mListener);
         mStudentView.setAdapter(mStudentListAdapter);
 
+        mAddStudents = (Button) findViewById(R.id.add_student);
+        mAddStudents.setOnClickListener(this);
+
+        mProfileName = (TextView) findViewById(R.id.profile_name);
+        mProfileName.setOnClickListener(this);
     }
 
 
@@ -46,5 +58,21 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
     @Override
     public void onItemClick(int position) {
 
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            case R.id.add_student:
+                Intent intent = new Intent(this, AddStudentActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.profile_name:
+                Intent profileIntent = new Intent(this, TeacherProfileActivity.class);
+                startActivity(profileIntent);
+        }
     }
 }

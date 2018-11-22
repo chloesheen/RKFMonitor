@@ -22,7 +22,7 @@
         app:titleTextColor="@color/colorFont" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/add_student"
         android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -62,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rfk_Logo_Background"
+        app:srcCompat="@drawable/rfklogo"
         android:contentDescription="@string/logo"/>
 
     <android.support.v7.widget.RecyclerView
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginTop="16dp"

@@ -31,6 +31,14 @@
         <activity
             android:name=".activities.ClassViewActivity"
             android:label="@string/title_activity_class_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddStudentActivity"
+            android:label="@string/title_activity_add_student"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.TeacherProfileActivity"
+            android:label="@string/title_activity_teacher_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
