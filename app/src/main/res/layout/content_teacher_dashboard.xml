@@ -7,6 +7,7 @@
     tools:context=".activities.TeacherDashboard"
     tools:showIn="@layout/activity_teacher_dashboard">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -33,6 +34,7 @@
         app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/class_list_view"

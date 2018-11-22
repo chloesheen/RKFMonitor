@@ -3,7 +3,6 @@ package com.example.app.adapters;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,26 +10,30 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.interfaces.OnItemClickListener;
+import com.example.app.util.Pair;
 
 import java.util.ArrayList;
 
-public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ClassListViewHolder> implements OnItemClickListener{
+
+public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ClassListViewHolder> {
 
     private  Activity mContext;
     private  ArrayList<Pair> mClasses;
-    private OnItemClickListener mlistener;
+    private  OnItemClickListener mListener;
 
 
-    public ClassListAdapter(Activity context, ArrayList<Pair> classes_list) {
+    public ClassListAdapter(Activity context, ArrayList<Pair> classes_list, OnItemClickListener listener) {
         mClasses = classes_list;
         mContext = context;
+        mListener = listener;
     }
 
 
+    //populates the class_item view. i.e the view for each class in the dashboard
     @Override
     public void onBindViewHolder (ClassListViewHolder viewHolder, int position) {
         Pair class_info = mClasses.get(position);
-
+        Class mClass = (Class) class_info.getSecond();
     }
 
     @Override
@@ -46,13 +49,10 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
         return mClasses.size();
     }
 
-    @Override
-    public void onItemClick(int position) {
-
-    }
 
 
-    public class ClassListViewHolder extends RecyclerView.ViewHolder {
+
+    public class ClassListViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
         public TextView mClassName;
         public TextView mClassSize;
@@ -61,6 +61,11 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
             super(itemView);
             mClassName = (TextView) itemView.findViewById(R.id.class_name);
             mClassSize = (TextView) itemView.findViewById(R.id.class_size);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mListener.onItemClick(getAdapterPosition());
         }
     }
 }

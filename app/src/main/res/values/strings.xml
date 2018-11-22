@@ -18,4 +18,5 @@
     <string name="school_name">Test School</string>
     <string name="class_name">Test Class</string>
     <string name="class_size">20</string>
+    <string name="title_activity_class_view">ClassViewActivity</string>
 </resources>
