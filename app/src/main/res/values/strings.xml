@@ -16,11 +16,14 @@
 
     <!-- Teachers Dashboard -->
     <string name="school_name">Test School</string>
-    <string name="class_name">Test Class</string>
+    <string name="class_name">Standard One</string>
     <string name="class_size">20</string>
     <string name="title_activity_class_view">ClassViewActivity</string>
 
     <!-- Class View of Students -->
     <string name="student_name">Chanel Coco</string>
     <string name="present"> Present </string>
+    <string name="add_student"> Add Student</string>
+    <string name="logo"> Organization logo </string>
+    <string name="teach_username">lgoloh</string>
 </resources>
