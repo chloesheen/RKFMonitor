@@ -17,14 +17,13 @@ import java.util.ArrayList;
 
 public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ClassListViewHolder> {
 
-    private  Activity mContext;
+
     private  ArrayList<Class> mClasses;
     private  OnItemClickListener mListener;
 
 
-    public ClassListAdapter(Activity context, ArrayList<Class> classes_list, OnItemClickListener listener) {
+    public ClassListAdapter(ArrayList<Class> classes_list, OnItemClickListener listener) {
         mClasses = classes_list;
-        mContext = context;
         mListener = listener;
     }
 
@@ -40,11 +39,11 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
     }
 
     //creates a single row view in the recyclerview group for a single class
+    @NonNull
     @Override
     public ClassListViewHolder onCreateViewHolder(@NonNull ViewGroup group, int i) {
         View row_of_class_view = LayoutInflater.from(group.getContext()).inflate(R.layout.class_item, group, false);
-        ClassListViewHolder viewholder = new ClassListViewHolder(row_of_class_view);
-        return viewholder;
+        return new ClassListViewHolder(row_of_class_view);
     }
 
 
@@ -58,10 +57,10 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
 
     public class ClassListViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
-        public TextView mClassName;
-        public TextView mClassSize;
+        private TextView mClassName;
+        private TextView mClassSize;
 
-        ClassListViewHolder(View itemView) {
+        public ClassListViewHolder(View itemView) {
             super(itemView);
             mClassName = (TextView) itemView.findViewById(R.id.class_name);
             mClassSize = (TextView) itemView.findViewById(R.id.class_size);

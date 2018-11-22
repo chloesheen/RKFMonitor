@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -40,6 +41,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
     private Context mContext;
     private OnItemClickListener mListener;
     private SharedPreferences mSharedPreferences;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     // * TODO: Add layout manager to this
     // * @param
@@ -51,11 +53,14 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mContext = this;
-
         RecyclerView mClassList = (RecyclerView) findViewById(R.id.class_list_view);
 
-        ClassListAdapter mClassListAdapter = new ClassListAdapter(this, mClasses, mListener);
+        //using a linear layout manager;
+        //calls the onCreateView in the adapter to display the views
+        mLayoutManager = new LinearLayoutManager(this);
+        mClassList.setLayoutManager(mLayoutManager);
 
+        ClassListAdapter mClassListAdapter = new ClassListAdapter(mClasses, mListener);
         mClassList.setAdapter(mClassListAdapter);
     }
 
