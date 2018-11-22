@@ -30,11 +30,16 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
 
 
     //populates the class_item view. i.e the view for each class in the dashboard
+    //sets the name and size of the class in the view.
     @Override
     public void onBindViewHolder (ClassListViewHolder viewHolder, int position) {
         Class class_info = mClasses.get(position);
+        viewHolder.mClassName.setText(class_info.getName());
+        viewHolder.mClassSize.setText(class_info.getClassSize());
+
     }
 
+    //creates a single row view in the recyclerview group for a single class
     @Override
     public ClassListViewHolder onCreateViewHolder(@NonNull ViewGroup group, int i) {
         View row_of_class_view = LayoutInflater.from(group.getContext()).inflate(R.layout.class_item, group, false);

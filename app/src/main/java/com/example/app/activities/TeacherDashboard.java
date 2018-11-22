@@ -59,7 +59,8 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
         mClassList.setAdapter(mClassListAdapter);
     }
 
-    //currently only works for classes not for student profile
+    //currently only works for classes not for selecting teachers profile
+    //executes asynctask which gets student list for selected class
     @Override
     public void onItemClick(int position) {
         GetStudents task = new GetStudents();
@@ -98,6 +99,8 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
                     while((bytesread = inputStream.read()) != -1) {
                         arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
                     }
+
+                    //creates student object from json and adds to student list
                     studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                     JSONTokener token = new JSONTokener(studentString);
                     JSONArray studentsArray = new JSONArray(token);
@@ -118,7 +121,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
             return mStudents;
         }
 
-        //starts the activity that displays the list f students in the class.
+        //starts the activity that displays the list of students in the class.
         protected void onPostExecute(ArrayList... params) {
             Intent intent = new Intent(mContext, ClassViewActivity.class);
             intent.putExtra("StudentInfo", mStudents);

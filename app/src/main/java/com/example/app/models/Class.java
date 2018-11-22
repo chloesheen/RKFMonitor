@@ -6,9 +6,9 @@ public class Class {
 
     private String mId;
 
-    private int mClassSize;
+    private String mClassSize;
 
-    public Class(String name, String id, int size) {
+    public Class(String name, String id, String size) {
         mClassName = name;
         mId = id;
         mClassSize = size;
@@ -22,7 +22,7 @@ public class Class {
         return mId;
     }
 
-    public int getClassSize() {
+    public String getClassSize() {
         return mClassSize;
     }
 }
