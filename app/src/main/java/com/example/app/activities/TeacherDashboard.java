@@ -95,6 +95,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
                 urlConnection.setDoInput(true);
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Authorization", authorization);
+                urlConnection.setRequestProperty("Content-Type", "application/json");
 
                 //Read in the data
                 if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
