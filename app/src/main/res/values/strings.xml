@@ -38,4 +38,7 @@
     <string name="guardian_name"> Parent/Guardian</string>
     <string name="guradian_number">Telephone</string>
     <string name="address">Home Address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

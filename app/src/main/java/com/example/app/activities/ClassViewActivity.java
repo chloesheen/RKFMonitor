@@ -1,6 +1,7 @@
 package com.example.app.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
+import com.example.app.models.StudentProfile;
 
 import java.util.ArrayList;
 
@@ -58,7 +60,6 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
     @Override
     public void onItemClick(int position) {
 
-
     }
 
     @Override
@@ -74,5 +75,21 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
                 Intent profileIntent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(profileIntent);
         }
+    }
+
+    private class GetStudentProfile extends AsyncTask<Integer, Void, StudentProfile> {
+
+
+        @Override
+        protected StudentProfile doInBackground(Integer... params) {
+            StudentProfile s = new StudentProfile("Coco", "Chanel", "24", true);
+            return s;
+        }
+
+        @Override
+        protected void onPostExecute(StudentProfile student) {
+
+        }
+
     }
 }

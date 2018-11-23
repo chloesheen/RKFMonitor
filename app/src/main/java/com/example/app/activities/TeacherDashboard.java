@@ -128,7 +128,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
         }
 
         //starts the activity that displays the list of students in the class.
-        protected void onPostExecute(ArrayList... params) {
+        protected void onPostExecute(ArrayList student_list) {
             Intent intent = new Intent(mContext, ClassViewActivity.class);
             intent.putExtra("StudentInfo", mStudents);
             startActivity(intent);
