@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.app.R;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
+import com.example.app.util.StudentListClickListener;
 
 import java.util.ArrayList;
 
@@ -41,11 +42,11 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     @Override
     public int getItemCount() {
-        return 1;
+        return mStudents.size();
     }
 
 
-    protected class StudentListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class StudentListViewHolder extends RecyclerView.ViewHolder implements StudentListClickListener.ClickListener {
 
         private TextView mStudentName;
         private CheckBox mAttendance;
@@ -58,7 +59,12 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
             mStudentNum = (EditText) itemview.findViewById(R.id.student_number);
         }
         @Override
-        public void onClick(View view) {
+        public void onClick(View view, int position) {
+
+        }
+
+        @Override
+        public void onLongPress(View view, int position) {
 
         }
     }

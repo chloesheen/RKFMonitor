@@ -1,6 +1,10 @@
 package com.example.app.models;
 
-public class StudentProfile {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+@org.parceler.Parcel
+public class StudentProfile{
 
     private String mFirstName;
 
@@ -36,12 +40,10 @@ public class StudentProfile {
         mId = id;
     }
 
-    public StudentProfile(String firstname, String lastname, String id,
-                          boolean attendance, String gender, String dob, String guardian,
+    public StudentProfile(String firstname, String lastname, String id, String gender, String dob, String guardian,
                           String classname, int tele, int nationalid, int aveGrade, int shoesize) {
         mFirstName = firstname;
         mLastName = lastname;
-        mAttendance = attendance;
         mId = id;
         mGender = gender;
         mDateOfBirth = dob;
