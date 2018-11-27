@@ -19,4 +19,12 @@
     <string name="class_name">Test Class</string>
     <string name="class_size">20</string>
     <string name="title_activity_class_view">ClassViewActivity</string>
+
+    <string-array name="school_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+
+    </string-array>
+
 </resources>
