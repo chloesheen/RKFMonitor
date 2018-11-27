@@ -13,6 +13,7 @@ var studentSchema = new Schema({
     parentName: {type: String, required: true},
     telephoneNumber: {type: Number, required: true},
     nationalId: {type: String, required: true},
+    studentID: {type: Number, required: true},
     averageGrade: {type: Number},
     shoeSize: {type: Number, required: true},
     homeRoom: {type: mongoose.Schema.Types.ObjectId, ref: 'Class', required: true},
