@@ -1,7 +1,8 @@
-const express = require('express'),
-			app = express(),
-			bodyParser = require('body-parser');
 require('dotenv').config();
+const express = require('express'),
+	app = express(),
+	bodyParser = require('body-parser'),
+	passport = require('passport');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -11,11 +12,13 @@ const	mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 
 //Routes============================================================================================================================================================
-const	authenticate = require('./routes/authenticate');
+require('./config/passport')(passport);
+const authenticate = require('./routes/authenticate');
+
 
 app.use('/', authenticate);
 
 //Connect===========================================================================================================================================================
-app.listen(3000, function(req, res) {
+app.listen(process.env.PORT || 3000, function(req, res) {
 	console.log("Listening on 3000");
 })
