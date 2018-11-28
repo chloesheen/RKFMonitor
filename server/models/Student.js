@@ -5,6 +5,8 @@ var mongoose = require('mongoose'),
 var studentSchema = new Schema({
     firstName : {type: String, required: true},
     lastName : {type: String, required: true},
+    teacher: {type: mongoose.Schema.Types.ObjectId, ref: 'Teacher', required: true},
+    class: {type: mongoose.Schema.Types.ObjectId, ref: 'Class', required: true},    
     archived: {type: Boolean, default: false},
     birthMonth : {type: String, required: true},
     birthDay : {type: Number, required: true},
@@ -16,7 +18,6 @@ var studentSchema = new Schema({
     studentID: {type: Number, required: true},
     averageGrade: {type: Number},
     shoeSize: {type: Number, required: true},
-    homeRoom: {type: mongoose.Schema.Types.ObjectId, ref: 'Class', required: true},
     datesAttended: [{type: Date}]
 });
 

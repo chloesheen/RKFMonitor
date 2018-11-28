@@ -13,10 +13,12 @@ mongoose.connect(process.env.MONGO_URI);
 
 //Routes============================================================================================================================================================
 require('./config/passport')(passport);
-const authenticate = require('./routes/authenticate');
+const authenticate = require('./routes/authenticate'),
+	classes = require('./routes/class');
 
 
 app.use('/', authenticate);
+app.use('/classes', classes(passport));
 
 //Connect===========================================================================================================================================================
 app.listen(process.env.PORT || 3000, function(req, res) {
