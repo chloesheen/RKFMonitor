@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
 	model = mongoose.model
 
 var calendarSchema  = new Schema({
-	date: {type: Date, default: Date.now},
+	year: {type: Number},
+	month: {type: Number},
+	date: {type: Number},
 	school: {type: mongoose.Schema.Types.ObjectId, ref : 'School', required: true},
 	class: {type: mongoose.Schema.Types.ObjectId, ref : 'Class', required: true},
-	isHomeroom: {type: Boolean, default: false, required : true},
 	studentsAttended: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
 });
 

@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
 	model = mongoose.model
 
 var classSchema  = new Schema({
-	isHomeroom: {type: Boolean, default: false, required : true},
 	school: {type: mongoose.Schema.Types.ObjectId, ref: 'School', required: true},	
 	teacher: {type: mongoose.Schema.Types.ObjectId, ref : 'Teacher', required : true},
 	students: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
