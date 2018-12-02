@@ -75,8 +75,4 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         }
     };
 
-    public TeacherProfile updateProfile() {
-        TeacherProfile updatedProfile = new TeacherProfile();
-        return updatedProfile;
-    }
 }
