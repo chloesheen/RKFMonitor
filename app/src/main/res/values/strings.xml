@@ -55,6 +55,8 @@
     <string name="save">Save</string>
     <string name="gender">Gender</string>
     <string name="gender_name">Male</string>
+    <string name="first_name">Bryan</string>
+    <string name="last_name">Hammond</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -17,8 +17,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.TeacherProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,6 +44,9 @@
         <activity
             android:name=".activities.StudentProfileActivity"
             android:label="@string/title_activity_student_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.EditTeacherProfile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

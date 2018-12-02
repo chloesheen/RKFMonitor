@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,8 @@ import com.example.app.models.TeacherProfile;
 
 public class TeacherProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private final static int REQUEST_EDIT_PROFILE = 101;
+
     private ImageView mEdit;
     private EditText mGender;
     private EditText mSchoolId;
@@ -24,7 +27,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mContactNum;
     private EditText mClassName;
     private EditText mStream;
-    private Button mSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +45,19 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mStream = (EditText) findViewById(R.id.stream_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
 
-        mSave = (Button) findViewById(R.id.save);
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.edit:
-                mSchoolId.setEnabled(true);
-                mNationalId.setEnabled(true);
-                mContactNum.setEnabled(true);
-                mClassName.setEnabled(true);
-                mStream.setEnabled(true);
-                mGender.setEnabled(true);
-                mSave.setVisibility(View.VISIBLE);
-                break;
+        if (view.getId() == R.id.edit){
+            Intent intent = new Intent (this, EditTeacherProfile.class);
+            startActivityForResult(intent, REQUEST_EDIT_PROFILE);
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestcode, int resultcode, Intent data) {
+
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
