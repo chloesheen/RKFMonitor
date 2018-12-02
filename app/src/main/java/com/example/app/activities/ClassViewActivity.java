@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,13 +15,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
+import com.example.app.interfaces.ClickListener;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
+import com.example.app.util.StudentListClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,18 +42,19 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class ClassViewActivity extends AppCompatActivity implements OnItemClickListener,
-        View.OnClickListener{
+        View.OnClickListener {
 
     private ArrayList<Student> mStudents;
     private RecyclerView.LayoutManager mLayoutManager;
     private StudentListAdapter mStudentListAdapter;
     private RecyclerView mStudentView;
-    private OnItemClickListener mListener;
 
     private Button mAddStudents;
     private TextView mProfileName;
+    private CheckBox mAttendanceBox;
 
     private SharedPreferences mSharedPreferences;
+    private ClickListener mClickListener;
 
 
 
@@ -60,11 +65,37 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
+        /** mClickListener = new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                int childviewid = view.getId();
+                switch (childviewid) {
+                    case R.id.student_name:
+                        view.get
+                }
+                mProfileName = view.findViewById(R.id.student_number);
+                mProfileName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int studentpos = mStudentView.getC
+                        GetStudentProfile studentprofileTask = new GetStudentProfile();
+                        studentprofileTask.execute();
+                    }
+                });
+            }
+
+            @Override
+            public void onLongPress(View view, int position) {
+
+            }
+        }; **/
+        mStudentView.addOnItemTouchListener(new StudentListClickListener( this, mStudentView, mClickListener));
+
 
         mLayoutManager = new LinearLayoutManager(this);
         mStudentView.setLayoutManager(mLayoutManager);
 
-        mStudentListAdapter = new StudentListAdapter(mStudents, mListener);
+        mStudentListAdapter = new StudentListAdapter(this, mStudents);
         mStudentView.setAdapter(mStudentListAdapter);
 
         mAddStudents = (Button) findViewById(R.id.add_student);
@@ -75,11 +106,18 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
     }
 
 
-
+    /**
+     *
+     *
+     * @param position
+     */
     @Override
     public void onItemClick(int position) {
 
     }
+
+
+
 
     @Override
     public void onClick(View view) {
@@ -97,9 +135,12 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
     }
 
 
-    //Asynctask to retrieve student profile from database
-    //Launches the StudentProfile activity and passes it the studentProfile object.
-    //Activity should be built from the object.
+    /**
+     * Asynctask to retrieve student profile from database
+     * Launches the StudentProfile activity and passes it the studentProfile object.
+     * Activity should be built from the object.
+     */
+
     private class GetStudentProfile extends AsyncTask<String, Void, StudentProfile> {
 
         private StudentProfile stdProfile;
@@ -115,7 +156,6 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
             String id = params[0];
 
 
-
             try {
                 //open connetion to the server
                 url = new URL("");
@@ -126,7 +166,7 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Authorization", authorization); //don't know if we need this
                 urlConnection.setRequestProperty("Content-Type", "application/json");
-                urlConnection.setRequestProperty("StudentID", id);
+                //urlConnection.setRequestProperty("StudentID", id);
 
                 //Read in the data
                 if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -160,6 +200,10 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
         }
 
 
+        /**
+         * Launches the Student Profile activity
+         * @param stdProfile
+         */
         @Override
         protected void onPostExecute(StudentProfile stdProfile) {
             Intent intent = new Intent(getApplicationContext(), StudentProfileActivity.class);

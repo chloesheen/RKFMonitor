@@ -6,6 +6,10 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.app.interfaces.ClickListener;
+
+import java.util.ArrayList;
+
 public class StudentListClickListener implements RecyclerView.OnItemTouchListener {
 
     private GestureDetector mGestureDetector;
@@ -50,10 +54,4 @@ public class StudentListClickListener implements RecyclerView.OnItemTouchListene
 
     }
 
-    public interface ClickListener {
-
-        void onClick(View view, int position);
-
-        void onLongPress(View view, int position);
-    }
 }
