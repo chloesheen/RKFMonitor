@@ -39,6 +39,10 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         mStream = (EditText) findViewById(R.id.stream_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
 
+        TeacherProfile input = Parcels.unwrap(getIntent().
+                getParcelableExtra("CurrentTeacherProfile"));
+        setProfile(input);
+
         mSave = (Button) findViewById(R.id.save);
         mSave.setOnClickListener(this);
     }
@@ -55,7 +59,6 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
 
     }
 
-
     public TeacherProfile updateProfile() {
         String firstname = mFirstName.getText().toString();
         String lastname = mLastName.getText().toString();
@@ -67,5 +70,16 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         String stream = mStream.getText().toString();
         return new TeacherProfile(firstname, lastname, schoolid, gender,
                 classname, contact, nationalid, stream);
+    }
+
+    public void setProfile(TeacherProfile curProfile) {
+        mFirstName.setText(curProfile.getFirstName());
+        mLastName.setText(curProfile.getLastName());
+        mGender.setText(curProfile.getGender());
+        mSchoolId.setText(curProfile.getId());
+        mNationalId.setText(curProfile.getNationalID());
+        mContactNum.setText(curProfile.getTelephone());
+        mClassName.setText(curProfile.getClassname());
+        mStream.setText(curProfile.getStream());
     }
 }
