@@ -5,7 +5,6 @@ const express = require('express'),
       User = require('./../models/User');
 
 router.post('/login', function (req, res) {
-  console.log("ayy");
   let getUser = User.findOne({username: req.body.username}).exec();
   getUser.then(function(user) {
     if (!user) {
@@ -14,7 +13,7 @@ router.post('/login', function (req, res) {
       user.comparePassword(req.body.password, function(err, isMatch) {
         if (isMatch && !err) {
           let token = jwt.sign({data: user}, secret);
-          return res.status(200).json({ success: true, token: 'JWT' + token });
+          return res.status(200).json({ success: true, token: 'JWT ' + token , isAdministrator: user.isAdministrator, isTeacher: user.isTeacher, isChef: user.isChef});
         } else {
           return res.send(404, { success: false, message: 'Authentication failed. Incorrect password.'});
         }

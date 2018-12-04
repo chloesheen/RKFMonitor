@@ -8,7 +8,8 @@ var calendarSchema  = new Schema({
 	date: {type: Number},
 	school: {type: mongoose.Schema.Types.ObjectId, ref : 'School', required: true},
 	class: {type: mongoose.Schema.Types.ObjectId, ref : 'Class', required: true},
-	studentsAttended: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
+	studentsPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}],
+	studentsNotPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
 });
 
 module.exports = mongoose.model('Calendar', calendarSchema);
