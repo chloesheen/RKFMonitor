@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.app.R;
 
@@ -17,12 +18,15 @@ import com.example.app.util.FoodRatios;
 
 import org.parceler.Parcels;
 
+import static com.example.app.util.DateUtils.setDate;
+
 public class FeedingDashboard extends AppCompatActivity implements View.OnClickListener,
         LunchProgramDialog.OnLunchSelectionListener {
 
     private CardView mLunchCard;
     private CardView mBreakfastCard;
     private int mTotalAttendance;
+    private TextView mDate;
 
 
 
@@ -36,6 +40,9 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
 
         mBreakfastCard = (CardView) findViewById(R.id.breakfast_card);
         mBreakfastCard.setOnClickListener(this);
+
+        mDate = (TextView) findViewById(R.id.dashboard_date);
+        mDate.setText(setDate());
     }
 
     @Override

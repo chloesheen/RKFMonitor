@@ -63,6 +63,7 @@
     <string name="breakfast_program">Breakfast Program</string>
     <string name="lunch_program">Lunch Program</string>
     <string name="total_attendance">Attendance</string>
+    <string name="dashboard">DashBoard</string>
 
 
     <!-- Lunch Program Dialog -->
@@ -71,6 +72,8 @@
 
     <string name="ratio">24.67 kgs </string>
     <string name="date">November 4th 2018</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
