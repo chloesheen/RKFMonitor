@@ -58,6 +58,18 @@
     <string name="first_name">Bryan</string>
     <string name="last_name">Hammond</string>
 
+
+    <!-- Feeding Program Dashboard Activity -->
+    <string name="breakfast_program">Breakfast Program</string>
+    <string name="lunch_program">Lunch Program</string>
+    <string name="total_attendance">Attendance</string>
+
+
+    <!-- Lunch Program Dialog -->
+    <string name="githeri">Githeri</string>
+    <string name="rice_beans">Rice &amp; Beans</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
