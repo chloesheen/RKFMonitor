@@ -25,7 +25,7 @@ public class FoodRatioAdapter extends ArrayAdapter<Pair> {
     @NonNull
     @Override
     public View getView(int position, View view, @NonNull ViewGroup parent) {
-        final Pair<String, Integer> ratio = mRatioList.get(position);
+        final Pair<String, Double> ratio = mRatioList.get(position);
 
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.food_ratio_item, parent, false);

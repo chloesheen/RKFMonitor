@@ -25,7 +25,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
 
     private CardView mLunchCard;
     private CardView mBreakfastCard;
-    private int mTotalAttendance;
+    private int mTotalAttendance = 427;
     private TextView mDate;
 
 

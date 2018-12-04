@@ -6,13 +6,13 @@ import java.util.HashMap;
 public class Food {
 
     private String mFoodName;
-    private HashMap<String, Integer> mIngredientRatios;
+    private HashMap<String, Double> mIngredientRatios;
 
     public Food() {
 
     }
 
-    public Food(String name, HashMap<String, Integer> ingredientRations) {
+    public Food(String name, HashMap<String, Double> ingredientRations) {
         mFoodName = name;
         mIngredientRatios = ingredientRations;
     }
