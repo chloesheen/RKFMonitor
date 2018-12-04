@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -40,6 +41,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
     private Context mContext;
     private OnItemClickListener mListener;
     private SharedPreferences mSharedPreferences;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     // * TODO: Add layout manager to this
     // * @param
@@ -51,15 +53,19 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mContext = this;
-
         RecyclerView mClassList = (RecyclerView) findViewById(R.id.class_list_view);
 
-        ClassListAdapter mClassListAdapter = new ClassListAdapter(this, mClasses, mListener);
+        //using a linear layout manager;
+        //calls the onCreateView in the adapter to display the views
+        mLayoutManager = new LinearLayoutManager(this);
+        mClassList.setLayoutManager(mLayoutManager);
 
+        ClassListAdapter mClassListAdapter = new ClassListAdapter(mClasses, mListener);
         mClassList.setAdapter(mClassListAdapter);
     }
 
-    //currently only works for classes not for student profile
+    //currently only works for classes not for selecting teachers profile
+    //executes asynctask which gets student list for selected class
     @Override
     public void onItemClick(int position) {
         GetStudents task = new GetStudents();
@@ -89,6 +95,7 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
                 urlConnection.setDoInput(true);
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Authorization", authorization);
+                urlConnection.setRequestProperty("Content-Type", "application/json");
 
                 //Read in the data
                 if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -98,6 +105,8 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
                     while((bytesread = inputStream.read()) != -1) {
                         arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
                     }
+
+                    //creates student object from json and adds to student list
                     studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                     JSONTokener token = new JSONTokener(studentString);
                     JSONArray studentsArray = new JSONArray(token);
@@ -118,8 +127,8 @@ public class TeacherDashboard extends AppCompatActivity implements OnItemClickLi
             return mStudents;
         }
 
-        //starts the activity that displays the list f students in the class.
-        protected void onPostExecute(ArrayList... params) {
+        //starts the activity that displays the list of students in the class.
+        protected void onPostExecute(ArrayList student_list) {
             Intent intent = new Intent(mContext, ClassViewActivity.class);
             intent.putExtra("StudentInfo", mStudents);
             startActivity(intent);

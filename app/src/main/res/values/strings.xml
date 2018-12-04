@@ -15,8 +15,68 @@
     <string name="title_activity_teacher_dashboard">TeacherDashboard</string>
 
     <!-- Teachers Dashboard -->
-    <string name="school_name">Test School</string>
-    <string name="class_name">Test Class</string>
+    <string name="school_name">Valley Academy</string>
+    <string name="class_name">Standard One</string>
     <string name="class_size">20</string>
     <string name="title_activity_class_view">ClassViewActivity</string>
+
+    <!-- Class View of Students -->
+    <string name="student_name">Chanel Coco</string>
+    <string name="present"> Present </string>
+    <string name="add_student"> Add Student</string>
+    <string name="logo"> Organization logo </string>
+    <string name="teach_username">lgoloh</string>
+    <string name="title_activity_add_student">AddStudentActivity</string>
+    <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
+    <string name="submit_attendance"> Submit </string>
+
+
+    <!-- Add Students Activity -->
+    <string name="firstname">First Name</string>
+    <string name="lastname"> Last Name</string>
+    <string name="age"> Age </string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="guardian_name"> Parent/Guardian</string>
+    <string name="guradian_number">Telephone</string>
+    <string name="address">Home Address</string>
+
+
+    <!-- Teacher Profile Activity -->
+    <string name="edit_profile">Edit</string>
+    <string name="teachers_name">Bryan Hammond</string>
+    <string name="national_id">004469</string>
+    <string name="nat_id">National ID</string>
+    <string name="contact">Contact Number</string>
+    <string name="contact_num">555 666 777</string>
+    <string name="homeroom"> Class Name </string>
+    <string name="stream">Stream</string>
+    <string name="school_id">School ID</string>
+    <string name="sch_id">29807</string>
+    <string name="save">Save</string>
+    <string name="gender">Gender</string>
+    <string name="gender_name">Male</string>
+    <string name="first_name">Bryan</string>
+    <string name="last_name">Hammond</string>
+
+
+    <!-- Feeding Program Dashboard Activity -->
+    <string name="breakfast_program">Breakfast Program</string>
+    <string name="lunch_program">Lunch Program</string>
+    <string name="total_attendance">Attendance</string>
+    <string name="dashboard">DashBoard</string>
+
+
+    <!-- Lunch Program Dialog -->
+    <string name="githeri">Githeri</string>
+    <string name="rice_beans">Rice &amp; Beans</string>
+
+    <string name="ratio">24.67 kgs </string>
+    <string name="date">November 4th 2018</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_student_profile">StudentProfileActivity</string>
 </resources>

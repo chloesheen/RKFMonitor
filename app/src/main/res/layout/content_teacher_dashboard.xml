@@ -7,23 +7,10 @@
     tools:context=".activities.TeacherDashboard"
     tools:showIn="@layout/activity_teacher_dashboard">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="?attr/colorPrimaryDark"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/colorFont" />
-
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="107dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="64dp"
@@ -38,18 +25,18 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/class_list_view"
-        android:layout_width="364dp"
-        android:layout_height="463dp"
+        android:layout_width="361dp"
+        android:layout_height="442dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:layout_constraintVertical_bias="1.0" />
 
 

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddStudentActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/logo"
+                    android:src="@drawable/rfklogo" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="49dp"
+                    android:layout_height="39dp"
+                    android:layout_alignStart="@+id/logo"
+                    android:layout_alignLeft="@+id/logo"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="312dp"
+                    android:layout_marginLeft="312dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/water_light_effect"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.974"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="48dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="204dp"
+                    android:layout_marginLeft="204dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
+                    android:layout_toEndOf="@id/logo"
+                    android:layout_toRightOf="@id/logo"
+                    android:text="@string/teach_username"
+                    android:textColor="@color/colorFont"
+                    app:layout_constraintEnd_toStartOf="@+id/profile_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="147dp"
+                    android:layout_height="29dp"
+                    android:layout_alignEnd="@id/profile_name"
+                    android:layout_alignRight="@id/profile_name"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="39dp"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="122dp"
+                    android:layout_marginRight="122dp"
+                    android:layout_toEndOf="@id/logo"
+                    android:layout_toRightOf="@id/logo"
+                    android:text="@string/add_student"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorFont"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/profile_name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_add_student" />
+
+</android.support.design.widget.CoordinatorLayout>
