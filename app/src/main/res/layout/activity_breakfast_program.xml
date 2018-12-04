@@ -68,6 +68,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/colorFont"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/profile_name"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,6 +101,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/total_attendance"
         android:textSize="15sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/ujilist"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -113,6 +115,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="12dp"
         android:text="@string/date"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/bfactivity_attendance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -130,6 +133,7 @@
         android:text="@string/school_name"
         android:textSize="30sp"
         android:textAlignment="gravity"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ujilist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.584"

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.app.R;
 import com.example.app.adapters.FoodRatioAdapter;
 import com.example.app.models.Food;
+import com.example.app.util.FoodRatios;
 import com.example.app.util.Pair;
 
 import org.parceler.Parcels;
@@ -22,6 +23,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import static com.example.app.util.DateUtils.setDate;
+import static com.example.app.util.FoodRatios.populateList;
+
 public class BreakfastProgramActivity extends AppCompatActivity {
 
     private ArrayList<Pair> mRatioPairs = new ArrayList<>();
@@ -34,7 +38,7 @@ public class BreakfastProgramActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breakfast_program);
         mUji = Parcels.unwrap(getIntent().getParcelableExtra("UjiMeal"));
-        populateList();
+        mRatioPairs = populateList(mUji);
         mCurrentDate = (TextView) findViewById(R.id.bfactivity_date);
         mCurrentDate.setText(setDate());
         ListView ratiosList = (ListView) findViewById(R.id.ujilist);
@@ -42,21 +46,4 @@ public class BreakfastProgramActivity extends AppCompatActivity {
         ratiosList.setAdapter(pairArrayAdapter);
     }
 
-    private void populateList() {
-        HashMap<String, Integer> ratios = mUji.getRatios();
-        Iterator iterator = ratios.entrySet().iterator();
-        while(iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry) iterator.next();
-            Pair ratiopair = new Pair(pair.getKey(), pair.getValue());
-            mRatioPairs.add(ratiopair);
-        }
-    }
-
-    private String setDate() {
-        Date currentDate = new Date();
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM dd YYYY hh:mm", Locale.US);
-        dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+3"));
-        return dateFormatter.format(currentDate);
-
-    }
 }

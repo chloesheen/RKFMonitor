@@ -58,7 +58,8 @@
             android:name=".activities.GitheriProgramActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".activities.RiceBeansProgramActivity"></activity>
+            android:name=".activities.RiceBeansProgramActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

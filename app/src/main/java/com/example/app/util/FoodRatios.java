@@ -4,7 +4,10 @@ import android.content.Context;
 
 import com.example.app.models.Food;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class FoodRatios {
 
@@ -86,8 +89,18 @@ public class FoodRatios {
         ingredients.put("Salt", attendance / 400);
         ingredients.put("Oil", attendance / 250);
         return mRiceBeans;
+    }
 
-
+    public static ArrayList<Pair> populateList(Food food) {
+        ArrayList<Pair> mRatioPairs = new ArrayList<>();
+        HashMap<String, Integer> ratios = food.getRatios();
+        Iterator iterator = ratios.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) iterator.next();
+            Pair ratiopair = new Pair(pair.getKey(), pair.getValue());
+            mRatioPairs.add(ratiopair);
+        }
+        return mRatioPairs;
     }
 
 }

@@ -64,6 +64,10 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    /**
+     * Might have to do these on a different thread. Monitor frames skipped
+     */
+
     public void onGitheriSelect() {
         Food githeri = FoodRatios.getGitheriRatios(mTotalAttendance);
         Intent intent = new Intent(this, GitheriProgramActivity.class);
