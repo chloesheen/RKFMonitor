@@ -69,6 +69,9 @@
     <string name="githeri">Githeri</string>
     <string name="rice_beans">Rice &amp; Beans</string>
 
+    <string name="ratio">24.67 kgs </string>
+    <string name="date">November 4th 2018</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

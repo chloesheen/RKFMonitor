@@ -51,9 +51,14 @@
         <activity
             android:name=".activities.TeacherProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.BreakfastProgramActivity" />
-        <activity android:name=".activities.GitheriProgramActivity" />
-        <activity android:name=".activities.RiceBeansProgramActivity"></activity>
+        <activity
+            android:name=".activities.BreakfastProgramActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.GitheriProgramActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.RiceBeansProgramActivity"></activity>
     </application>
 
 </manifest>

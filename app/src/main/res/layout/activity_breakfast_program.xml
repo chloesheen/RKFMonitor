@@ -78,9 +78,61 @@
 
     <ListView
         android:id="@+id/ujilist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="322dp"
+        android:layout_height="322dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/bfactivity_attendance"
+        android:layout_width="113dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/total_attendance"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/ujilist"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bfactivity_date"
+        android:layout_width="273dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/date"
+        app:layout_constraintBottom_toTopOf="@+id/bfactivity_attendance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bfactivity_schoolname"
+        android:layout_width="262dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="124dp"
+        android:text="@string/school_name"
+        android:textSize="30sp"
+        android:textAlignment="gravity"
+        app:layout_constraintBottom_toTopOf="@+id/ujilist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.584"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
