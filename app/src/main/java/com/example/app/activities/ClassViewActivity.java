@@ -20,10 +20,13 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
+import com.example.app.asynctasks.GetStudentProfile;
+import com.example.app.asynctasks.SubmitAttendance;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
+import com.example.app.util.Pair;
 import com.example.app.util.StudentListClickListener;
 
 import org.json.JSONArray;
@@ -41,7 +44,10 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class ClassViewActivity extends AppCompatActivity implements OnItemClickListener,
+import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
+import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
+
+public class ClassViewActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private ArrayList<Student> mStudents;
@@ -51,7 +57,11 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
 
     private Button mAddStudents;
     private TextView mProfileName;
-    private CheckBox mAttendanceBox;
+    private Button mSubmit;
+
+    private ArrayList<Pair> mAttendance;
+    private Pair<String, ArrayList<String>> mPresentStudents;
+    private Pair<String, ArrayList<String>> mAbsentStudents;
 
     private SharedPreferences mSharedPreferences;
     private ClickListener mClickListener;
@@ -64,33 +74,15 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mStudents = Parcels.unwrap(getIntent().getParcelableExtra(""));
+
+        ArrayList<String> mPresentList = new ArrayList<>();
+        ArrayList<String> mAbsentList = new ArrayList<>();
+        mPresentStudents = new Pair("attending", mPresentList);
+        mAbsentStudents = new Pair("notAttending", mAbsentList);
+
         mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
-        /** mClickListener = new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                int childviewid = view.getId();
-                switch (childviewid) {
-                    case R.id.student_name:
-                        view.get
-                }
-                mProfileName = view.findViewById(R.id.student_number);
-                mProfileName.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int studentpos = mStudentView.getC
-                        GetStudentProfile studentprofileTask = new GetStudentProfile();
-                        studentprofileTask.execute();
-                    }
-                });
-            }
-
-            @Override
-            public void onLongPress(View view, int position) {
-
-            }
-        }; **/
-        mStudentView.addOnItemTouchListener(new StudentListClickListener( this, mStudentView, mClickListener));
-
 
         mLayoutManager = new LinearLayoutManager(this);
         mStudentView.setLayoutManager(mLayoutManager);
@@ -103,20 +95,40 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
 
         mProfileName = (TextView) findViewById(R.id.profile_name);
         mProfileName.setOnClickListener(this);
+
+        mSubmit = (Button) findViewById(R.id.submit_attendance);
+        mSubmit.setOnClickListener(this);
+
+        mClickListener = new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                int childviewid = view.getId();
+                switch (childviewid) {
+                    case R.id.attendance:
+                        Student curStudent = mStudentListAdapter.getStudent(position);
+                        mPresentStudents.getSecond().add(curStudent.getId());
+                        break;
+
+                    case R.id.student_name:
+                        Student student = mStudentListAdapter.getStudent(position);
+                        GetStudentProfile task = new GetStudentProfile();
+                        String studentid = student.getId();
+                        try {
+                            StudentProfile profile = task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid).get();
+                            launchStudentProfile(profile);
+                        } catch(Exception e) {e.printStackTrace();}
+                        break;
+                }
+            }
+
+            @Override
+            public void onLongPress(View view, int position) {
+
+            }
+        };
+
+        mStudentView.addOnItemTouchListener(new StudentListClickListener( this, mStudentView, mClickListener));
     }
-
-
-    /**
-     *
-     *
-     * @param position
-     */
-    @Override
-    public void onItemClick(int position) {
-
-    }
-
-
 
 
     @Override
@@ -131,85 +143,33 @@ public class ClassViewActivity extends AppCompatActivity implements OnItemClickL
             case R.id.profile_name:
                 Intent profileIntent = new Intent(this, TeacherProfileActivity.class);
                 startActivity(profileIntent);
+                break;
+
+            case R.id.submit_attendance:
+                mAttendance.add(mPresentStudents);
+                mAttendance.add(mAbsentStudents);
+                SubmitAttendance task = new SubmitAttendance();
+                task.execute(REQUEST_SUBMIT_ATTENDANCE, mAttendance.toString());
         }
     }
-
 
     /**
-     * Asynctask to retrieve student profile from database
-     * Launches the StudentProfile activity and passes it the studentProfile object.
-     * Activity should be built from the object.
+     * Launches the student profile activity
+     * @param profile: the profile of the selected student
      */
 
-    private class GetStudentProfile extends AsyncTask<String, Void, StudentProfile> {
-
-        private StudentProfile stdProfile;
-
-        @Override
-        protected StudentProfile doInBackground(String... params) {
-            URL url = null;
-            HttpURLConnection urlConnection = null;
-            InputStream inputStream = null;
-            ByteArrayOutputStream arrayOutputStream = null;
-            String authorization = mSharedPreferences.getString("webtoken", "No Authorization"); //change this
-            String studentString;
-            String id = params[0];
-
-
-            try {
-                //open connetion to the server
-                url = new URL("");
-                urlConnection = (HttpURLConnection) url.openConnection();
-
-                //set the request properties i.e what type of request and the header metadata required
-                urlConnection.setDoInput(true);
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setRequestProperty("Authorization", authorization); //don't know if we need this
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                //urlConnection.setRequestProperty("StudentID", id);
-
-                //Read in the data
-                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    inputStream = new BufferedInputStream(urlConnection.getInputStream());
-                    arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
-                    int bytesread;
-                    while((bytesread = inputStream.read()) != -1) {
-                        arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
-                    }
-
-                    //creates student object from json and adds to student list
-                    studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
-                    JSONTokener token = new JSONTokener(studentString);
-                    JSONObject student = (JSONObject) token.nextValue();
-                    stdProfile = new StudentProfile (student.getString("firstname"),
-                            student.getString("lastname"),
-                            student.getString("id"),
-                            student.getString("gender"),
-                            student.getString("dateofbirth"),
-                            student.getString("classname"),
-                            student.getString("guardian"),
-                            student.getInt("telephone"),
-                            student.getInt("nationalid"),
-                            student.getInt("avegrade"),
-                            student.getInt("shoesize"));
-                    return stdProfile;
-                    } else { throw new IOException(urlConnection.getResponseMessage() + ": with" + ""); }
-
-                } catch (Exception e) { e.printStackTrace();}
-                return null;
-        }
-
-
-        /**
-         * Launches the Student Profile activity
-         * @param stdProfile
-         */
-        @Override
-        protected void onPostExecute(StudentProfile stdProfile) {
-            Intent intent = new Intent(getApplicationContext(), StudentProfileActivity.class);
-            intent.putExtra("Studentprofile", Parcels.wrap(stdProfile));
-            startActivity(intent);
-        }
-
+    private void launchStudentProfile(StudentProfile profile) {
+        Intent intent = new Intent(this, StudentProfileActivity.class);
+        intent.putExtra("StudentProfile", Parcels.wrap(profile));
+        startActivity(intent);
     }
+
+    private void getAbsentStudents() {
+        for(Student stud:mStudents) {
+            if(!(mPresentStudents.getSecond().contains(stud.getId()))) {
+                mAbsentStudents.getSecond().add(stud.getId());
+            }
+        }
+    }
+
 }

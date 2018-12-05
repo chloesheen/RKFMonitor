@@ -14,6 +14,8 @@ public class StudentProfile{
 
     private String mId;
 
+    private String mStudentId;
+
     private String mGender;
 
     private String mDateOfBirth;
@@ -40,11 +42,12 @@ public class StudentProfile{
         mId = id;
     }
 
-    public StudentProfile(String firstname, String lastname, String id, String gender, String dob, String guardian,
+    public StudentProfile(String firstname, String lastname, String id, String studentId, String gender, String dob, String guardian,
                           String classname, int tele, int nationalid, int aveGrade, int shoesize) {
         mFirstName = firstname;
         mLastName = lastname;
         mId = id;
+        mStudentId = studentId;
         mGender = gender;
         mDateOfBirth = dob;
         mGuardian = guardian;
@@ -71,6 +74,8 @@ public class StudentProfile{
     public String getId() {
         return mId;
     }
+
+    public String getStudentId() {return mStudentId;}
 
     public String getGender() {
         return mGender;
