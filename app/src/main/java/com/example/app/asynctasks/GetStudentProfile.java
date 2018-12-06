@@ -73,10 +73,10 @@ public class GetStudentProfile extends AsyncTask<String, Void, StudentProfile> {
                         student.getString("dateofbirth"),
                         student.getString("classname"),
                         student.getString("guardian"),
-                        student.getInt("telephone"),
-                        student.getInt("nationalid"),
-                        student.getInt("avegrade"),
-                        student.getInt("shoesize"));
+                        student.getString("telephone"),
+                        student.getString("nationalid"),
+                        student.getString("avegrade"),
+                        student.getString("shoesize"));
 
             } else { throw new IOException(urlConnection.getResponseMessage() + ": with" + ""); }
 

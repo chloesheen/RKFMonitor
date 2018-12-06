@@ -23,7 +23,7 @@
     <!-- Class View of Students -->
     <string name="student_name">Chanel Coco</string>
     <string name="present"> Present </string>
-    <string name="add_student"> Add Student</string>
+    <string name="add_student">Add New Student</string>
     <string name="logo"> Organization logo </string>
     <string name="teach_username">lgoloh</string>
     <string name="title_activity_add_student">AddStudentActivity</string>
@@ -36,9 +36,21 @@
     <string name="lastname"> Last Name</string>
     <string name="age"> Age </string>
     <string name="date_of_birth">Date Of Birth</string>
-    <string name="guardian_name"> Parent/Guardian</string>
+    <string name="guardian_name"> Name of Parent/Guardian</string>
     <string name="guradian_number">Telephone</string>
     <string name="address">Home Address</string>
+    <string name="student_firstname"></string>
+    <string name="student_lastname"></string>
+    <string name="student_gender">Gender</string>
+    <string name="student_dob"></string>
+    <string name="student_guardian"></string>
+    <string name="guardian_id">Guardian National ID</string>
+    <string name="student_shoesize">Shoe Size</string>
+    <string name="new_profile">New Student Profile</string>
+    <string-array name="gender">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 
 
     <!-- Teacher Profile Activity -->
@@ -78,5 +90,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="success_message"></string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
 </resources>

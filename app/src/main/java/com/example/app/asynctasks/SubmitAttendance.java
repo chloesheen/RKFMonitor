@@ -28,7 +28,6 @@ public class SubmitAttendance extends AsyncTask<String, Void, Void> {
         try {
             url = new URL(baseurl);
             urlConnection = (HttpURLConnection) url.openConnection();
-
             urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod("PUT");
             urlConnection.setRequestProperty("Authorization", authorization);
