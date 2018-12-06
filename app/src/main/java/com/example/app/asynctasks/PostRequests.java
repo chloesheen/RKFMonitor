@@ -56,13 +56,6 @@ public class PostRequests extends AsyncTask<String, Void, Void> {
         return null;
     }
 
-    @Override
-    protected void onPostExecute(Void v) {
-        switch (mRequestType) {
-            case REQUEST_ADD_NEW_STUDENT:
-                
-        }
-    }
 
 
     private String postDataString(HashMap<String, String> postdata) {

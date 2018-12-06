@@ -92,4 +92,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="success_message"></string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
+
+
+    <!-- Organization Dashboard -->
+    <string name="org_name">Rahul Kotak Foundation</string>
+    <string name="nameOfSchool"></string>
+
+    <!-- School Dashboard-->
+    <string name="calendar_name">Master Calendar</string>
 </resources>

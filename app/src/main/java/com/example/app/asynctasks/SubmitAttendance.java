@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 
 import com.example.app.util.Pair;
 
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class SubmitAttendance extends AsyncTask<String, Void, Void> {
 
     private SharedPreferences mSharedPreferences;
+    private JSONObject mPutData;
 
     @Override
     protected Void doInBackground(String...params) {
