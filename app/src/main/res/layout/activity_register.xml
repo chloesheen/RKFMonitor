@@ -15,6 +15,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp">
 
+
         <TextView
             android:id="@+id/signin_textview"
             android:layout_width="match_parent"
@@ -24,56 +25,16 @@
             android:text="Please Register."/>
 
         <TextView
-            android:id="@+id/firstname_textview"
+            android:id="@+id/user_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="First name:"/>
+            android:text="User Type" />
 
-        <EditText
-            android:id="@+id/firstname_edittext"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/user_spinner"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter first name"
-            android:inputType = "textPersonName"/>
-
-        <TextView
-            android:id="@+id/lastname_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Last name:"/>
-
-        <EditText
-            android:id="@+id/lastname_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter last name"
-            android:inputType="textPersonName"/>
-
-        <TextView
-            android:id="@+id/schoolID_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="School ID:"/>
-
-        <EditText
-            android:id="@+id/schoolID_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter school ID"
-            android:inputType="textPersonName"/>
-
-        <TextView
-            android:id="@+id/nationalID_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="National ID:"/>
-
-        <EditText
-            android:id="@+id/nationalID_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter national ID"
-            android:inputType="textPersonName"/>
+            android:layout_marginBottom="20dip"/>
 
         <TextView
             android:id="@+id/school_textview"

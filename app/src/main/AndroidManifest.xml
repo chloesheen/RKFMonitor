@@ -30,8 +30,7 @@
             android:label="@string/title_activity_second"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activities.RegisterActivity" />
         <activity
             android:name=".activities.TeacherDashboard"
             android:label="@string/title_activity_teacher_dashboard"

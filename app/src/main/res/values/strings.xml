@@ -32,6 +32,15 @@
         <item>Elimu de Ark</item>
 
     </string-array>
+
+    <string-array name="user_array">
+        <item>Teacher</item>
+        <item>Cook</item>
+        <item>Organization</item>
+
+
+    </string-array>
+
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_splash">Splash</string>
