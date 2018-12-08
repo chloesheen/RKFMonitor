@@ -10,14 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.app.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link WeeklyInfoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link WeeklyInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class WeeklyInfoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,9 +23,6 @@ public class WeeklyInfoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public WeeklyInfoFragment() {
-        // Required empty public constructor
-    }
 
     /**
      * Use this factory method to create a new instance of
