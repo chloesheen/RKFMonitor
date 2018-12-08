@@ -20,12 +20,15 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
-import com.example.app.asynctasks.GetStudentProfile;
+import com.example.app.asynctasks.HttpGetRequests;
+import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.asynctasks.SubmitAttendance;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
+import com.example.app.models.TeacherProfile;
 import com.example.app.util.Pair;
 import com.example.app.util.StudentListClickListener;
 
@@ -44,16 +47,17 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
+import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
 import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
+import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
 
 public class ClassViewActivity extends AppCompatActivity implements
-        View.OnClickListener {
+        View.OnClickListener, CallbackListener {
 
     private ArrayList<Student> mStudents;
-    private RecyclerView.LayoutManager mLayoutManager;
     private StudentListAdapter mStudentListAdapter;
-    private RecyclerView mStudentView;
 
     private Button mAddStudents;
     private TextView mProfileName;
@@ -66,6 +70,8 @@ public class ClassViewActivity extends AppCompatActivity implements
     private SharedPreferences mSharedPreferences;
     private ClickListener mClickListener;
 
+    private CallbackListener mListener;
+
 
 
     @Override
@@ -74,17 +80,18 @@ public class ClassViewActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         mStudents = Parcels.unwrap(getIntent().getParcelableExtra(""));
+
+        mListener = this;
 
         ArrayList<String> mPresentList = new ArrayList<>();
         ArrayList<String> mAbsentList = new ArrayList<>();
         mPresentStudents = new Pair("attending", mPresentList);
         mAbsentStudents = new Pair("notAttending", mAbsentList);
 
-        mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
+        RecyclerView  mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
 
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mStudentView.setLayoutManager(mLayoutManager);
 
         mStudentListAdapter = new StudentListAdapter(this, mStudents);
@@ -111,11 +118,10 @@ public class ClassViewActivity extends AppCompatActivity implements
 
                     case R.id.student_name:
                         Student student = mStudentListAdapter.getStudent(position);
-                        GetStudentProfile task = new GetStudentProfile();
+                        HttpGetRequests task = new HttpGetRequests(GET_STUDENT_PROFILE, mListener);
                         String studentid = student.getId();
                         try {
-                            StudentProfile profile = task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid).get();
-                            launchStudentProfile(profile);
+                            task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid);
                         } catch(Exception e) {e.printStackTrace();}
                         break;
                 }
@@ -141,8 +147,8 @@ public class ClassViewActivity extends AppCompatActivity implements
                 break;
 
             case R.id.profile_name:
-                Intent profileIntent = new Intent(this, TeacherProfileActivity.class);
-                startActivity(profileIntent);
+                HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this);
+                gettask.execute(REQUEST_TEACHER_PROFILE);
                 break;
 
             case R.id.submit_attendance:
@@ -154,8 +160,8 @@ public class ClassViewActivity extends AppCompatActivity implements
     }
 
     /**
-     * Launches the student profile activity
-     * @param profile: the profile of the selected student
+     * Launches the different profile activites based on what views are clicked
+     * @param profile: the profile of the selected student and teacher
      */
 
     private void launchStudentProfile(StudentProfile profile) {
@@ -164,11 +170,28 @@ public class ClassViewActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    private void launchTeacherProfile(TeacherProfile profile) {
+        Intent intent = new Intent(this, TeacherProfileActivity.class);
+        intent.putExtra("TeacherProfile", Parcels.wrap(profile));
+        startActivity(intent);
+    }
+
     private void getAbsentStudents() {
         for(Student stud:mStudents) {
             if(!(mPresentStudents.getSecond().contains(stud.getId()))) {
                 mAbsentStudents.getSecond().add(stud.getId());
             }
+        }
+    }
+
+    @Override
+    public void onCompletionHandler(Boolean success, int requestcode, Object object) {
+        if (success && requestcode == GET_STUDENT_PROFILE){
+            StudentProfile profile = (StudentProfile) object;
+            launchStudentProfile(profile);
+        } else if (success && requestcode == GET_TEACHER_PROFILE) {
+            TeacherProfile teacherProfile = (TeacherProfile) object;
+            launchTeacherProfile(teacherProfile);
         }
     }
 

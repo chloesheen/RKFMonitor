@@ -97,6 +97,8 @@
     <!-- Organization Dashboard -->
     <string name="org_name">Rahul Kotak Foundation</string>
     <string name="nameOfSchool"></string>
+    <string name="academic_year">Academic Year: 2018&#8211;2019</string>
+    <string name="week_name"></string>
 
     <!-- School Dashboard-->
     <string name="calendar_name">Master Calendar</string>

@@ -40,6 +40,8 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        TeacherProfile profile = Parcels.unwrap(getIntent().getParcelableExtra("TeacherProfile"));
+
         mEdit = (ImageView) findViewById(R.id.edit);
         mEdit.setOnClickListener(this);
 
@@ -50,8 +52,31 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mStream = (EditText) findViewById(R.id.stream_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
         mProfileName = (TextView) findViewById(R.id.name);
+
+        populateView(profile);
     }
 
+    /**
+     * Populates the teacher profile When the profile is opened
+     * @param profile The Teachers profile
+     */
+
+    public void populateView(TeacherProfile profile) {
+        String fullname = profile.getFirstName() + " " + profile.getLastName();
+        mProfileName.setText(fullname);
+        mSchoolId.setText(profile.getId());
+        mGender.setText(profile.getGender());
+        mClassName.setText(profile.getClassname());
+        mContactNum.setText(profile.getTelephone());
+        mNationalId.setText(profile.getNationalID());
+        mStream.setText(profile.getStream());
+    }
+
+    /**
+     * Starts the activity for editing the profile whe the edit button is clicked
+     * It starts the activity and gets back the updated teachers profile as a result
+     * @param view The edit button view
+     */
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.edit){
@@ -62,6 +87,13 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         }
     }
 
+    /**
+     * Called after the EditTeacherProfile activity returns.
+     * Updates the view to reflect the edits made
+     * @param requestcode The requst code of the EditProfileActivity
+     * @param resultcode  The result code returned from the EditProfileActivity
+     * @param data        The Updated Teache rProfile contained in an intent
+     */
     @Override
     public void onActivityResult(int requestcode, int resultcode, Intent data) {
         if (requestcode == REQUEST_EDIT_PROFILE && resultcode == Activity.RESULT_OK) {
@@ -91,20 +123,11 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         }
     }
 
-    private TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-        }
-    };
+    /**
+     * Creates a TeacherProfile object to be passes to the EditTeacherProfileActivity
+     * @return The TeacherProfile object
+     */
 
     public TeacherProfile currentProfile() {
         String[] fullname = mProfileName.getText().toString().split("\\s+");
