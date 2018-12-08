@@ -80,7 +80,7 @@ public class ClassViewActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mStudents = Parcels.unwrap(getIntent().getParcelableExtra(""));
+        mStudents = Parcels.unwrap(getIntent().getParcelableExtra("StudentList"));
 
         mListener = this;
 

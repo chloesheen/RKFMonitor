@@ -102,4 +102,30 @@
 
     <!-- School Dashboard-->
     <string name="calendar_name">Master Calendar</string>
+
+
+    <string-array name="school_array">
+        <item>Valley Academy</item>
+        <item>SOKO Primary</item>
+        <item>NextGen</item>
+        <item>SHAMCO</item>
+        <item>St. Vitalis Nanga</item>
+        <item>Elimu de Ark</item>
+
+    </string-array>
+
+    <string-array name="user_array">
+        <item>Teacher</item>
+        <item>Cook</item>
+        <item>Organization</item>
+
+
+    </string-array>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_splash">Splash</string>
+
+
+
 </resources>
