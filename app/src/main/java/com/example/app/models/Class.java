@@ -8,6 +8,8 @@ public class Class {
 
     private String mClassSize;
 
+    private String mHomeroomTeacher;
+
     public Class(String name, String id, String size) {
         mClassName = name;
         mId = id;

@@ -14,6 +14,8 @@ public class StudentProfile{
 
     private String mId;
 
+    private String mStudentId;
+
     private String mGender;
 
     private String mDateOfBirth;
@@ -22,13 +24,13 @@ public class StudentProfile{
 
     private String mClassName;
 
-    private int mTelephone;
+    private String mTelephone;
 
-    private int mNationalID;
+    private String mNationalID;
 
-    private int mAverageGrade;
+    private String mAverageGrade;
 
-    private int mShoesize;
+    private String mShoesize;
 
     public StudentProfile() {
     }
@@ -40,11 +42,12 @@ public class StudentProfile{
         mId = id;
     }
 
-    public StudentProfile(String firstname, String lastname, String id, String gender, String dob, String guardian,
-                          String classname, int tele, int nationalid, int aveGrade, int shoesize) {
+    public StudentProfile(String firstname, String lastname, String id, String studentId, String gender, String dob, String guardian,
+                          String classname, String tele, String nationalid, String aveGrade, String shoesize) {
         mFirstName = firstname;
         mLastName = lastname;
         mId = id;
+        mStudentId = studentId;
         mGender = gender;
         mDateOfBirth = dob;
         mGuardian = guardian;
@@ -72,6 +75,8 @@ public class StudentProfile{
         return mId;
     }
 
+    public String getStudentId() {return mStudentId;}
+
     public String getGender() {
         return mGender;
     }
@@ -88,19 +93,19 @@ public class StudentProfile{
         return mClassName;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return mTelephone;
     }
 
-    public int getNationalID() {
+    public String getNationalID() {
         return mNationalID;
     }
 
-    public int getAvegrade() {
+    public String getAvegrade() {
         return mAverageGrade;
     }
 
-    public int getShoesize() {
+    public String getShoesize() {
         return mShoesize;
     }
 
