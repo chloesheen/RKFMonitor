@@ -15,8 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="deed59b7-8fb2-403b-9161-dce640883c46" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/TeacherProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/TeacherProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,16 +44,22 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="533">
-              <caret line="206" column="5" lean-forward="true" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
+              <caret line="206" column="5" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditTeacherProfile.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="112" column="66" selection-start-line="112" selection-start-column="66" selection-end-line="112" selection-end-column="66" />
+            <state relative-caret-position="264">
+              <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+              <folding>
+                <element signature="e#877#895#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2361,7 +2368,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/PostRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Food.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/FoodRatioAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/FoodRatios.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java" />
@@ -2382,11 +2388,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/TeacherProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="153" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="102" />
     <option name="y" value="24" />
     <option name="width" value="1338" />
     <option name="height" value="830" />
@@ -2396,6 +2403,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2406,20 +2416,12 @@
             <path>
               <item name="kokak-" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="kokak-" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kokak-" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kokak-" type="1abcf292:AndroidViewProjectNode" />
@@ -2429,9 +2431,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2614,19 +2613,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="153" y="24" width="1338" height="830" extended-state="0" />
+    <frame x="102" y="24" width="1338" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4996121" weight="0.3292683" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5008726" side_tool="true" weight="0.3606341" />
-      <window_info anchor="right" id="Preview" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991274" weight="0.0" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32469305" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991274" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3292683" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.69207317" />
       <window_info id="Captures" order="2" weight="0.25" />
@@ -2638,10 +2636,11 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" weight="0.3294753" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Assistant" order="3" weight="0.32984293" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Preview" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -2666,7 +2665,6 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5008726" side_tool="true" weight="0.3606341" />
       <window_info anchor="right" id="Preview" order="4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3287858" />
       <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" weight="0.3294753" />
       <window_info anchor="right" id="Assistant" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.69207317" />
@@ -2680,6 +2678,7 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3287858" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
@@ -2824,10 +2823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
-          <folding>
-            <element signature="e#1302#2127#0" expanded="true" />
-            <element signature="e#2126#2127#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2852,9 +2847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
           <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#2004#2005#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2903,16 +2895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -3076,9 +3058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3106,17 +3085,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="206" column="5" lean-forward="true" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
+        <state relative-caret-position="1205">
+          <caret line="112" column="66" selection-start-line="112" selection-start-column="66" selection-end-line="112" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="112" column="66" selection-start-line="112" selection-start-column="66" selection-end-line="112" selection-end-column="66" />
+        <state relative-caret-position="533">
+          <caret line="206" column="5" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+          <folding>
+            <element signature="e#877#895#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

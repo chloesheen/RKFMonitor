@@ -16,8 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.FeedingDashboard"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activities.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/splashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +45,7 @@
             android:name=".activities.EditTeacherProfile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.FeedingDashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.BreakfastProgramActivity"
