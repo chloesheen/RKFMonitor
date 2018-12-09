@@ -24,7 +24,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import static com.example.app.util.Constants.GET_SCHOOL_INFO;
+import static com.example.app.util.Constants.GET_SCHOOL_ATTENDANCE;
+import static com.example.app.util.Constants.GET_SCHOOL_FOOD;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
@@ -131,11 +132,15 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         String attendanceString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                         JSONTokener attendancetoken = new JSONTokener(attendanceString);
                         JSONObject attendance = (JSONObject) attendancetoken.nextValue();
-                        String totalattendance = attendance.getString("attendance");
-                        mListener.onCompletionHandler(true, GET_TOTAL_ATTENDANCE, totalattendance);
+                        String totalattendance = attendance.getString("numOfStudents");
+                        int numofStudents = Integer.valueOf(totalattendance);
+                        mListener.onCompletionHandler(true, GET_TOTAL_ATTENDANCE, numofStudents);
                         break;
 
-                    case GET_SCHOOL_INFO:
+                    case GET_SCHOOL_ATTENDANCE:
+                        String schoolattendance = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONTokener schoolattendanceToken = new JSONTokener(schoolattendance);
+                        break;
                 }
 
             }

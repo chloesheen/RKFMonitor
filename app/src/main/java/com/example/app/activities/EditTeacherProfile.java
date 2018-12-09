@@ -9,11 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.app.R;
+import com.example.app.asynctasks.HttpPutRequests;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.TeacherProfile;
 
 import org.parceler.Parcels;
 
-public class EditTeacherProfile extends AppCompatActivity implements View.OnClickListener{
+import java.util.HashMap;
+
+import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
+
+public class EditTeacherProfile extends AppCompatActivity implements View.OnClickListener, CallbackListener {
 
     private EditText mFirstName;
     private EditText mLastName;
@@ -22,7 +28,6 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
     private EditText mNationalId;
     private EditText mContactNum;
     private EditText mClassName;
-    private EditText mStream;
     private Button mSave;
 
     @Override
@@ -36,7 +41,6 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         mNationalId = (EditText) findViewById(R.id.national_id);
         mContactNum = (EditText) findViewById(R.id.contact_num);
         mClassName = (EditText) findViewById(R.id.class_name);
-        mStream = (EditText) findViewById(R.id.stream_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
 
         TeacherProfile input = Parcels.unwrap(getIntent().
@@ -59,6 +63,11 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
 
     }
 
+    /**
+     * This creates the updated teacher profile object that is passed back to the TeacherProfileActivity
+     * It also creates a hashmap with the new data and makes a put request to update the database
+     * @return The updated TeacherProfile
+     */
     public TeacherProfile updateProfile() {
         String firstname = mFirstName.getText().toString();
         String lastname = mLastName.getText().toString();
@@ -67,11 +76,25 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         String nationalid = mNationalId.getText().toString();
         String contact = mContactNum.getText().toString();
         String classname = mClassName.getText().toString();
-        String stream = mStream.getText().toString();
+        HashMap<String, String> teacherProfile = new HashMap<>();
+        teacherProfile.put("firstname", firstname);
+        teacherProfile.put("lastname", lastname);
+        teacherProfile.put("gender", gender);
+        teacherProfile.put("classname", "");
+        teacherProfile.put("contact", contact);
+        teacherProfile.put("nationalid", nationalid);
+        HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this);
+        task.execute("");
         return new TeacherProfile(firstname, lastname, schoolid, gender,
-                classname, contact, nationalid, stream);
+                classname, contact, nationalid);
     }
 
+
+    /**
+     * Called on the input from the TeacherProfile activity to update the EditActivity view
+     * on what the current profile looks like before edits are made
+     * @param curProfile
+     */
     public void setProfile(TeacherProfile curProfile) {
         mFirstName.setText(curProfile.getFirstName());
         mLastName.setText(curProfile.getLastName());
@@ -80,6 +103,15 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         mNationalId.setText(curProfile.getNationalID());
         mContactNum.setText(curProfile.getTelephone());
         mClassName.setText(curProfile.getClassname());
-        mStream.setText(curProfile.getStream());
     }
+
+    /**
+     * Handles the return of the put request.
+     * Doesn't need to do anything in particular
+     * @param success The boolean value of the request
+     * @param requestcode The type of request
+     * @param object The object returned after the request is made
+     */
+    @Override
+    public void onCompletionHandler(boolean success, int requestcode, Object object) {}
 }

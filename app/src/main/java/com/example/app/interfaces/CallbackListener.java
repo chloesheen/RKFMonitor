@@ -2,5 +2,5 @@ package com.example.app.interfaces;
 
 public interface CallbackListener {
 
-    void onCompletionHandler(Boolean success, int requestcode, Object object);
+    void onCompletionHandler(boolean success, int requestcode, Object object);
 }

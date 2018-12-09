@@ -18,14 +18,12 @@ public class TeacherProfile {
 
     private String mNationalID;
 
-    private String mStream;
-
     public TeacherProfile() {
 
     }
 
     public TeacherProfile(String firstname, String lastname, String schoolid,
-                          String gender, String classname, String contact, String nationalid, String stream) {
+                          String gender, String classname, String contact, String nationalid) {
         mFirstName = firstname;
         mLastName = lastname;
         mSchoolId = schoolid;
@@ -33,7 +31,6 @@ public class TeacherProfile {
         mClassName = classname;
         mTelephone = contact;
         mNationalID = nationalid;
-        mStream = stream;
     }
 
     public String getFirstName() {
@@ -63,7 +60,5 @@ public class TeacherProfile {
     public String getNationalID() {
         return mNationalID;
     }
-
-    public String getStream() {return mStream;}
 
 }
