@@ -10,6 +10,9 @@ var calendarSchema  = new Schema({
 	class: {type: mongoose.Schema.Types.ObjectId, ref : 'Class', required: true},
 	studentsPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}],
 	studentsNotPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
+	//food for a day
+	// total attendance
+
 });
 
 module.exports = mongoose.model('Calendar', calendarSchema);

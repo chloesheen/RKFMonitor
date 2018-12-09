@@ -10,9 +10,10 @@ var userSchema = new Schema({
 	lastName : {type: String, required: true},
 	username: {type: String, required: true},
 	password : {type: String, required: true},
-    school: {type: mongoose.Schema.Types.ObjectId, ref: 'School', required: true},
+    school: {type: mongoose.Schema.Types.ObjectId, ref: 'School', required: true}, // select
 	isAdministrator: {type: Boolean, default: false},
-	isTeacher: {type: Boolean, default: false},
+	isTeacher: {type: Boolean, default: false}, // enter teacher
+	//select what class they are in - REGISTER VIEW
 	isChef: {type: Boolean, default: false}
 });
 
