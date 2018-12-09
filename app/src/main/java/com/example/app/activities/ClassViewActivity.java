@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +23,8 @@ import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
 import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.asynctasks.HttpGetRequests;
-import com.example.app.asynctasks.SubmitAttendance;
+import com.example.app.asynctasks.HttpPutRequests;
+import com.example.app.fragments.SuccessDialog;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.interfaces.OnItemClickListener;
@@ -46,9 +48,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
+import static com.example.app.util.Constants.PUT_STUDENT_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
 import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
@@ -59,13 +63,10 @@ public class ClassViewActivity extends AppCompatActivity implements
     private ArrayList<Student> mStudents;
     private StudentListAdapter mStudentListAdapter;
 
-    private Button mAddStudents;
-    private TextView mProfileName;
-    private Button mSubmit;
+    private HashMap<String, String> mAttendance;
+    private HashMap<String, String> mPresentList = new HashMap<>();
+    private HashMap<String, String> mAbsentList = new HashMap<>();
 
-    private ArrayList<Pair> mAttendance;
-    private Pair<String, ArrayList<String>> mPresentStudents;
-    private Pair<String, ArrayList<String>> mAbsentStudents;
 
     private SharedPreferences mSharedPreferences;
     private ClickListener mClickListener;
@@ -80,14 +81,9 @@ public class ClassViewActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mStudents = Parcels.unwrap(getIntent().getParcelableExtra(""));
+        mStudents = Parcels.unwrap(getIntent().getParcelableExtra("StudentList"));
 
         mListener = this;
-
-        ArrayList<String> mPresentList = new ArrayList<>();
-        ArrayList<String> mAbsentList = new ArrayList<>();
-        mPresentStudents = new Pair("attending", mPresentList);
-        mAbsentStudents = new Pair("notAttending", mAbsentList);
 
         RecyclerView  mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
 
@@ -97,13 +93,13 @@ public class ClassViewActivity extends AppCompatActivity implements
         mStudentListAdapter = new StudentListAdapter(this, mStudents);
         mStudentView.setAdapter(mStudentListAdapter);
 
-        mAddStudents = (Button) findViewById(R.id.add_student);
+        Button mAddStudents = (Button) findViewById(R.id.add_student);
         mAddStudents.setOnClickListener(this);
 
-        mProfileName = (TextView) findViewById(R.id.profile_name);
+        TextView mProfileName = (TextView) findViewById(R.id.profile_name);
         mProfileName.setOnClickListener(this);
 
-        mSubmit = (Button) findViewById(R.id.submit_attendance);
+        Button mSubmit = (Button) findViewById(R.id.submit_attendance);
         mSubmit.setOnClickListener(this);
 
         mClickListener = new ClickListener() {
@@ -113,7 +109,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                 switch (childviewid) {
                     case R.id.attendance:
                         Student curStudent = mStudentListAdapter.getStudent(position);
-                        mPresentStudents.getSecond().add(curStudent.getId());
+                        mPresentList.put("id", curStudent.getId());
                         break;
 
                     case R.id.student_name:
@@ -152,10 +148,11 @@ public class ClassViewActivity extends AppCompatActivity implements
                 break;
 
             case R.id.submit_attendance:
-                mAttendance.add(mPresentStudents);
-                mAttendance.add(mAbsentStudents);
-                SubmitAttendance task = new SubmitAttendance();
-                task.execute(REQUEST_SUBMIT_ATTENDANCE, mAttendance.toString());
+                getAbsentStudents();
+                mAttendance.put("attending", mPresentList.toString());
+                mAttendance.put("notAttending", mAbsentList.toString());
+                HttpPutRequests task = new HttpPutRequests(mAttendance, PUT_STUDENT_ATTENDANCE, this);
+                task.execute(REQUEST_SUBMIT_ATTENDANCE);
         }
     }
 
@@ -178,21 +175,36 @@ public class ClassViewActivity extends AppCompatActivity implements
 
     private void getAbsentStudents() {
         for(Student stud:mStudents) {
-            if(!(mPresentStudents.getSecond().contains(stud.getId()))) {
-                mAbsentStudents.getSecond().add(stud.getId());
+            if(!(mPresentList.containsValue(stud.getId()))) {
+                mAbsentList.put("id", stud.getId());
             }
         }
     }
 
     @Override
-    public void onCompletionHandler(Boolean success, int requestcode, Object object) {
-        if (success && requestcode == GET_STUDENT_PROFILE){
-            StudentProfile profile = (StudentProfile) object;
-            launchStudentProfile(profile);
-        } else if (success && requestcode == GET_TEACHER_PROFILE) {
-            TeacherProfile teacherProfile = (TeacherProfile) object;
-            launchTeacherProfile(teacherProfile);
+    public void onCompletionHandler(boolean success, int requestcode, Object object) {
+        if (success) {
+            switch(requestcode) {
+                case GET_STUDENT_PROFILE:
+                    StudentProfile profile = (StudentProfile) object;
+                    launchStudentProfile(profile);
+                    break;
+
+                case GET_TEACHER_PROFILE:
+                    TeacherProfile teacherProfile = (TeacherProfile) object;
+                    launchTeacherProfile(teacherProfile);
+                    break;
+
+                case PUT_STUDENT_ATTENDANCE:
+                    mStudents = (ArrayList<Student>) object;
+                    Fragment successIndicator = SuccessDialog.newInstance("Attendance Recorded!");
+                    getSupportFragmentManager().beginTransaction()
+                            .add(successIndicator, "SuccessFragment")
+                            .commit();
+                    break;
+            }
         }
     }
+
 
 }

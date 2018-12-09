@@ -25,7 +25,7 @@ public class FoodRatioAdapter extends ArrayAdapter<Pair> {
     @NonNull
     @Override
     public View getView(int position, View view, @NonNull ViewGroup parent) {
-        final Pair<String, Double> ratio = mRatioList.get(position);
+        final Pair<String, String> ratio = mRatioList.get(position);
 
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.food_ratio_item, parent, false);
@@ -34,7 +34,7 @@ public class FoodRatioAdapter extends ArrayAdapter<Pair> {
         TextView ingredientName = (TextView) view.findViewById(R.id.ingredient_name);
         TextView ingredientAmount = (TextView) view.findViewById(R.id.ingredient_quantity);
         ingredientName.setText(ratio.getFirst());
-        ingredientAmount.setText(ratio.getSecond().toString());
+        ingredientAmount.setText(ratio.getSecond());
         return view;
     }
 }

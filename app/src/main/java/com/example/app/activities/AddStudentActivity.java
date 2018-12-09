@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,10 +17,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.app.R;
+import com.example.app.asynctasks.HttpPostRequests;
+import com.example.app.fragments.SuccessDialog;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.StudentProfile;
 
+import java.util.HashMap;
+
+import static com.example.app.util.Constants.POST_NEW_STUDENT;
+
 public class AddStudentActivity extends AppCompatActivity implements View.OnClickListener,
-        AdapterView.OnItemSelectedListener {
+        AdapterView.OnItemSelectedListener, CallbackListener {
 
     private EditText mFirstname;
     private EditText mLastname;
@@ -63,25 +72,38 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view){
-        String firstname = mFirstname.getText().toString();
-        String lastname = mLastname.getText().toString();
-        String dob = mDateOfBirth.getText().toString();
-        String guardianname = mParentname.getText().toString();
-        String contact = mParentContact.getText().toString();
-        String natid = mParentID.getText().toString();
-        String shoesize = mShoesize.getText().toString();
-        String avegrade = "0.0";
-        StudentProfile newProfile = new StudentProfile(firstname, lastname, null, null, mStudentGender,
-                dob, guardianname, null, contact, natid, avegrade, shoesize);
+        HashMap<String, String> studentProfile = new HashMap<>();
+        studentProfile.put("firstname", mFirstname.getText().toString());
+        studentProfile.put("lastname", mLastname.getText().toString());
+        studentProfile.put("gender", mStudentGender);
+        studentProfile.put("dob", mDateOfBirth.getText().toString());
+        studentProfile.put("classname", "");
+        studentProfile.put("guardian", mParentname.getText().toString());
+        studentProfile.put("contact", mParentContact.getText().toString());
+        studentProfile.put("nationalid", mParentID.getText().toString());
+        studentProfile.put("avegrade", "0.0");
+        studentProfile.put("shoesize", mShoesize.getText().toString());
+        HttpPostRequests task = new HttpPostRequests(studentProfile, POST_NEW_STUDENT, this);
+        task.execute("");
+
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         mStudentGender = parent.getItemAtPosition(pos).toString();
-        Log.d("test1", mStudentGender);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    @Override
+    public void onCompletionHandler(boolean success, int requestcode, Object object) {
+        if (success & requestcode == POST_NEW_STUDENT) {
+            Fragment successIndicator = SuccessDialog.newInstance("Student Successfully Added");
+            getSupportFragmentManager().beginTransaction()
+                    .add(successIndicator, "SuccessFragment")
+                    .commit();
+        }
     }
 }

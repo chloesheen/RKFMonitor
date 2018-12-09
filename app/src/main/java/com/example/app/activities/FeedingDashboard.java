@@ -12,37 +12,38 @@ import com.example.app.R;
 
 import java.util.HashMap;
 
+import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.fragments.LunchProgramDialog;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Food;
 import com.example.app.util.FoodRatios;
 
 import org.parceler.Parcels;
 
+import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
 import static com.example.app.util.DateUtils.setDate;
 
 public class FeedingDashboard extends AppCompatActivity implements View.OnClickListener,
-        LunchProgramDialog.OnLunchSelectionListener {
+        LunchProgramDialog.OnLunchSelectionListener, CallbackListener {
 
-    private CardView mLunchCard;
-    private CardView mBreakfastCard;
-    private int mTotalAttendance = 427;
-    private TextView mDate;
-
-
+    private int mTotalAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeding_dashboard);
 
-        mLunchCard = (CardView) findViewById(R.id.lunch_card);
+        CardView mLunchCard = (CardView) findViewById(R.id.lunch_card);
         mLunchCard.setOnClickListener(this);
 
-        mBreakfastCard = (CardView) findViewById(R.id.breakfast_card);
+        CardView mBreakfastCard = (CardView) findViewById(R.id.breakfast_card);
         mBreakfastCard.setOnClickListener(this);
 
-        mDate = (TextView) findViewById(R.id.dashboard_date);
+        TextView mDate = (TextView) findViewById(R.id.dashboard_date);
         mDate.setText(setDate());
+
+        HttpGetRequests task = new HttpGetRequests(GET_TOTAL_ATTENDANCE, this);
+        task.execute("");
     }
 
     @Override
@@ -92,5 +93,12 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
     @Override
     public void onLunchSelected (View view) {
         onClick(view);
+    }
+
+    @Override
+    public void onCompletionHandler(Boolean success, int requestcode, Object object) {
+        if (success && requestcode == GET_TOTAL_ATTENDANCE) {
+            mTotalAttendance = (int) object;
+        }
     }
 }
