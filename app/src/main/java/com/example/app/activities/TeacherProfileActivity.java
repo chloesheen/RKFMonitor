@@ -31,7 +31,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mNationalId;
     private EditText mContactNum;
     private EditText mClassName;
-    private EditText mStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mNationalId = (EditText) findViewById(R.id.national_id);
         mContactNum = (EditText) findViewById(R.id.contact_num);
         mClassName = (EditText) findViewById(R.id.class_name);
-        mStream = (EditText) findViewById(R.id.stream_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
         mProfileName = (TextView) findViewById(R.id.name);
 
@@ -69,7 +67,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mClassName.setText(profile.getClassname());
         mContactNum.setText(profile.getTelephone());
         mNationalId.setText(profile.getNationalID());
-        mStream.setText(profile.getStream());
     }
 
     /**
@@ -117,9 +114,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
             if (!(mClassName.getText().toString().equals(result.getClassname()))) {
                 mClassName.setText(result.getClassname());
             }
-            if (!(mStream.getText().toString().equals(result.getStream()))) {
-                mStream.setText(result.getStream());
-            }
         }
     }
 
@@ -138,9 +132,8 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         String nationalid = mNationalId.getText().toString();
         String contact = mContactNum.getText().toString();
         String classname = mClassName.getText().toString();
-        String stream = mStream.getText().toString();
         return new TeacherProfile(firstname, lastname, schoolid, gender,
-                classname, contact, nationalid, stream);
+                classname, contact, nationalid);
     }
 
 }

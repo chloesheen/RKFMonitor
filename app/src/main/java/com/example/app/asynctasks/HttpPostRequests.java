@@ -2,6 +2,8 @@ package com.example.app.asynctasks;
 
 import android.os.AsyncTask;
 
+import com.example.app.interfaces.CallbackListener;
+
 import org.json.JSONObject;
 
 import java.io.OutputStreamWriter;
@@ -12,18 +14,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static com.example.app.util.Constants.POST_FOOD;
+import static com.example.app.util.Constants.POST_NEW_STUDENT;
 import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
 import static com.example.app.util.Constants.REQUEST_ADD_NEW_STUDENT;
 import static com.example.app.util.Constants.REQUEST_REGISTER_TEACHER;
 
-public class PostRequests extends AsyncTask<String, Void, Void> {
+public class HttpPostRequests extends AsyncTask<String, Void, Void> {
 
     JSONObject mPostData;
-    String mRequestType;
+    int mRequestType;
+    CallbackListener mListener;
 
-    public PostRequests(HashMap<String, String> post, String request) {
+    public HttpPostRequests(HashMap<String, String> post, int request, CallbackListener listener) {
         mPostData = new JSONObject(post);
         mRequestType = request;
+        mListener = listener;
     }
 
     @Override
@@ -39,16 +45,20 @@ public class PostRequests extends AsyncTask<String, Void, Void> {
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Authorization", "authorization");
             urlConnection.setRequestProperty("Content-Type", "application/json");
-            if (mPostData != null) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK  && mPostData != null) {
                 outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
                 outputStream.write(mPostData.toString());
                 outputStream.flush();
-            }
 
-            //does every post request return a body??
-            int statusResponseCode = urlConnection.getResponseCode();
-            if (statusResponseCode == HttpURLConnection.HTTP_OK) {
+                switch(mRequestType) {
+                    case POST_NEW_STUDENT:
+                        mListener.onCompletionHandler(true, POST_NEW_STUDENT, null);
+                        break;
 
+                    case POST_FOOD:
+                        mListener.onCompletionHandler(true, POST_FOOD, null);
+                        break;
+                }
             }
         } catch(Exception e) {e.printStackTrace();}
 

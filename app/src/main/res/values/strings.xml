@@ -54,7 +54,7 @@
 
 
     <!-- Teacher Profile Activity -->
-    <string name="edit_profile">Edit</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="teachers_name">Bryan Hammond</string>
     <string name="national_id">004469</string>
     <string name="nat_id">National ID</string>

@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
     }
 
     @Override
-    public void onCompletionHandler(Boolean success, int requestcode, Object object) {
+    public void onCompletionHandler(boolean success, int requestcode, Object object) {
         ArrayList<Student> students = (ArrayList<Student>) object;
         Intent intent = new Intent(LoginActivity.this, ClassViewActivity.class);
         intent.putExtra("Studentlist", Parcels.wrap(students));
