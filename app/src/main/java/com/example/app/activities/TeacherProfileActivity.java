@@ -55,7 +55,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     }
 
     /**
-     * Populates the teacher profile When the profile is opened
+     * Populates the teacher profile When the profile is first opened
      * @param profile The Teachers profile
      */
 
@@ -70,7 +70,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     }
 
     /**
-     * Starts the activity for editing the profile whe the edit button is clicked
+     * Starts the activity for editing the profile when the edit button is clicked
      * It starts the activity and gets back the updated teachers profile as a result
      * @param view The edit button view
      */

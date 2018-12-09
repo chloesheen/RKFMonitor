@@ -63,6 +63,11 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
 
     }
 
+    /**
+     * This creates the updated teacher profile object that is passed back to the TeacherProfileActivity
+     * It also creates a hashmap with the new data and makes a put request to update the database
+     * @return The updated TeacherProfile
+     */
     public TeacherProfile updateProfile() {
         String firstname = mFirstName.getText().toString();
         String lastname = mLastName.getText().toString();
@@ -85,6 +90,11 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
     }
 
 
+    /**
+     * Called on the input from the TeacherProfile activity to update the EditActivity view
+     * on what the current profile looks like before edits are made
+     * @param curProfile
+     */
     public void setProfile(TeacherProfile curProfile) {
         mFirstName.setText(curProfile.getFirstName());
         mLastName.setText(curProfile.getLastName());
@@ -95,6 +105,13 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         mClassName.setText(curProfile.getClassname());
     }
 
+    /**
+     * Handles the return of the put request.
+     * Doesn't need to do anything in particular
+     * @param success The boolean value of the request
+     * @param requestcode The type of request
+     * @param object The object returned after the request is made
+     */
     @Override
     public void onCompletionHandler(boolean success, int requestcode, Object object) {}
 }
