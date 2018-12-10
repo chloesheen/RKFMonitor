@@ -1,36 +1,4 @@
 const express = require('express'),
-<<<<<<< HEAD
-      passport = require('passport'),
-      jwt = require('jsonwebtoken'),
-      router = express.Router(),
-      User = require('./../models/User');
-
-
-
-router.post('/login', function (req, res) {
-  User.findOne({
-    username: req.body.username.toLowerCase()
-  }, function(err, user) {
-    if (err) throw err;
-    if (!user) {
-      res.send({ success: false, message: 'Authentication failed. User not found.'});
-    } else {
-      // Check if password matches
-      user.comparePassword(req.body.password, function(err, isMatch) {
-        if (isMatch && !err) {
-          // Create token if the password matched and no error was thrown
-          let token = jwt.sign({data: user}, 'topse_kret');
-          res.json({ success: true, token: 'JWT' + token });
-        } else {
-          res.send(401, { success: false, message: 'Authentication failed. Incorrect password.'});
-        }
-      });
-    }
-  });
-
-});
-
-=======
       router = express.Router(),
       jwt = require('jsonwebtoken'),      
       secret = process.env.secret,
@@ -39,18 +7,23 @@ router.post('/login', function (req, res) {
       Class = require('./../models/Class');
 
 router.post('/login', function (req, res) {
+  console.log("here 1");
   let getUser = User.findOne({username: req.body.username}).populate('school').exec();
   getUser.then(function(user) {
+  	console.log("here 3", user);
     if (!user) {
       return res.status(404).json({success: false, message: "Authentication failed. No user with given username was found"});
     } else {
+    	console.log("here 4")
       user.comparePassword(req.body.password, async function(err, isMatch) {
         if (isMatch && !err) {
           let token = jwt.sign({data: user}, secret);
           let schoolId = user.school;
           let classId = user.class;
           let userSchool = await School.findById(schoolId).exec();
-          let userClass = await Class.findById(classId).exec();          
+          let userClass = await Class.findById(classId).exec();
+          console.log("user school", userSchool);
+          console.log("user class", userClass);
           return res.status(200).json({ success: true, token: 'JWT ' + token , school: (userSchool) ? userSchool.name : "", class:  (userClass) ? userClass.name : "", isAdministrator: user.isAdministrator, isTeacher: user.isTeacher, isCook: user.isCook});
         } else {
           return res.send(404, { success: false, message: 'Authentication failed. Incorrect password.'});
@@ -63,5 +36,4 @@ router.post('/login', function (req, res) {
 });
 
 
->>>>>>> 9772b7f578fc9943c8fd3820a08bcbdf656a6244
 module.exports = router;
