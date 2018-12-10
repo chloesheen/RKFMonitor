@@ -3,16 +3,10 @@ var mongoose = require('mongoose'),
 	model = mongoose.model
 
 var calendarSchema  = new Schema({
-	year: {type: Number},
-	month: {type: Number},
-	date: {type: Number},
+	date: {type: Date, required: true},
 	school: {type: mongoose.Schema.Types.ObjectId, ref : 'School', required: true},
-	class: {type: mongoose.Schema.Types.ObjectId, ref : 'Class', required: true},
-	studentsPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}],
-	studentsNotPresent: [{type: mongoose.Schema.Types.ObjectId, ref : 'Student'}]
-	//food for a day
-	// total attendance
-
+	attendence: {type: Number, default: 0},
+	foodServed: {type: Number, default: 0}
 });
 
 module.exports = mongoose.model('Calendar', calendarSchema);

@@ -3,8 +3,6 @@ var mongoose = require('mongoose'),
 	model = mongoose.model
 
 var schoolSchema = new Schema({
-    //attendance - storing: daily into calendar
-
 	name: {type: String, required: true},
 	teachers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 	cooks: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
