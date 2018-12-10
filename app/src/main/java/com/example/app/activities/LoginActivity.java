@@ -43,6 +43,7 @@ import static com.example.app.util.Constants.POST_LOGIN;
 import static com.example.app.util.Constants.REQUEST_LOGIN;
 import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
+import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,6 +60,8 @@ import com.example.app.asynctasks.HttpPostRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Student;
 import com.example.app.util.Pair;
+import com.example.app.interfaces.CallbackListener;
+import com.example.app.models.Student;
 
 import org.parceler.Parcels;
 
@@ -130,7 +133,6 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     Intent cookIntent = new Intent(LoginActivity.this, FeedingDashboard.class);
                     startActivity(cookIntent);
                 }
-
             }
         });
 
@@ -169,5 +171,4 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
         }
     }
 }
-
 

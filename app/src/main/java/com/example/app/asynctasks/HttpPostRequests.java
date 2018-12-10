@@ -12,6 +12,12 @@ import org.json.JSONTokener;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import android.os.AsyncTask;
+
+import com.example.app.interfaces.CallbackListener;
+
+import org.json.JSONObject;
+
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -22,15 +28,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.app.util.Constants.POST_FOOD;
 import static com.example.app.util.Constants.POST_LOGIN;
+import static com.example.app.util.Constants.POST_FOOD;
 import static com.example.app.util.Constants.POST_NEW_STUDENT;
 import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
 import static com.example.app.util.Constants.REQUEST_ADD_NEW_STUDENT;
 import static com.example.app.util.Constants.REQUEST_REGISTER_TEACHER;
+
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
-import static com.example.app.util.Constants.UPDATE_PASSWORD;
 
 public class HttpPostRequests extends AsyncTask<String, Void, Void> {
 
@@ -98,7 +106,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
                             res.add(new Pair("isAdmin",isAdmin));
                             res.add(new Pair("isTeacher", isTeacher));
                             res.add(new Pair("isCook", isCook));
-                            mListener.onCompletionHandler(succ, UPDATE_PASSWORD, res);
+                            mListener.onCompletionHandler(succ, POST_LOGIN, res);
                         } catch (Exception e) {e.printStackTrace();}
                 }
             }

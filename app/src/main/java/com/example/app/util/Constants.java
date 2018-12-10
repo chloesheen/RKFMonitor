@@ -13,7 +13,9 @@ public class Constants {
     public final static String REQUEST_TEACHER_PROFILE ="d";
     public final static String REQUEST_STUDENT_LIST = "z";
     public final static String REQUEST_SUBMIT_ATTENDANCE = "";
+
     public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
+
     public final static String REQUEST_ADD_NEW_STUDENT = "a";
     public final static String REQUEST_ADD_FOOD="b";
     public final static String REQUEST_REGISTER_TEACHER="c";

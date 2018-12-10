@@ -41,7 +41,6 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
 
         TextView mDate = (TextView) findViewById(R.id.dashboard_date);
         mDate.setText(setDate());
-
         HttpGetRequests task = new HttpGetRequests(GET_TOTAL_ATTENDANCE, this, this);
         task.execute("");
     }

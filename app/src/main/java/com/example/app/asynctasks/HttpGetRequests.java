@@ -1,6 +1,8 @@
 package com.example.app.asynctasks;
 
+
 import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -127,6 +129,7 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                                 teacher.getString("classname"),
                                 teacher.getString("telephone"),
                                 teacher.getString("nationalid"));
+
                         mListener.onCompletionHandler(true, GET_TEACHER_PROFILE, teacherProfile);
                         break;
 
