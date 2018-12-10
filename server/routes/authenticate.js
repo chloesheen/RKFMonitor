@@ -7,14 +7,11 @@ const express = require('express'),
       Class = require('./../models/Class');
 
 router.post('/login', function (req, res) {
-  console.log("here 1");
   let getUser = User.findOne({username: req.body.username}).populate('school').exec();
   getUser.then(function(user) {
-  	console.log("here 3", user);
     if (!user) {
       return res.status(404).json({success: false, message: "Authentication failed. No user with given username was found"});
     } else {
-    	console.log("here 4")
       user.comparePassword(req.body.password, async function(err, isMatch) {
         if (isMatch && !err) {
           let token = jwt.sign({data: user}, secret);
@@ -24,7 +21,7 @@ router.post('/login', function (req, res) {
           let userClass = await Class.findById(classId).exec();
           console.log("user school", userSchool);
           console.log("user class", userClass);
-          return res.status(200).json({ success: true, token: 'JWT ' + token , school: (userSchool) ? userSchool.name : "", class:  (userClass) ? userClass.name : "", isAdministrator: user.isAdministrator, isTeacher: user.isTeacher, isCook: user.isCook});
+          return res.status(200).json({ success: true, JWT: 'JWT ' + token , school: (userSchool) ? userSchool.name : "", class:  (userClass) ? userClass.name : "", isAdministrator: user.isAdministrator, isTeacher: user.isTeacher, isCook: user.isCook});
         } else {
           return res.send(404, { success: false, message: 'Authentication failed. Incorrect password.'});
         }
