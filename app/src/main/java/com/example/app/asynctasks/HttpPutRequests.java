@@ -1,5 +1,6 @@
 package com.example.app.asynctasks;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
@@ -22,22 +23,25 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.example.app.util.Constants.PUT_STUDENT_ATTENDANCE;
 import static com.example.app.util.Constants.PUT_STUDENT_PROFILE;
 import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.Constants.UPDATE_PASSWORD;
 
 public class HttpPutRequests extends AsyncTask<String, Void, Void> {
 
-    private SharedPreferences mSharedPreferences;
     private JSONObject mPutData;
     private int mRequestCode;
     private CallbackListener mListener;
+    private Context mContext;
 
-    public HttpPutRequests(HashMap<String, String> data, int requestcode, CallbackListener listener) {
+    public HttpPutRequests(HashMap<String, String> data, int requestcode, CallbackListener listener, Context context) {
         mPutData = new JSONObject(data);
         mRequestCode = requestcode;
         mListener = listener;
+        mContext = context;
     }
 
     @Override
@@ -47,7 +51,9 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
         OutputStreamWriter outputStream;
         InputStream inputStream;
         ByteArrayOutputStream arrayOutputStream;
-        String authorization = mSharedPreferences.getString("webtoken", "No Authorization");
+
+        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        String authorization = getAuthorization.getString("authorization", null);
 
         try {
             url = new URL(params[0]);
@@ -102,8 +108,8 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                             JSONArray studentsArray = new JSONArray(studenttoken);
                             for (int i = 0; i < studentsArray.length(); i++) {
                                 JSONObject stud = studentsArray.getJSONObject(i);
-                                Student std = new Student(stud.getString("firstname"),
-                                        stud.getString("lastname"),
+                                Student std = new Student(stud.getString("firstName"),
+                                        stud.getString("lastName"),
                                         stud.getString("id"),
                                         stud.getBoolean("attending"));
                                 mStudents.add(std);

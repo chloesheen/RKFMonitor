@@ -11,8 +11,10 @@ public class Constants {
      */
     public final static String REQUEST_STUDENT_PROFILE = "";
     public final static String REQUEST_TEACHER_PROFILE ="d";
-    public final static String REQUEST_STUDENT_LIST = "z";
-    public final static String REQUEST_SUBMIT_ATTENDANCE = "";
+    public final static String REQUEST_STUDENT_LIST = "https://kotak.herokuapp.com/teachers/students";
+    public final static String REQUEST_SUBMIT_ATTENDANCE = "https://kotak.herokuapp.com/teachers/students";
+    public final static String REQUEST_ORG_DASHBOARD = "https://kotak.herokuapp.com/organization/schools";
+    public final static String REQUEST_COOK_DASHBOARD = "https://kotak.herokuapp.com/cook";
 
     public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
 

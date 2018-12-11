@@ -11,12 +11,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.app.R;
@@ -82,18 +84,20 @@ public class ClassViewActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mStudents = Parcels.unwrap(getIntent().getParcelableExtra("StudentList"));
+        mStudents = Parcels.unwrap(getIntent().getParcelableExtra("Studentlist"));
 
         mListener = this;
         mContext = this;
 
         RecyclerView  mStudentView = (RecyclerView) findViewById(R.id.student_list_view);
+        mStudentView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mStudentView.setLayoutManager(mLayoutManager);
 
         mStudentListAdapter = new StudentListAdapter(this, mStudents);
         mStudentView.setAdapter(mStudentListAdapter);
+
 
         Button mAddStudents = (Button) findViewById(R.id.add_student);
         mAddStudents.setOnClickListener(this);
@@ -153,7 +157,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                 getAbsentStudents();
                 mAttendance.put("attending", mPresentList.toString());
                 mAttendance.put("notAttending", mAbsentList.toString());
-                HttpPutRequests task = new HttpPutRequests(mAttendance, PUT_STUDENT_ATTENDANCE, this);
+                HttpPutRequests task = new HttpPutRequests(mAttendance, PUT_STUDENT_ATTENDANCE, this, this);
                 task.execute(REQUEST_SUBMIT_ATTENDANCE);
         }
     }

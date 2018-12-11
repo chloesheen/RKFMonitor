@@ -1,6 +1,7 @@
 package com.example.app.asynctasks;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.example.app.interfaces.CallbackListener;
@@ -13,6 +14,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.app.interfaces.CallbackListener;
 
@@ -62,20 +64,29 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
         InputStream inputStream;
         ByteArrayOutputStream arrayOutputStream;
 
-        String authorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE).toString();
+        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        String authorization = getAuthorization.getString("authorization", null);
+
+        Log.v("urlforpost", params[0]);
 
         try {
+            Log.v("inthetryforpost", "woah");
             url = new URL(params[0]);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
             urlConnection.setRequestMethod("POST");
-            urlConnection.setRequestProperty("Authorization", authorization);
+            //urlConnection.setRequestProperty("Authorization", authorization);
             urlConnection.setRequestProperty("Content-Type", "application/json");
+
+
+
+            outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
+            outputStream.write(mPostData.toString());
+            outputStream.flush();
+            Log.v("requestbodyforpost", mPostData.toString());
+            Log.v("responseforpost", String.valueOf(urlConnection.getResponseCode()));
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK  && mPostData != null) {
-                outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
-                outputStream.write(mPostData.toString());
-                outputStream.flush();
 
                 switch(mRequestType) {
                     case POST_NEW_STUDENT:
@@ -88,6 +99,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
 
                     case POST_LOGIN:
                         try {
+                            Log.v("test4", "hello");
                             inputStream = new BufferedInputStream(urlConnection.getInputStream());
                             arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
                             int bytesread;
@@ -102,6 +114,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
                             String isTeacher = String.valueOf(loginMessage.getBoolean("isTeacher"));
                             String isCook = String.valueOf(loginMessage.getBoolean("isCook"));
                             ArrayList<Pair<String, String>> res = new ArrayList<>();
+                            Log.v("token", webtoken);
                             res.add(new Pair("token", webtoken));
                             res.add(new Pair("isAdmin",isAdmin));
                             res.add(new Pair("isTeacher", isTeacher));

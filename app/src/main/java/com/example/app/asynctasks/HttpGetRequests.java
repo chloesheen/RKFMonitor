@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.app.activities.StudentProfileActivity;
 import com.example.app.interfaces.CallbackListener;
@@ -26,13 +27,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.example.app.util.Constants.GET_SCHOOL_ATTENDANCE;
 import static com.example.app.util.Constants.GET_SCHOOL_FOOD;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 /**
  * Asynctask to handle all Get requests
@@ -41,7 +45,6 @@ import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
  */
 public class HttpGetRequests extends AsyncTask<String, Void, Void> {
 
-    //private SharedPreferences mSharedPreferences;
     private int mRequestCode;
     private CallbackListener mListener;
     private Context mContext;
@@ -61,18 +64,27 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
         //base url
         String baseurl = params[0];
 
+        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        String authorization = getAuthorization.getString("authorization", null);
+        Log.v("auth", authorization);
+        Log.v("url", baseurl);
+
+
         try {
             //open connection to the server
             url = new URL(baseurl);
             urlConnection = (HttpURLConnection) url.openConnection();
 
             //set the request properties i.e what type of request and the header metadata required
-            urlConnection.setDoInput(true);
+
+
             urlConnection.setRequestMethod("GET");
-            urlConnection.setRequestProperty("Authorization", "authorization");
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Authorization", authorization);
             urlConnection.setRequestProperty("Content-Type", "application/json");
 
             //Read in the data
+            Log.v("test5", String.valueOf(urlConnection.getResponseCode()));
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = new BufferedInputStream(urlConnection.getInputStream());
                 arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
@@ -105,12 +117,14 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                     case GET_STUDENTLIST_VIEW:
                         ArrayList<Student> mStudents = new ArrayList<>();
                         studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
-                        JSONTokener studenttoken = new JSONTokener(studentString);
-                        JSONArray studentsArray = new JSONArray(studenttoken);
+                        Log.v("json", studentString);
+                        JSONObject studentObj = (JSONObject) new JSONTokener(studentString).nextValue();
+                        JSONArray studentsArray =  (JSONArray) studentObj.get("students");
+                        Log.v("studentlist", studentsArray.toString());
                         for (int i = 0; i < studentsArray.length(); i++) {
                             JSONObject stud = studentsArray.getJSONObject(i);
-                            Student std = new Student(stud.getString("firstname"),
-                                    stud.getString("lastname"),
+                            Student std = new Student(stud.getString("firstName"),
+                                    stud.getString("lastName"),
                                     stud.getString("id"),
                                     stud.getBoolean("attending"));
                             mStudents.add(std);

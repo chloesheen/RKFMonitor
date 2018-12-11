@@ -36,7 +36,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     public void onBindViewHolder(@NonNull  StudentListViewHolder viewHolder,
                                  int position) {
         Student student = mStudents.get(position);
-        String studentname = student.getFirstName() + student.getLastName();
+        String studentname = student.getFirstName() + " " + student.getLastName();
         viewHolder.mStudentName.setText(studentname);
         viewHolder.mAttendance.setChecked(student.isPresent());
     }

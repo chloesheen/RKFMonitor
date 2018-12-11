@@ -83,7 +83,7 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         teacherProfile.put("classname", "");
         teacherProfile.put("contact", contact);
         teacherProfile.put("nationalid", nationalid);
-        HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this);
+        HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this, this);
         task.execute("");
         return new TeacherProfile(firstname, lastname, schoolid, gender,
                 classname, contact, nationalid);

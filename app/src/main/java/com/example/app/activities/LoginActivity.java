@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -122,11 +123,16 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                 logininfo.put("password", password.getText().toString());
                 HttpPostRequests logintask = new HttpPostRequests(logininfo, POST_LOGIN, mListener, mContext);
                 logintask.execute(REQUEST_LOGIN);
+                Log.v("amin", login.getString("isAdmin", null));
+                Log.v("teach", login.getString("isTeacher", null));
+                Log.v("ck", login.getString("isCook", null));
+
 
                 if (login.getString("isAdmin", null).equals("true")) {
                     Intent orgIntent = new Intent(LoginActivity.this, OrganizationDashboard.class);
                     startActivity(orgIntent);
                 } else if (login.getString("isTeacher", null).equals("true")){
+                    Log.v("test2", "blahblah");
                     HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, mListener, mContext);
                     task.execute(REQUEST_STUDENT_LIST);
                 } else if (login.getString("isCook", null).equals("true")) {
@@ -156,8 +162,10 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     editor.putString("authorization", res.get(0).getSecond());
                     editor.putString("isAdmin", res.get(1).getSecond());
                     editor.putString("isTeacher", res.get(2).getSecond());
+                    Log.v("test1", "blahh");
                     editor.putString("isCook", res.get(3).getSecond());
                     editor.commit();
+                    Log.v("tet6", "on");
                     break;
 
                 case GET_STUDENTLIST_VIEW:
