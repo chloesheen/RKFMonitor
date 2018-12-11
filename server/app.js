@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
-	passport = require('passport'),
-	random = require('random-name');
+	passport = require('passport');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,9 +24,6 @@ app.use('/organization', organization(passport));
 app.use('/teachers', teacher(passport));
 app.use('/cook', cook(passport));
 
-app.get('/', function(req, res) {
-	res.json({success: true});
-})
 
 //Connect===========================================================================================================================================================
 app.listen(process.env.PORT || 3000, function(req, res) {

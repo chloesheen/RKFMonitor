@@ -19,8 +19,6 @@ router.post('/login', function (req, res) {
           let classId = user.class;
           let userSchool = await School.findById(schoolId).exec();
           let userClass = await Class.findById(classId).exec();
-          console.log("user school", userSchool);
-          console.log("user class", userClass);
           return res.status(200).json({ success: true, JWT: 'JWT ' + token , school: (userSchool) ? userSchool.name : "", class:  (userClass) ? userClass.name : "", isAdministrator: user.isAdministrator, isTeacher: user.isTeacher, isCook: user.isCook});
         } else {
           return res.send(404, { success: false, message: 'Authentication failed. Incorrect password.'});
