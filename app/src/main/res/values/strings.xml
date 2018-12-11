@@ -69,6 +69,8 @@
     <string name="gender_name">Male</string>
     <string name="first_name">Bryan</string>
     <string name="last_name">Hammond</string>
+    <string name="logout">Logout</string>
+
 
 
     <!-- Feeding Program Dashboard Activity -->
