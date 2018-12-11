@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.util.Pair;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -111,6 +112,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
                             boolean succ = loginMessage.getBoolean("success");
                             String webtoken = loginMessage.getString("JWT");
                             String isAdmin  = String.valueOf(loginMessage.getBoolean("isAdministrator"));
+                            Log.v("admin", isAdmin);
                             String isTeacher = String.valueOf(loginMessage.getBoolean("isTeacher"));
                             String isCook = String.valueOf(loginMessage.getBoolean("isCook"));
                             ArrayList<Pair<String, String>> res = new ArrayList<>();

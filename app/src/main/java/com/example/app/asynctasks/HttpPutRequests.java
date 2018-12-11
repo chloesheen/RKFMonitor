@@ -3,6 +3,7 @@ package com.example.app.asynctasks;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Student;
@@ -37,7 +38,7 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
     private CallbackListener mListener;
     private Context mContext;
 
-    public HttpPutRequests(HashMap<String, String> data, int requestcode, CallbackListener listener, Context context) {
+    public HttpPutRequests(HashMap<String, JSONArray> data, int requestcode, CallbackListener listener, Context context) {
         mPutData = new JSONObject(data);
         mRequestCode = requestcode;
         mListener = listener;
@@ -64,11 +65,14 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
             urlConnection.setRequestProperty("Authorization", authorization);
             urlConnection.setRequestProperty("Content-Type", "application/json");
 
-            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK && mPutData != null) {
-                outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
-                outputStream.write(mPutData.toString());
-                outputStream.close();
+            outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
+            outputStream.write(mPutData.toString());
+            outputStream.close();
 
+            Log.v("putdate", mPutData.toString());
+            Log.v("putresponse", String.valueOf(urlConnection.getResponseCode()));
+
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK && mPutData != null) {
                 switch (mRequestCode) {
                     case PUT_STUDENT_PROFILE:
                         mListener.onCompletionHandler(true, PUT_STUDENT_PROFILE, null);
@@ -102,7 +106,11 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                             while ((bytesread = inputStream.read()) != -1) {
                                 arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
                             }
-                            ArrayList<Student> mStudents = new ArrayList<>();
+                            String successString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                            JSONObject successObj = (JSONObject) new JSONTokener(successString).nextValue();
+                            Boolean success = successObj.getBoolean("success");
+
+                            /*ArrayList<Student> mStudents = new ArrayList<>();
                             String studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                             JSONTokener studenttoken = new JSONTokener(studentString);
                             JSONArray studentsArray = new JSONArray(studenttoken);
@@ -113,8 +121,8 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                                         stud.getString("id"),
                                         stud.getBoolean("attending"));
                                 mStudents.add(std);
-                            }
-                            mListener.onCompletionHandler(true, PUT_STUDENT_ATTENDANCE, mStudents);
+                            }*/
+                            mListener.onCompletionHandler(success, PUT_STUDENT_ATTENDANCE, null);
                         } catch (Exception e) {e.printStackTrace();}
                         break;
                 }

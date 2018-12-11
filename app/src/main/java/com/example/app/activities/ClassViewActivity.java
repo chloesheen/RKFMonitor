@@ -15,6 +15,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -52,9 +53,11 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.PUT_STUDENT_ATTENDANCE;
+import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
 import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
@@ -65,12 +68,10 @@ public class ClassViewActivity extends AppCompatActivity implements
     private ArrayList<Student> mStudents;
     private StudentListAdapter mStudentListAdapter;
 
-    private HashMap<String, String> mAttendance;
-    private HashMap<String, String> mPresentList = new HashMap<>();
-    private HashMap<String, String> mAbsentList = new HashMap<>();
+    private HashMap<String, JSONArray> mAttendance = new HashMap<>();
+    private ArrayList<String> mPresentList = new ArrayList<>();
+    private ArrayList<String> mAbsentList = new ArrayList<>();
 
-
-    private SharedPreferences mSharedPreferences;
     private ClickListener mClickListener;
 
     private CallbackListener mListener;
@@ -110,12 +111,21 @@ public class ClassViewActivity extends AppCompatActivity implements
 
         mClickListener = new ClickListener() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(View view, final int position) {
+                final CheckBox attendance = view.findViewById(R.id.attendance);
+                attendance.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Student curStudent = mStudentListAdapter.getStudent(position);
+                        curStudent.updateAttendance(attendance.isChecked());
+                    }
+                });
                 int childviewid = view.getId();
-                switch (childviewid) {
+                /*switch (childviewid) {
                     case R.id.attendance:
                         Student curStudent = mStudentListAdapter.getStudent(position);
-                        mPresentList.put("id", curStudent.getId());
+                        Log.v("student", curStudent.toString());
+                        mPresentList.add(curStudent.getId());
                         break;
 
                     case R.id.student_name:
@@ -126,7 +136,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                             task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid);
                         } catch(Exception e) {e.printStackTrace();}
                         break;
-                }
+                }*/
             }
 
             @Override
@@ -154,9 +164,11 @@ public class ClassViewActivity extends AppCompatActivity implements
                 break;
 
             case R.id.submit_attendance:
-                getAbsentStudents();
-                mAttendance.put("attending", mPresentList.toString());
-                mAttendance.put("notAttending", mAbsentList.toString());
+                getAttendanceStudents();
+                JSONArray attending = new JSONArray(mPresentList);
+                JSONArray notattending = new JSONArray(mAbsentList);
+                mAttendance.put("attending", attending);
+                mAttendance.put("notAttending", notattending);
                 HttpPutRequests task = new HttpPutRequests(mAttendance, PUT_STUDENT_ATTENDANCE, this, this);
                 task.execute(REQUEST_SUBMIT_ATTENDANCE);
         }
@@ -179,10 +191,12 @@ public class ClassViewActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
-    private void getAbsentStudents() {
+    private void getAttendanceStudents() {
         for(Student stud:mStudents) {
-            if(!(mPresentList.containsValue(stud.getId()))) {
-                mAbsentList.put("id", stud.getId());
+            if (stud.isPresent()) {
+                mPresentList.add(stud.getId());
+            } else {
+                mAbsentList.add(stud.getId());
             }
         }
     }
@@ -203,6 +217,8 @@ public class ClassViewActivity extends AppCompatActivity implements
 
                 case PUT_STUDENT_ATTENDANCE:
                     mStudents = (ArrayList<Student>) object;
+                    HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, mListener, mContext);
+                    task.execute(REQUEST_STUDENT_LIST);
                     Fragment successIndicator = SuccessDialog.newInstance("Attendance Recorded!");
                     getSupportFragmentManager().beginTransaction()
                             .add(successIndicator, "SuccessFragment")

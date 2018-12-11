@@ -71,6 +71,10 @@ public class StudentProfile{
         return mAttendance;
     }
 
+    public Boolean updateAttendance(Boolean bool) {
+        return mAttendance = bool;
+    }
+
     public String getId() {
         return mId;
     }
