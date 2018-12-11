@@ -120,7 +120,6 @@ public class ClassViewActivity extends AppCompatActivity implements
                         curStudent.updateAttendance(attendance.isChecked());
                     }
                 });
-                int childviewid = view.getId();
                 /*switch (childviewid) {
                     case R.id.attendance:
                         Student curStudent = mStudentListAdapter.getStudent(position);
