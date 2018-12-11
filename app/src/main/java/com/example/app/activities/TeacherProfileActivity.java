@@ -1,7 +1,9 @@
 package com.example.app.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +22,8 @@ import com.example.app.models.TeacherProfile;
 
 import org.parceler.Parcels;
 
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
+
 public class TeacherProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final static int REQUEST_EDIT_PROFILE = 101;
@@ -31,6 +35,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mNationalId;
     private EditText mContactNum;
     private EditText mClassName;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +55,22 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mClassName = (EditText) findViewById(R.id.class_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
         mProfileName = (TextView) findViewById(R.id.name);
+        logout = (Button) findViewById(R.id.logout);
+
 
         populateView(profile);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SharedPreferences preferences = getSharedPreferences(SHARED_PREFS_KEY,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
+            }
+        });
     }
 
     /**
@@ -116,7 +135,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
             }
         }
     }
-
 
     /**
      * Creates a TeacherProfile object to be passes to the EditTeacherProfileActivity
