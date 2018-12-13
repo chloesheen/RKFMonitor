@@ -2,6 +2,7 @@ package com.example.app.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,11 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.register_layout);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         userName = (EditText) findViewById(R.id.register_username_edittext);
         password = (EditText) findViewById(R.id.register_password_edittext);

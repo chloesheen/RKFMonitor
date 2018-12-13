@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -60,6 +61,7 @@ import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.asynctasks.HttpPostRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Student;
+import com.example.app.util.BootingHandler;
 import com.example.app.util.Pair;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Student;
@@ -83,6 +85,9 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         username = (EditText) findViewById(R.id.username_edittext);
         password = (EditText) findViewById(R.id.password_edittext);
@@ -115,8 +120,8 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     editor.commit();
                 }
 
-                String checkUser = "user" + username.getText().toString();
-                String checkPassword = "password" + username.getText().toString();
+                //String checkUser = "user" + username.getText().toString();
+                //String checkPassword = "password" + username.getText().toString();
 
                 HashMap<String, String> logininfo = new HashMap<>();
                 logininfo.put("username", username.getText().toString());
@@ -151,7 +156,8 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     editor.putString("isCook", res.get(3).getSecond());
                     editor.commit();
                     Log.v("tet6", "on");
-                    if (login.getString("isAdministrator", null).equals("true")) {
+                    BootingHandler.initLauncher(this, login, mListener);
+                    /**if (login.getString("isAdministrator", null).equals("true")) {
                         Intent orgIntent = new Intent(LoginActivity.this, OrganizationDashboard.class);
                         startActivity(orgIntent);
                     } else if (login.getString("isTeacher", null).equals("true")){
@@ -161,7 +167,7 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     } else if (login.getString("isCook", null).equals("true")) {
                         Intent cookIntent = new Intent(LoginActivity.this, FeedingDashboard.class);
                         startActivity(cookIntent);
-                    }
+                    } */
                     break;
 
                 case GET_STUDENTLIST_VIEW:

@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/logo"
-                    android:src="@drawable/rfklogo" />
+                    android:src="@drawable/rfklogoblack" />
 
                 <TextView
                     android:id="@+id/profile_name"
