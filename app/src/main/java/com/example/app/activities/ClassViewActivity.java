@@ -113,29 +113,23 @@ public class ClassViewActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view, final int position) {
                 final CheckBox attendance = view.findViewById(R.id.attendance);
+                final TextView studentname = view.findViewById(R.id.student_name);
                 attendance.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Student curStudent = mStudentListAdapter.getStudent(position);
-                        curStudent.updateAttendance(attendance.isChecked());
-                    }
+                        if (v == attendance) {
+                            Student curStudent = mStudentListAdapter.getStudent(position);
+                            curStudent.updateAttendance(attendance.isChecked());
+                        } else if (v == studentname) {
+                            Student student = mStudentListAdapter.getStudent(position);
+                            HttpGetRequests task = new HttpGetRequests(GET_STUDENT_PROFILE, mListener, mContext);
+                            String studentid = student.getId();
+                            try {
+                                task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid);
+                            } catch(Exception e) {e.printStackTrace();}
+                        }
+                    };
                 });
-                /*switch (childviewid) {
-                    case R.id.attendance:
-                        Student curStudent = mStudentListAdapter.getStudent(position);
-                        Log.v("student", curStudent.toString());
-                        mPresentList.add(curStudent.getId());
-                        break;
-
-                    case R.id.student_name:
-                        Student student = mStudentListAdapter.getStudent(position);
-                        HttpGetRequests task = new HttpGetRequests(GET_STUDENT_PROFILE, mListener, mContext);
-                        String studentid = student.getId();
-                        try {
-                            task.execute(REQUEST_STUDENT_PROFILE + "/" + studentid);
-                        } catch(Exception e) {e.printStackTrace();}
-                        break;
-                }*/
             }
 
             @Override
