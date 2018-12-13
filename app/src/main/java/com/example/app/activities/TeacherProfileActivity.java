@@ -58,7 +58,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         logout = (Button) findViewById(R.id.logout);
 
 
-        populateView(profile);
+        //populateView(profile);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

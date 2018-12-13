@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements CallbackListener {
 
         SharedPreferences mSharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
         if (mSharedPreferences.getString("authorization", null) == null) {
-            Log.v("test1", mSharedPreferences.getString("authorization", null));
+            //Log.v("test1", mSharedPreferences.getString("authorization", null));
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {

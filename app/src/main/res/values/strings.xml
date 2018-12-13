@@ -50,7 +50,7 @@
     <string name="student_guardian"></string>
     <string name="guardian_id">Guardian National ID</string>
     <string name="student_shoesize">Shoe Size</string>
-    <string name="new_profile">New Student Profile</string>
+    <string name="new_profile">New Student</string>
     <string-array name="gender">
         <item>Female</item>
         <item>Male</item>
