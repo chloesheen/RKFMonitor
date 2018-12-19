@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
     private Button submitButton;
     private Button registerButton;
     private SharedPreferences login;
+    private BootingHandler mBootingHandler;
 
     private CallbackListener mListener;
     private Context mContext;
@@ -99,6 +100,8 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
         mContext = this;
 
         login = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+
+        mBootingHandler = new BootingHandler(login);
 
         if (login.getBoolean("isChecked", false)) {
             username.setText(login.getString("username", null));
@@ -154,10 +157,12 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     editor.putString("isTeacher", res.get(2).getSecond());
                     Log.v("test1", "blahh");
                     editor.putString("isCook", res.get(3).getSecond());
+                    editor.putString("school", res.get(4).getSecond());
+                    editor.putString("class", res.get(5).getSecond());
                     editor.commit();
                     Log.v("tet6", "on");
-                    BootingHandler.initLauncher(this, login, mListener);
-                    /**if (login.getString("isAdministrator", null).equals("true")) {
+                    mBootingHandler.initLauncher(this, mListener);
+                    /*if (login.getString("isAdministrator", null).equals("true")) {
                         Intent orgIntent = new Intent(LoginActivity.this, OrganizationDashboard.class);
                         startActivity(orgIntent);
                     } else if (login.getString("isTeacher", null).equals("true")){
@@ -167,13 +172,18 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     } else if (login.getString("isCook", null).equals("true")) {
                         Intent cookIntent = new Intent(LoginActivity.this, FeedingDashboard.class);
                         startActivity(cookIntent);
-                    } */
+                    }*/
                     break;
 
                 case GET_STUDENTLIST_VIEW:
                     ArrayList<Student> students = (ArrayList<Student>) object;
+                    Bundle constantInfo = new Bundle();
+                    constantInfo.putParcelable("Studentlist", Parcels.wrap(students));
+                    constantInfo.putString("classname", login.getString("class", ""));
+                    constantInfo.putString("schoolname", login.getString("school", ""));
+                    constantInfo.putString("username", login.getString("username", ""));
                     Intent intent = new Intent(LoginActivity.this, ClassViewActivity.class);
-                    intent.putExtra("Studentlist", Parcels.wrap(students));
+                    intent.putExtras(constantInfo);
                     startActivity(intent);
                     break;
 

@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorFont">#ffffff</color>
+    <color name="focusedText">#425863</color>
+
 </resources>

@@ -27,6 +27,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         LunchProgramDialog.OnLunchSelectionListener, CallbackListener {
 
     private int mTotalAttendance;
+    private TextView mDisplayAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
 
         CardView mBreakfastCard = (CardView) findViewById(R.id.breakfast_card);
         mBreakfastCard.setOnClickListener(this);
+
+        mDisplayAttendance = (TextView) findViewById(R.id.attendance_num);
 
         TextView mDate = (TextView) findViewById(R.id.dashboard_date);
         mDate.setText(setDate());
@@ -52,6 +55,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
                 Food breakfast = FoodRatios.getUjiRatios(mTotalAttendance);
                 Intent intent = new Intent(this, BreakfastProgramActivity.class);
                 intent.putExtra("UjiMeal", Parcels.wrap(breakfast));
+                intent.putExtra("attendancenum", mTotalAttendance);
                 startActivity(intent);
                 break;
 
@@ -79,6 +83,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         Food githeri = FoodRatios.getGitheriRatios(mTotalAttendance);
         Intent intent = new Intent(this, GitheriProgramActivity.class);
         intent.putExtra("GitheriMeal", Parcels.wrap(githeri));
+        intent.putExtra("attendancenum", mTotalAttendance);
         startActivity(intent);
     }
 
@@ -86,6 +91,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         Food ricebeans = FoodRatios.getRiceBeansRatios(mTotalAttendance);
         Intent intent = new Intent(this, RiceBeansProgramActivity.class);
         intent.putExtra("RiceBeansMeal", Parcels.wrap(ricebeans));
+        intent.putExtra("attendancenum", mTotalAttendance);
         startActivity(intent);
     }
 
@@ -98,6 +104,8 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
     public void onCompletionHandler(boolean success, int requestcode, Object object) {
         if (success && requestcode == GET_TOTAL_ATTENDANCE) {
             mTotalAttendance = (int) object;
+            //???
+            mDisplayAttendance.setText(mTotalAttendance);
         }
     }
 }

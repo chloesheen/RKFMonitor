@@ -16,7 +16,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98683b3c-149c-4ea8-9934-67b45264ab7b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/ClassListAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Calendar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/color/card_state_colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/color/state_colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/class_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/GitheriProgramActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/GitheriProgramActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RiceBeansProgramActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RiceBeansProgramActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyInfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lunch_program_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lunch_program_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/student_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/student_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,25 +78,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HttpGetRequests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
+      <file leaf-file-name="activity_class_view.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="66" column="33" lean-forward="true" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+              <folding>
+                <element signature="e#3102#3123#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpPostRequests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="160" column="60" selection-start-line="160" selection-start-column="60" selection-end-line="160" selection-end-column="60" />
+            <state relative-caret-position="407">
+              <caret line="126" column="66" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
+      <file leaf-file-name="ClassViewActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+            <state relative-caret-position="318">
+              <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
               <folding>
-                <element signature="e#876#894#0" expanded="true" />
+                <element signature="e#4539#5449#0" expanded="true" />
+                <element signature="e#5448#5449#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,8 +118,17 @@
       <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="180" column="9" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+            <state relative-caret-position="476">
+              <caret line="185" column="51" selection-start-line="185" selection-start-column="51" selection-end-line="185" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BootingHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -77,6 +138,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
@@ -2345,52 +2408,64 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/BreakfastProgramActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/GitheriProgramActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RiceBeansProgramActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Student.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/StudentListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/student_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPutRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/StudentProfile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/register_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RegisterActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_breakfast_program.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_teacher_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_school_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/TeacherProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_student.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_student.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/state_colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_lunch_program_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/color/state_colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/color/card_state_colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/student_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/class_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/ClassListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Calendar.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyInfoFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RiceBeansProgramActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/GitheriProgramActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="186" />
-    <option name="y" value="24" />
-    <option name="width" value="1183" />
+    <option name="x" value="55" />
+    <option name="y" value="23" />
+    <option name="width" value="1421" />
     <option name="height" value="840" />
   </component>
   <component name="ProjectView">
@@ -2398,6 +2473,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2410,13 +2487,45 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="asynctasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2582,7 +2691,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="186" y="24" width="1183" height="840" extended-state="0" />
+    <frame x="227" y="23" width="1421" height="840" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
@@ -2591,15 +2700,16 @@
       <window_info id="Image Layers" order="2" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.16016151" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003626" side_tool="true" weight="0.32974428" />
+      <window_info anchor="right" id="Preview" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49963742" weight="0.33512786" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.32974428" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2900964" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.240029" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.4010767" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2608,264 +2718,18 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Preview" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/interfaces/OnItemClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Food.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Streams.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/TeacherProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-201">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/Pair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/ServerRequests.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/student_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPutRequests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="124" column="96" selection-start-line="124" selection-start-column="96" selection-end-line="124" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/EditTeacherProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/StudentProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/StudentListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/StudentListClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rfklogo.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rfklogoblack.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RegisterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="43" column="71" lean-forward="true" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/register_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="25" column="82" selection-start-line="25" selection-start-column="82" selection-end-line="25" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/FoodRatios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_breakfast_program.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_teacher_profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="687">
@@ -2876,30 +2740,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-149">
           <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2936,47 +2780,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml">
-      <provider editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/school_list_item.xml">
-      <provider editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/TeacherProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="180" column="9" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -2998,17 +2805,196 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/FoodRatios.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
+        <state relative-caret-position="60">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="160" column="60" selection-start-line="160" selection-start-column="60" selection-end-line="160" selection-end-column="60" />
+        <state relative-caret-position="468">
+          <caret line="37" column="66" lean-forward="true" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_breakfast_program.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1015">
+          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/state_colors.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/color/state_colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/color/card_state_colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_lunch_program_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/student_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/MonthlyInfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_organization_dashboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="103" column="13" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="13" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="136" column="48" selection-start-line="136" selection-start-column="48" selection-end-line="136" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/school_list_item.xml">
+      <provider editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolDataPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="60" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/StudentListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/class_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyInfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -3017,10 +3003,147 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+        <state relative-caret-position="776">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AddStudentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="105" column="51" selection-start-line="105" selection-start-column="51" selection-end-line="105" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_feeding_dashboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="224" column="31" selection-start-line="224" selection-start-column="31" selection-end-line="224" selection-end-column="31" />
           <folding>
-            <element signature="e#876#894#0" expanded="true" />
+            <element signature="e#7878#7892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rice_beans_program.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1246">
+          <caret line="163" column="43" lean-forward="true" selection-start-line="163" selection-start-column="43" selection-end-line="163" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/RiceBeansProgramActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_githeri_program.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="165" column="31" selection-start-line="165" selection-start-column="31" selection-end-line="165" selection-end-column="31" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/GitheriProgramActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="49" column="13" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingDashboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="71" column="33" lean-forward="true" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="161" column="30" lean-forward="true" selection-start-line="161" selection-start-column="30" selection-end-line="161" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/BootingHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/ClassListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/SuccessDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_class_view.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#1439#1459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_class_view.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="66" column="33" lean-forward="true" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+          <folding>
+            <element signature="e#3102#3123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpPostRequests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="126" column="66" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="185" column="51" selection-start-line="185" selection-start-column="51" selection-end-line="185" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/ClassViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+          <folding>
+            <element signature="e#4539#5449#0" expanded="true" />
+            <element signature="e#5448#5449#0" expanded="true" />
           </folding>
         </state>
       </provider>

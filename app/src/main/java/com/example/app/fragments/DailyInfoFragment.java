@@ -1,8 +1,10 @@
 package com.example.app.fragments;
 
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,20 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.example.app.R;
+import com.example.app.adapters.ClassListAdapter;
 import com.example.app.models.School;
 
 import org.parceler.Parcels;
 
+import java.util.TimeZone;
+
+import static com.example.app.util.DateUtils.setDate;
+import static com.example.app.util.DateUtils.setOnlyDate;
+import static java.util.Calendar.MONDAY;
+
 public class DailyInfoFragment extends Fragment implements CalendarView.OnDateChangeListener {
 
-    private CalendarView mCalendar;
+    private TextView mDate;
     private TextView mSchoolname;
 
     private School mSchoolData;
@@ -42,8 +51,10 @@ public class DailyInfoFragment extends Fragment implements CalendarView.OnDateCh
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daily_info, container, false);
-        mCalendar = view.findViewById(R.id.masterCalendar);
-
+        mDate = view.findViewById(R.id.date_name);
+        mDate.setText(setOnlyDate());
+        RecyclerView classlistview = view.findViewById(R.id.class_list);
+        //ClassListAdapter adapter = new ClassListAdapter(getContext(), )
         return view;
     }
 

@@ -50,7 +50,7 @@
 
 
                 <TextView
-                    android:id="@+id/class_view"
+                    android:id="@+id/school_view"
                     android:layout_width="185dp"
                     android:layout_height="28dp"
                     android:layout_alignEnd="@id/profile_name"

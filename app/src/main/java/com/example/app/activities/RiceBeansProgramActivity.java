@@ -28,12 +28,17 @@ public class RiceBeansProgramActivity extends AppCompatActivity implements Callb
     private ArrayList<Pair> mRatioPairs = new ArrayList<>();
     private Food mRiceBeans;
     private TextView mCurentDate;
+    private TextView mCurrentAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rice_beans_program);
         mRiceBeans = Parcels.unwrap(getIntent().getParcelableExtra("RiceBeansMeal"));
+        int attendancenum = getIntent().getIntExtra("attendancenum", 0);
+        mCurrentAttendance = (TextView) findViewById(R.id.ricebeans_attendance);
+        mCurrentAttendance.setText(attendancenum);
+
         mRatioPairs = populateList(mRiceBeans);
         mCurentDate = (TextView) findViewById(R.id. riceactivity_date);
         mCurentDate.setText(setDate());

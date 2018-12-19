@@ -132,6 +132,9 @@
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_splash">Splash</string>
 
+    <string name="attendance">Attendance</string>
+    <string name="feeding">Feeding</string>
+    <string name="today_date">December 15th 2018</string>
 
 
 </resources>

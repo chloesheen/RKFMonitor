@@ -85,7 +85,16 @@ public class ClassViewActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mStudents = Parcels.unwrap(getIntent().getParcelableExtra("Studentlist"));
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            mStudents = Parcels.unwrap(extras.getParcelable("Studentlist"));
+            String schoolName = extras.getString("schoolname");
+            String className = extras.getString("classname");
+            TextView mSchoolname = (TextView) findViewById(R.id.school_view);
+            mSchoolname.setText(schoolName);
+            TextView mClassname = (TextView) findViewById(R.id.class_name);
+            mClassname.setText(className);
+        }
 
         mListener = this;
         mContext = this;
@@ -98,7 +107,6 @@ public class ClassViewActivity extends AppCompatActivity implements
 
         mStudentListAdapter = new StudentListAdapter(this, mStudents);
         mStudentView.setAdapter(mStudentListAdapter);
-
 
         Button mAddStudents = (Button) findViewById(R.id.add_student);
         mAddStudents.setOnClickListener(this);
@@ -113,14 +121,19 @@ public class ClassViewActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view, final int position) {
                 final CheckBox attendance = view.findViewById(R.id.attendance);
+                attendance.setFocusable(true);
                 final TextView studentname = view.findViewById(R.id.student_name);
+                studentname.setFocusable(true);
+
                 attendance.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (v == attendance) {
+                            attendance.requestFocus();
                             Student curStudent = mStudentListAdapter.getStudent(position);
                             curStudent.updateAttendance(attendance.isChecked());
                         } else if (v == studentname) {
+                            studentname.requestFocus();
                             Student student = mStudentListAdapter.getStudent(position);
                             HttpGetRequests task = new HttpGetRequests(GET_STUDENT_PROFILE, mListener, mContext);
                             String studentid = student.getId();

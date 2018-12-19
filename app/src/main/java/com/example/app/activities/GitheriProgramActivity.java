@@ -27,12 +27,17 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
     private ArrayList<Pair> mRatioPairs = new ArrayList<>();
     private Food mGitheri;
     private TextView mCurentDate;
+    private TextView mCurrentAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_githeri_program);
         mGitheri = Parcels.unwrap(getIntent().getParcelableExtra("GitheriMeal"));
+        int attendancenum = getIntent().getIntExtra("attendancenum", 0);
+        mCurrentAttendance = (TextView) findViewById(R.id.githeri_attendance);
+        mCurrentAttendance.setText(attendancenum);
+
         mRatioPairs = populateList(mGitheri);
         mCurentDate = (TextView) findViewById(R.id. githactivity_date);
         mCurentDate.setText(setDate());

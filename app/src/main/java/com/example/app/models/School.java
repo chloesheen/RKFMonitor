@@ -11,7 +11,6 @@ public class School {
 
     private ArrayList<Class> mClassNames;
 
-    private ArrayList<Streams> mStreams;
 
     public School() {
 

@@ -84,6 +84,7 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         studentProfile.put("avegrade", "0.0");
         studentProfile.put("shoesize", mShoesize.getText().toString());
         HttpPostRequests task = new HttpPostRequests(studentProfile, POST_NEW_STUDENT, this, this);
+        //need url for this
         task.execute("");
 
     }

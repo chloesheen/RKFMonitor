@@ -66,8 +66,8 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
 
         SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
         String authorization = getAuthorization.getString("authorization", null);
-        Log.v("auth", authorization);
-        Log.v("url", baseurl);
+        //Log.v("auth", authorization);
+        //Log.v("url", baseurl);
 
 
         try {

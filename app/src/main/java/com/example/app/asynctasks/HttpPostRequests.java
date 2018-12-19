@@ -115,12 +115,16 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
                             Log.v("admin", isAdmin);
                             String isTeacher = String.valueOf(loginMessage.getBoolean("isTeacher"));
                             String isCook = String.valueOf(loginMessage.getBoolean("isCook"));
+                            String school = loginMessage.getString("school");
+                            String classname = loginMessage.getString("class");
                             ArrayList<Pair<String, String>> res = new ArrayList<>();
                             Log.v("token", webtoken);
                             res.add(new Pair("token", webtoken));
                             res.add(new Pair("isAdmin",isAdmin));
                             res.add(new Pair("isTeacher", isTeacher));
                             res.add(new Pair("isCook", isCook));
+                            res.add(new Pair("school", school));
+                            res.add(new Pair("class", classname));
                             mListener.onCompletionHandler(succ, POST_LOGIN, res);
                         } catch (Exception e) {e.printStackTrace();}
                 }

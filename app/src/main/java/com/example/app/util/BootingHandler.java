@@ -17,16 +17,21 @@ import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 
 public class BootingHandler {
 
-    public static void initLauncher(Context context, SharedPreferences sharedPreferences, CallbackListener listener) {
+    private SharedPreferences mSharedPreferences;
 
-        sharedPreferences = context.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
-        if (sharedPreferences.getString("isAdministrator", null).equals("true")) {
+    public BootingHandler(SharedPreferences sharedPreferences) {
+        mSharedPreferences = sharedPreferences;
+    }
+
+    public void initLauncher(Context context, CallbackListener listener) {
+         mSharedPreferences = context.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
+        if (mSharedPreferences.getString("isAdministrator", null).equals("true")) {
             Intent orgIntent = new Intent(context, OrganizationDashboard.class);
             context.startActivity(orgIntent);
-        } else if (sharedPreferences.getString("isTeacher", null).equals("true")){
+        } else if (mSharedPreferences.getString("isTeacher", null).equals("true")){
             HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, listener, context);
             task.execute(REQUEST_STUDENT_LIST);
-        } else if (sharedPreferences.getString("isCook", null).equals("true")) {
+        } else if (mSharedPreferences.getString("isCook", null).equals("true")) {
             Intent cookIntent = new Intent(context, FeedingDashboard.class);
             context.startActivity(cookIntent);
         }

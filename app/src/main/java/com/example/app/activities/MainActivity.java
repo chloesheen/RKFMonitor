@@ -18,17 +18,19 @@ import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 
 public class MainActivity extends Activity implements CallbackListener {
 
+    private BootingHandler mBootingHandler;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences mSharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
+        mBootingHandler = new BootingHandler(mSharedPreferences);
         if (mSharedPreferences.getString("authorization", null) == null) {
             //Log.v("test1", mSharedPreferences.getString("authorization", null));
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
-            BootingHandler.initLauncher(this, mSharedPreferences, this);
+            mBootingHandler.initLauncher(this, this);
         }
     }
 
