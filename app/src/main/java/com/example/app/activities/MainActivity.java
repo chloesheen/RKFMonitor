@@ -24,13 +24,12 @@ public class MainActivity extends Activity implements CallbackListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences mSharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
-        mBootingHandler = new BootingHandler(mSharedPreferences);
         if (mSharedPreferences.getString("authorization", null) == null) {
             //Log.v("test1", mSharedPreferences.getString("authorization", null));
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
-            mBootingHandler.initLauncher(this, this);
+            BootingHandler.initLauncher(this, this);
         }
     }
 

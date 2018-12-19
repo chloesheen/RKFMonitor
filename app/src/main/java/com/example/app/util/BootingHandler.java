@@ -17,14 +17,8 @@ import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 
 public class BootingHandler {
 
-    private SharedPreferences mSharedPreferences;
-
-    public BootingHandler(SharedPreferences sharedPreferences) {
-        mSharedPreferences = sharedPreferences;
-    }
-
-    public void initLauncher(Context context, CallbackListener listener) {
-         mSharedPreferences = context.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
+    public static void initLauncher(Context context, CallbackListener listener) {
+        SharedPreferences mSharedPreferences = context.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
         if (mSharedPreferences.getString("isAdministrator", null).equals("true")) {
             Intent orgIntent = new Intent(context, OrganizationDashboard.class);
             context.startActivity(orgIntent);

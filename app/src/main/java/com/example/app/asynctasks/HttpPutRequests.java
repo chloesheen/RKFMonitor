@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.example.app.util.Constants.PUT_FOOD;
 import static com.example.app.util.Constants.PUT_STUDENT_ATTENDANCE;
 import static com.example.app.util.Constants.PUT_STUDENT_PROFILE;
 import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
@@ -81,6 +82,9 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                     case PUT_TEACHER_PROFILE:
                         mListener.onCompletionHandler(true, PUT_TEACHER_PROFILE, null);
                         break;
+
+                    case PUT_FOOD:
+                        mListener.onCompletionHandler(true, PUT_FOOD, null);
 
                     case UPDATE_PASSWORD:
                         try {

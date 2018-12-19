@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.app.R;
 import com.example.app.adapters.FoodRatioAdapter;
 import com.example.app.asynctasks.HttpPostRequests;
+import com.example.app.asynctasks.HttpPutRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Food;
 import com.example.app.util.Pair;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.app.util.Constants.POST_FOOD;
+import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
 import static com.example.app.util.DateUtils.setDate;
 import static com.example.app.util.FoodRatios.populateList;
 
@@ -36,7 +38,8 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
         mGitheri = Parcels.unwrap(getIntent().getParcelableExtra("GitheriMeal"));
         int attendancenum = getIntent().getIntExtra("attendancenum", 0);
         mCurrentAttendance = (TextView) findViewById(R.id.githeri_attendance);
-        mCurrentAttendance.setText(attendancenum);
+        mCurrentAttendance.setText(String.valueOf(attendancenum));
+
 
         mRatioPairs = populateList(mGitheri);
         mCurentDate = (TextView) findViewById(R.id. githactivity_date);
@@ -57,8 +60,8 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
         for (Map.Entry<String, String> ratio : ratios.entrySet()) {
             foodInfo.put(ratio.getKey(), ratio.getValue());
         }
-        HttpPostRequests task = new HttpPostRequests(foodInfo, POST_FOOD, this, this);
-        task.execute("");
+        //HttpPutRequests task = new HttpPutRequests(foodInfo, POST_FOOD, this, this);
+        //task.execute(REQUEST_ADD_FOOD);
     }
 
     @Override

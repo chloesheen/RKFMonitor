@@ -175,6 +175,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                 JSONArray notattending = new JSONArray(mAbsentList);
                 mAttendance.put("attending", attending);
                 mAttendance.put("notAttending", notattending);
+                Log.v("attendance", mAttendance.toString());
                 HttpPutRequests task = new HttpPutRequests(mAttendance, PUT_STUDENT_ATTENDANCE, this, this);
                 task.execute(REQUEST_SUBMIT_ATTENDANCE);
         }

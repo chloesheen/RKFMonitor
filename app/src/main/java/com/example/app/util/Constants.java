@@ -19,7 +19,7 @@ public class Constants {
     public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
 
     public final static String REQUEST_ADD_NEW_STUDENT = "a";
-    public final static String REQUEST_ADD_FOOD="b";
+    public final static String REQUEST_ADD_FOOD="https://kotak.herokuapp.com/cook/food";
     public final static String REQUEST_REGISTER_TEACHER="c";
 
     public final static String SHARED_PREFS_KEY="user_keys";
@@ -51,5 +51,6 @@ public class Constants {
     public final static int PUT_TEACHER_PROFILE = 2001;
     public final static int UPDATE_PASSWORD = 2010;
     public final static int PUT_STUDENT_ATTENDANCE = 2011;
+    public final static int PUT_FOOD = 2111;
 
 }

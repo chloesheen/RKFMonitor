@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import static com.example.app.util.Constants.POST_FOOD;
+import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
 import static com.example.app.util.DateUtils.setDate;
 import static com.example.app.util.FoodRatios.populateList;
 
@@ -62,7 +63,7 @@ public class BreakfastProgramActivity extends AppCompatActivity implements Callb
             foodInfo.put(ratio.getKey(), ratio.getValue());
         }
         HttpPostRequests task = new HttpPostRequests(foodInfo, POST_FOOD, this, this);
-        task.execute("");
+        task.execute(REQUEST_ADD_FOOD);
     }
 
     @Override

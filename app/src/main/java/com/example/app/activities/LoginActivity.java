@@ -101,8 +101,6 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
 
         login = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
-        mBootingHandler = new BootingHandler(login);
-
         if (login.getBoolean("isChecked", false)) {
             username.setText(login.getString("username", null));
             password.setText(login.getString("password", null));
@@ -161,8 +159,8 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                     editor.putString("class", res.get(5).getSecond());
                     editor.commit();
                     Log.v("tet6", "on");
-                    mBootingHandler.initLauncher(this, mListener);
-                    /*if (login.getString("isAdministrator", null).equals("true")) {
+                    //BootingHandler.initLauncher(mContext, mListener);
+                    if (login.getString("isAdministrator", null).equals("true")) {
                         Intent orgIntent = new Intent(LoginActivity.this, OrganizationDashboard.class);
                         startActivity(orgIntent);
                     } else if (login.getString("isTeacher", null).equals("true")){
@@ -171,8 +169,9 @@ public class LoginActivity extends AppCompatActivity implements CallbackListener
                         task.execute(REQUEST_STUDENT_LIST);
                     } else if (login.getString("isCook", null).equals("true")) {
                         Intent cookIntent = new Intent(LoginActivity.this, FeedingDashboard.class);
+                        cookIntent.putExtra("schoolname", login.getString("school", ""));
                         startActivity(cookIntent);
-                    }*/
+                    }
                     break;
 
                 case GET_STUDENTLIST_VIEW:

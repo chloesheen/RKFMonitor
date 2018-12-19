@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import com.example.app.util.FoodRatios;
 import org.parceler.Parcels;
 
 import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
+import static com.example.app.util.Constants.REQUEST_COOK_DASHBOARD;
 import static com.example.app.util.DateUtils.setDate;
 
 public class FeedingDashboard extends AppCompatActivity implements View.OnClickListener,
@@ -45,7 +47,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         TextView mDate = (TextView) findViewById(R.id.dashboard_date);
         mDate.setText(setDate());
         HttpGetRequests task = new HttpGetRequests(GET_TOTAL_ATTENDANCE, this, this);
-        task.execute("");
+        task.execute(REQUEST_COOK_DASHBOARD);
     }
 
     @Override
@@ -104,8 +106,9 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
     public void onCompletionHandler(boolean success, int requestcode, Object object) {
         if (success && requestcode == GET_TOTAL_ATTENDANCE) {
             mTotalAttendance = (int) object;
+            Log.v("totalattendance", String.valueOf(mTotalAttendance));
             //???
-            mDisplayAttendance.setText(mTotalAttendance);
+            mDisplayAttendance.setText(String.valueOf(mTotalAttendance));
         }
     }
 }
