@@ -35,7 +35,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mNationalId;
     private EditText mContactNum;
     private EditText mClassName;
-    private Button logout;
+    private Button mLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         TeacherProfile profile = Parcels.unwrap(getIntent().getParcelableExtra("TeacherProfile"));
 
         mEdit = (ImageView) findViewById(R.id.edit);
+        mEdit.setFocusable(true);
         mEdit.setOnClickListener(this);
 
         mSchoolId = (EditText) findViewById(R.id.school_id);
@@ -55,22 +56,12 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mClassName = (EditText) findViewById(R.id.class_name);
         mGender = (EditText) findViewById(R.id.teach_gender);
         mProfileName = (TextView) findViewById(R.id.name);
-        logout = (Button) findViewById(R.id.logout);
 
+        mLogout = (Button) findViewById(R.id.logout);
+        mLogout.setFocusable(true);
+        mLogout.setOnClickListener(this);
 
-        //populateView(profile);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SharedPreferences preferences = getSharedPreferences(SHARED_PREFS_KEY,Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.commit();
-                finish();
-            }
-        });
+        populateView(profile);
     }
 
     /**
@@ -95,11 +86,23 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
      */
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.edit){
-            TeacherProfile currentProfile = currentProfile();
-            Intent intent = new Intent (this, EditTeacherProfile.class);
-            intent.putExtra("CurrentTeacherProfile", Parcels.wrap(currentProfile));
-            startActivityForResult(intent, REQUEST_EDIT_PROFILE);
+        switch(view.getId()) {
+            case R.id.edit:
+                mEdit.requestFocus();
+                TeacherProfile currentProfile = currentProfile();
+                Intent intent = new Intent (this, EditTeacherProfile.class);
+                intent.putExtra("CurrentTeacherProfile", Parcels.wrap(currentProfile));
+                startActivityForResult(intent, REQUEST_EDIT_PROFILE);
+                break;
+
+            case R.id.logout:
+                mLogout.requestFocus();
+                SharedPreferences preferences = getSharedPreferences(SHARED_PREFS_KEY,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
+                break;
         }
     }
 

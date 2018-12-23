@@ -39,8 +39,26 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
     private CallbackListener mListener;
     private Context mContext;
 
-    public HttpPutRequests(HashMap<String, JSONArray> data, int requestcode, CallbackListener listener, Context context) {
+    //Have this take a Hashmap of string and string (use request code to convert data to jsonArray as required)
+    /*public HttpPutRequests(HashMap<String, JSONArray> data, int requestcode, CallbackListener listener, Context context) {
         mPutData = new JSONObject(data);
+        mRequestCode = requestcode;
+        mListener = listener;
+        mContext = context;
+    }*/
+
+    /**
+     * Generic constructor for put request since the requests have different bodies
+     * @param data A haspmap containing the data to be put into the db
+     * @param requestcode Request code for the type of request being made
+     * @param listener    The activity that is calling the request (implements the CallbackListener interface)
+     * @param context     The activity the request is being called from
+     * @param <T>         A generic parameter for the type of value being used in the hashmap (eg. JSONArray, JSONObject, String etc)
+     */
+
+    public <T> HttpPutRequests(HashMap<String, T> data, int requestcode, CallbackListener listener, Context context) {
+        mPutData = new JSONObject(data);
+        Log.v("attendancedata", mPutData.toString());
         mRequestCode = requestcode;
         mListener = listener;
         mContext = context;
@@ -80,11 +98,35 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                         break;
 
                     case PUT_TEACHER_PROFILE:
-                        mListener.onCompletionHandler(true, PUT_TEACHER_PROFILE, null);
+                        try {
+                            inputStream = new BufferedInputStream(urlConnection.getInputStream());
+                            arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
+                            int bytesread;
+                            while ((bytesread = inputStream.read()) != -1) {
+                                arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
+                            }
+                            String updateTeachProfile = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                            JSONObject changeMessage = (JSONObject) new JSONTokener(updateTeachProfile).nextValue();
+                            boolean succ = changeMessage.getBoolean("success");
+                            mListener.onCompletionHandler(succ, PUT_TEACHER_PROFILE, null);
+                        } catch (Exception e) {e.printStackTrace();}
                         break;
 
                     case PUT_FOOD:
-                        mListener.onCompletionHandler(true, PUT_FOOD, null);
+                        try {
+                            inputStream = new BufferedInputStream(urlConnection.getInputStream());
+                            arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
+                            int bytesread;
+                            while ((bytesread = inputStream.read()) != -1) {
+                                arrayOutputStream.write(bytesread);   //write the byte to the arrayoutputstream
+                            }
+                            String updateFood = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                            JSONObject requestresult = (JSONObject) new JSONTokener(updateFood).nextValue();
+                            boolean succ = requestresult.getBoolean("success");
+                            mListener.onCompletionHandler(succ, PUT_FOOD, null);
+                        } catch (Exception e) {e.printStackTrace();}
+                        break;
+
 
                     case UPDATE_PASSWORD:
                         try {
@@ -114,18 +156,6 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                             JSONObject successObj = (JSONObject) new JSONTokener(successString).nextValue();
                             Boolean success = successObj.getBoolean("success");
 
-                            /*ArrayList<Student> mStudents = new ArrayList<>();
-                            String studentString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
-                            JSONTokener studenttoken = new JSONTokener(studentString);
-                            JSONArray studentsArray = new JSONArray(studenttoken);
-                            for (int i = 0; i < studentsArray.length(); i++) {
-                                JSONObject stud = studentsArray.getJSONObject(i);
-                                Student std = new Student(stud.getString("firstName"),
-                                        stud.getString("lastName"),
-                                        stud.getString("id"),
-                                        stud.getBoolean("attending"));
-                                mStudents.add(std);
-                            }*/
                             mListener.onCompletionHandler(success, PUT_STUDENT_ATTENDANCE, null);
                         } catch (Exception e) {e.printStackTrace();}
                         break;

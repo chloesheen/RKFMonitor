@@ -136,13 +136,14 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         String teacherString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                         JSONTokener teachertoken = new JSONTokener(teacherString);
                         JSONObject teacher = (JSONObject) teachertoken.nextValue();
-                        TeacherProfile teacherProfile = new TeacherProfile(teacher.getString("firstname"),
-                                teacher.getString("lastname"),
+                        TeacherProfile teacherProfile = new TeacherProfile(teacher.getString("firstName"),
+                                teacher.getString("lastName"),
                                 teacher.getString("id"),
                                 teacher.getString("gender"),
+                                teacher.getString("schoolid"),
+                                teacher.getString("nationalid"),
                                 teacher.getString("classname"),
-                                teacher.getString("telephone"),
-                                teacher.getString("nationalid"));
+                                teacher.getString("telephone"));
 
                         mListener.onCompletionHandler(true, GET_TEACHER_PROFILE, teacherProfile);
                         break;

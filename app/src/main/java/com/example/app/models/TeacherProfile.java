@@ -8,6 +8,8 @@ public class TeacherProfile {
 
     private String mLastName;
 
+    private String mId;
+
     private String mSchoolId;
 
     private String mGender;
@@ -20,6 +22,18 @@ public class TeacherProfile {
 
     public TeacherProfile() {
 
+    }
+
+    public TeacherProfile(String firstname, String lastname, String id, String schoolid,
+                          String gender, String classname, String contact, String nationalid) {
+        mFirstName = firstname;
+        mLastName = lastname;
+        mId = id;
+        mSchoolId = schoolid;
+        mGender = gender;
+        mClassName = classname;
+        mTelephone = contact;
+        mNationalID = nationalid;
     }
 
     public TeacherProfile(String firstname, String lastname, String schoolid,
@@ -41,9 +55,11 @@ public class TeacherProfile {
         return mLastName;
     }
 
-    public String getId() {
+    public String getSchoolId() {
         return mSchoolId;
     }
+
+    public String getId() { return mId; }
 
     public String getGender() {
         return mGender;

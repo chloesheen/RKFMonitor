@@ -13,11 +13,13 @@ import com.example.app.asynctasks.HttpPutRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.TeacherProfile;
 
+import org.json.JSONArray;
 import org.parceler.Parcels;
 
 import java.util.HashMap;
 
 import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
+import static com.example.app.util.Constants.REQUEST_UPDATE_TEACHER_PROFILE;
 
 public class EditTeacherProfile extends AppCompatActivity implements View.OnClickListener, CallbackListener {
 
@@ -83,8 +85,8 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         teacherProfile.put("classname", "");
         teacherProfile.put("contact", contact);
         teacherProfile.put("nationalid", nationalid);
-        //HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this, this);
-        //task.execute("");
+        HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this, this);
+        task.execute(REQUEST_UPDATE_TEACHER_PROFILE);
         return new TeacherProfile(firstname, lastname, schoolid, gender,
                 classname, contact, nationalid);
     }

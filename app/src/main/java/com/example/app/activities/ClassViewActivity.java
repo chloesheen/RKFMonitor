@@ -68,6 +68,7 @@ public class ClassViewActivity extends AppCompatActivity implements
     private ArrayList<Student> mStudents;
     private StudentListAdapter mStudentListAdapter;
 
+    //private HashMap<String, JSONArray> mAttendance = new HashMap<>();
     private HashMap<String, JSONArray> mAttendance = new HashMap<>();
     private ArrayList<String> mPresentList = new ArrayList<>();
     private ArrayList<String> mAbsentList = new ArrayList<>();
@@ -76,6 +77,8 @@ public class ClassViewActivity extends AppCompatActivity implements
 
     private CallbackListener mListener;
     private Context mContext;
+
+    private TextView mProfileName;
 
 
 
@@ -111,7 +114,8 @@ public class ClassViewActivity extends AppCompatActivity implements
         Button mAddStudents = (Button) findViewById(R.id.add_student);
         mAddStudents.setOnClickListener(this);
 
-        TextView mProfileName = (TextView) findViewById(R.id.profile_name);
+        mProfileName = (TextView) findViewById(R.id.profile_name);
+        mProfileName.setFocusable(true);
         mProfileName.setOnClickListener(this);
 
         Button mSubmit = (Button) findViewById(R.id.submit_attendance);
@@ -165,6 +169,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                 break;
 
             case R.id.profile_name:
+                mProfileName.requestFocus();
                 HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this, this);
                 gettask.execute(REQUEST_TEACHER_PROFILE);
                 break;
