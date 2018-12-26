@@ -84,7 +84,7 @@
 
 
     <!-- Edit Students Activity -->
-     <string name= "delete">Delete</string>
+    <string name="delete">Delete</string>
 
 
     <!-- Feeding Program Dashboard Activity -->

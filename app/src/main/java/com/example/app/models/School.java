@@ -9,16 +9,17 @@ public class School {
 
     private String mSchoolName;
 
-    private ArrayList<Class> mClassNames;
+    private ArrayList<Class> mClasses;
 
 
     public School() {
 
     }
 
-    public School(String name, String schoolid) {
+    public School(String name, String schoolid, ArrayList<Class> classes) {
         mSchoolName = name;
         mSchoolID = schoolid;
+        mClasses = classes;
     }
 
     public String getSchoolName() {
@@ -29,4 +30,7 @@ public class School {
         return mSchoolID;
     }
 
+    public ArrayList<Class> getClasses() {
+        return mClasses;
+    }
 }

@@ -45,6 +45,23 @@ public class StudentProfile{
     }
 
     public StudentProfile(String firstname, String lastname, String id, String studentId, String gender, String dob, String guardian,
+                          String classname, String tele, String nationalid, String aveGrade, String shoesize) {
+        mFirstName = firstname;
+        mLastName = lastname;
+        mId = id;
+        mStudentId = studentId;
+        mGender = gender;
+        mDateOfBirth = dob;
+        mGuardian = guardian;
+        mClassName = classname;
+        mTelephone = tele;
+        mNationalID = nationalid;
+        mAverageGrade = aveGrade;
+        mShoesize = shoesize;
+
+    }
+
+    public StudentProfile(String firstname, String lastname, String id, String studentId, String gender, String dob, String guardian,
                           String schoolname, String classname, String tele, String nationalid, String aveGrade, String shoesize) {
         mFirstName = firstname;
         mLastName = lastname;

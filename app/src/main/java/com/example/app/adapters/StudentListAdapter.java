@@ -16,7 +16,6 @@ import com.example.app.R;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
-import com.example.app.util.StudentListClickListener;
 
 import java.util.ArrayList;
 
@@ -24,8 +23,6 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     private ArrayList<Student> mStudents;
     private Activity mContext;
-    //private StudentListClickListener mStudentClickListener;
-    //private OnItemClickListener mListener;
 
     public StudentListAdapter(Context context,  ArrayList<Student> student_list) {
         mContext = (Activity) context;

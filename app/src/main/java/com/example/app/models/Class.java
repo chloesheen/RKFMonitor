@@ -10,10 +10,11 @@ public class Class {
 
     private String mHomeroomTeacher;
 
-    public Class(String name, String id, String size) {
+    public Class(String name, String id, String size, String teacher) {
         mClassName = name;
         mId = id;
         mClassSize = size;
+        mHomeroomTeacher = teacher;
     }
 
     public String getName() {
@@ -27,4 +28,6 @@ public class Class {
     public String getClassSize() {
         return mClassSize;
     }
+
+    public String getTeacher() { return mHomeroomTeacher; }
 }

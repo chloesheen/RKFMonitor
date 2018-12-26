@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.app.R;
+import com.example.app.models.Class;
 import com.example.app.models.Student;
 import com.example.app.util.Pair;
 
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 
 public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ClassListViewHolder> {
 
-    private ArrayList<Pair> mClassList;
+    private ArrayList<Class> mClassList;
     private Context mContext;
 
-    public ClassListAdapter(Context context, ArrayList<Pair> classes) {
+    public ClassListAdapter(Context context, ArrayList<Class> classes) {
         mClassList = classes;
         mContext = context;
     }
@@ -30,9 +31,8 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
     @Override
     public void onBindViewHolder(@NonNull ClassListViewHolder viewHolder,
                                  int position) {
-        Pair classAttendance = mClassList.get(position);
-        viewHolder.mClassName.setText(classAttendance.getFirst().toString());
-        viewHolder.mAttendance.setText(classAttendance.getSecond().toString());
+        Class thisclass = mClassList.get(position);
+        viewHolder.mClassName.setText(thisclass.getName());
     }
 
     @NonNull
@@ -47,16 +47,18 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.Clas
         return mClassList.size();
     }
 
+    public Class getSelectedClass(int position) {
+        return mClassList.get(position);
+    }
+
 
     protected class ClassListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mClassName;
-        private TextView mAttendance;
 
         public  ClassListViewHolder (View itemview) {
             super(itemview);
             mClassName = (TextView) itemview.findViewById(R.id.class_name);
-            mAttendance = (TextView) itemview.findViewById(R.id.class_attendance);
         }
     }
 

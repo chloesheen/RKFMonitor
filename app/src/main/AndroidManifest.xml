@@ -19,7 +19,7 @@
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -65,7 +65,8 @@
         <activity
             android:name=".activities.SchoolInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.AttendanceActivity"></activity>
     </application>
 
 </manifest>

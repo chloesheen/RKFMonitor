@@ -10,12 +10,12 @@ import com.example.app.interfaces.ClickListener;
 
 import java.util.ArrayList;
 
-public class StudentListClickListener implements RecyclerView.OnItemTouchListener {
+public class ChildViewClickListener implements RecyclerView.OnItemTouchListener {
 
     private GestureDetector mGestureDetector;
     private ClickListener mClickListener;
 
-    public StudentListClickListener (Context context, final RecyclerView recyclerView, final ClickListener listener) {
+    public ChildViewClickListener (Context context, final RecyclerView recyclerView, final ClickListener listener) {
         mClickListener = listener;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 

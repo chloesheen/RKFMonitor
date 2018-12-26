@@ -84,7 +84,7 @@ public class EditStudentProfile extends AppCompatActivity implements View.OnClic
     public StudentProfile deleteProfile(){
         HttpDeleteRequests del = new HttpDeleteRequests(mID, DELETE_STUDENT_PROFILE,this );
         del.execute("");
-        return new StudentProfile(null, null, null, null,null,null,null,null,null,null, null,null);
+        return new StudentProfile(null, null, null, null,null,null,null,null,null,null, null,null,null);
     }
 
 

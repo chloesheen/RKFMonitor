@@ -34,8 +34,8 @@ import com.example.app.interfaces.OnItemClickListener;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
 import com.example.app.models.TeacherProfile;
+import com.example.app.util.ChildViewClickListener;
 import com.example.app.util.Pair;
-import com.example.app.util.StudentListClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -148,14 +148,9 @@ public class ClassViewActivity extends AppCompatActivity implements
                     };
                 });
             }
-
-            @Override
-            public void onLongPress(View view, int position) {
-
-            }
         };
 
-        mStudentView.addOnItemTouchListener(new StudentListClickListener( this, mStudentView, mClickListener));
+        mStudentView.addOnItemTouchListener(new ChildViewClickListener( this, mStudentView, mClickListener));
     }
 
 
