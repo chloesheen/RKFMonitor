@@ -34,7 +34,6 @@
                     android:contentDescription="@string/logo"
                     android:src="@drawable/rfklogoblack" />
 
-
                 <TextView
                     android:id="@+id/signin_textview"
                     android:layout_width="219dp"
@@ -58,7 +57,6 @@
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -76,15 +74,15 @@
             android:id="@+id/username_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/prompt_email"
+            android:text="@string/prompt_phone"
             android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Email Address"
-            android:inputType="textWebEmailAddress" />
+            android:hint="Enter Phone Number"
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/password_textview"
