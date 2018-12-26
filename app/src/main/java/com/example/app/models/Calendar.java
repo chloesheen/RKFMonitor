@@ -1,14 +1,19 @@
 package com.example.app.models;
 
+import com.example.app.util.Pair;
+
 import java.util.ArrayList;
+import java.util.Date;
 
-public class Calendar {
+public class Calendar<T> extends Pair {
 
-    public Calendar() {
+    private Date mDate;
+    private T mInfo;
+
+    public Calendar(Date date, T data) {
+        super(date, data);
 
     }
-
-    
 }
 
 

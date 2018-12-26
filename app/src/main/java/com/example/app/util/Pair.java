@@ -19,6 +19,17 @@ public class Pair<E, T> {
     }
 
     public boolean isEquals(Pair one) {
-        return true;
+        if (mFirst.equals(one.getFirst()) && mSecond.equals(one.getSecond())) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setFirst(E newFirst) {
+        mFirst = newFirst;
+    }
+
+    public void setSecond(T newSecond) {
+        mSecond = newSecond;
     }
 }
