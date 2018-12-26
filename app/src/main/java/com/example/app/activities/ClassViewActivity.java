@@ -61,6 +61,7 @@ import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
 import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
+import static com.example.app.util.DateUtils.setDate;
 
 public class ClassViewActivity extends AppCompatActivity implements
         View.OnClickListener, CallbackListener {
@@ -102,6 +103,9 @@ public class ClassViewActivity extends AppCompatActivity implements
             mProfileName.setFocusable(true);
             mProfileName.setOnClickListener(this);
         }
+
+        TextView date = (TextView) findViewById(R.id.currentDate);
+        date.setText(setDate());
 
         mListener = this;
         mContext = this;

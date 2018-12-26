@@ -10,6 +10,7 @@ public class Class {
 
     private String mHomeroomTeacher;
 
+
     public Class(String name, String id, String size, String teacher) {
         mClassName = name;
         mId = id;
