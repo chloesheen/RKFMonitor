@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telecom.Call;
@@ -21,6 +22,7 @@ import java.util.Map;
 
 import static com.example.app.util.Constants.POST_FOOD;
 import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.DateUtils.setDate;
 import static com.example.app.util.FoodRatios.populateList;
 
@@ -30,6 +32,7 @@ public class RiceBeansProgramActivity extends AppCompatActivity implements Callb
     private Food mRiceBeans;
     private TextView mCurentDate;
     private TextView mCurrentAttendance;
+    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,12 @@ public class RiceBeansProgramActivity extends AppCompatActivity implements Callb
         int attendancenum = getIntent().getIntExtra("attendancenum", 0);
         mCurrentAttendance = (TextView) findViewById(R.id.ricebeans_attendance);
         mCurrentAttendance.setText(String.valueOf(attendancenum));
+
+        TextView mProfilename = (TextView) findViewById(R.id.profile_name);
+        mProfilename.setText(mSharedPreferences.getString("username", null));
+
+        TextView schoolname = (TextView) findViewById(R.id.riceactivity_schoolname);
+        schoolname.setText(mSharedPreferences.getString("school", null));
 
         mRatioPairs = populateList(mRiceBeans);
         mCurentDate = (TextView) findViewById(R.id. riceactivity_date);

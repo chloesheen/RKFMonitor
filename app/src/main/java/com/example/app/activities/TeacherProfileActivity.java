@@ -37,6 +37,8 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mClassName;
     private Button mLogout;
 
+    private SharedPreferences mSharedPreferences = this.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,9 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mLogout = (Button) findViewById(R.id.logout);
         mLogout.setFocusable(true);
         mLogout.setOnClickListener(this);
+
+        TextView mSchoolName = (TextView) findViewById(R.id.schoolName);
+        mSchoolName.setText(mSharedPreferences.getString("school", null));
 
         populateView(profile);
     }

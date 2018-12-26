@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,16 +16,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.asynctasks.HttpPostRequests;
 import com.example.app.fragments.SuccessDialog;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.StudentProfile;
+import com.example.app.models.TeacherProfile;
+
+import org.parceler.Parcels;
 
 import java.util.HashMap;
 
+import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.POST_NEW_STUDENT;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 public class AddStudentActivity extends AppCompatActivity implements View.OnClickListener,
         AdapterView.OnItemSelectedListener, CallbackListener {
@@ -38,9 +45,10 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
     private EditText mShoesize;
 
     private String mStudentGender;
+    private TextView mProfilename;
 
     //Infor we need from shared preferences, teacher log in name, class name,
-    private SharedPreferences mSharedPreferences;
+    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,11 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         mParentID = (EditText)findViewById(R.id.student_guardianID);
         mShoesize = (EditText) findViewById(R.id.student_shoesize);
 
+        mProfilename = (TextView) findViewById(R.id.profile_name);
+        mProfilename.setText(mSharedPreferences.getString("username", null));
+        mProfilename.setFocusable(true);
+        mProfilename.setOnClickListener(this);
+
         Spinner mGender = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.gender, android.R.layout.simple_spinner_item);
@@ -72,12 +85,18 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view){
+        switch(view.getId()) {
+            case R.id.profile_name:
+                mProfilename.requestFocus();
+
+        }
         HashMap<String, String> studentProfile = new HashMap<>();
         studentProfile.put("firstname", mFirstname.getText().toString());
         studentProfile.put("lastname", mLastname.getText().toString());
         studentProfile.put("gender", mStudentGender);
         studentProfile.put("dob", mDateOfBirth.getText().toString());
-        studentProfile.put("classname", "");
+        studentProfile.put("schoolname", mSharedPreferences.getString("school", ""));
+        studentProfile.put("classname", mSharedPreferences.getString("class", ""));
         studentProfile.put("guardian", mParentname.getText().toString());
         studentProfile.put("contact", mParentContact.getText().toString());
         studentProfile.put("nationalid", mParentID.getText().toString());
@@ -98,13 +117,28 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         // Another interface callback
     }
 
+    private void launchTeacherProfile(TeacherProfile profile) {
+        Intent intent = new Intent(this, TeacherProfileActivity.class);
+        intent.putExtra("TeacherProfile", Parcels.wrap(profile));
+        startActivity(intent);
+    }
+
     @Override
     public void onCompletionHandler(boolean success, int requestcode, Object object) {
-        if (success & requestcode == POST_NEW_STUDENT) {
-            Fragment successIndicator = SuccessDialog.newInstance("Student Successfully Added");
-            getSupportFragmentManager().beginTransaction()
-                    .add(successIndicator, "SuccessFragment")
-                    .commit();
+        if (success) {
+            switch(requestcode) {
+                case GET_TEACHER_PROFILE:
+                    TeacherProfile teacherProfile = (TeacherProfile) object;
+                    launchTeacherProfile(teacherProfile);
+                    break;
+
+                case POST_NEW_STUDENT:
+                    Fragment successIndicator = SuccessDialog.newInstance("Student Successfully Added");
+                    getSupportFragmentManager().beginTransaction()
+                            .add(successIndicator, "SuccessFragment")
+                            .commit();
+                    break;
+            }
         }
     }
 }

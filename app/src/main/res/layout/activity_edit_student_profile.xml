@@ -216,15 +216,15 @@
 
                 <TextView
                     android:id="@+id/student_id"
-                    android:layout_width="wrap_content"
+                    android:layout_width="157dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="1dp"
                     android:layout_marginStart="1dp"
-                    android:paddingEnd="70dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="15dp"
                     android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="70dp"
+                    android:paddingRight="70dp"
                     android:text="@string/student_id"
                     android:textSize="20sp" />
 
@@ -526,12 +526,9 @@
                 android:id="@+id/delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@id/save"
-                android:layout_toRightOf="@id/save"
+                android:layout_marginStart="260dp"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="0dp"
                 android:text="@string/delete" />
 
         </LinearLayout>

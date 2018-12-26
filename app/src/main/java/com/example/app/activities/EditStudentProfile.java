@@ -114,7 +114,7 @@ public class EditStudentProfile extends AppCompatActivity implements View.OnClic
         studentProfile.put("nationalid", nationalid);
         studentProfile.put("grade", grade);
         studentProfile.put("shoesize", shoesize);
-        HttpPutRequests task = new HttpPutRequests(studentProfile, PUT_STUDENT_PROFILE, this);
+        HttpPutRequests task = new HttpPutRequests(studentProfile, PUT_STUDENT_PROFILE, this, this);
         task.execute("");
         return new StudentProfile(firstname, lastname, gender, id, schoolid, birthdate, guardian,
                 classname, telephone, nationalid, grade, shoesize);

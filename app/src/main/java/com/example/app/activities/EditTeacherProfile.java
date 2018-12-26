@@ -2,11 +2,13 @@ package com.example.app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.asynctasks.HttpPutRequests;
@@ -20,6 +22,7 @@ import java.util.HashMap;
 
 import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
 import static com.example.app.util.Constants.REQUEST_UPDATE_TEACHER_PROFILE;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 public class EditTeacherProfile extends AppCompatActivity implements View.OnClickListener, CallbackListener {
 
@@ -31,6 +34,8 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
     private EditText mContactNum;
     private EditText mClassName;
     private Button mSave;
+
+    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,12 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         TeacherProfile input = Parcels.unwrap(getIntent().
                 getParcelableExtra("CurrentTeacherProfile"));
         setProfile(input);
+
+        TextView mSchoolname = (TextView) findViewById(R.id.school_name);
+        mSchoolname.setText(mSharedPreferences.getString("school", ""));
+
+        TextView mProfileName = (TextView) findViewById(R.id.profile_name);
+        mProfileName.setText(mSharedPreferences.getString("username", ""));
 
         mSave = (Button) findViewById(R.id.save);
         mSave.setOnClickListener(this);
@@ -82,7 +93,7 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         teacherProfile.put("firstname", firstname);
         teacherProfile.put("lastname", lastname);
         teacherProfile.put("gender", gender);
-        teacherProfile.put("classname", "");
+        teacherProfile.put("classname", classname);
         teacherProfile.put("contact", contact);
         teacherProfile.put("nationalid", nationalid);
         HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this, this);

@@ -151,7 +151,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="256dp"
         android:layout_marginRight="256dp"
-        android:text="@string/guradian_number"
+        android:text="@string/guardian_number"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

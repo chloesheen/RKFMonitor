@@ -82,8 +82,9 @@
     <string name="avggrade">Average Grade</string>
     <string name="classname">Class Name</string>
 
+
     <!-- Edit Students Activity -->
-     <string name = "delete">Delete</string>
+     <string name= "delete">Delete</string>
 
 
     <!-- Feeding Program Dashboard Activity -->

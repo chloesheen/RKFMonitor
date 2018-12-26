@@ -197,7 +197,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/bfactivity_schoolname"
+        android:id="@+id/cookdashboard_schoolname"
         android:layout_width="285dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"

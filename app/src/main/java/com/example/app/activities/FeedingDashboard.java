@@ -1,6 +1,7 @@
 package com.example.app.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import org.parceler.Parcels;
 
 import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_COOK_DASHBOARD;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.DateUtils.setDate;
 
 public class FeedingDashboard extends AppCompatActivity implements View.OnClickListener,
@@ -31,10 +33,16 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
     private int mTotalAttendance;
     private TextView mDisplayAttendance;
 
+    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeding_dashboard);
+        TextView schoolname = (TextView) findViewById(R.id.cookdashboard_schoolname);
+        schoolname.setText(mSharedPreferences.getString("school", ""));
+        TextView profilename = (TextView) findViewById(R.id.profile_name);
+        profilename.setText(mSharedPreferences.getString("username", ""));
 
         CardView mLunchCard = (CardView) findViewById(R.id.lunch_card);
         mLunchCard.setOnClickListener(this);

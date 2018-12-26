@@ -54,4 +54,9 @@ public class Constants {
     public final static int PUT_STUDENT_ATTENDANCE = 2011;
     public final static int PUT_FOOD = 2111;
 
+    /**
+     * DELETE Request Codes
+     */
+    public final static int DELETE_STUDENT_PROFILE = 3000;
+
 }

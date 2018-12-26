@@ -68,7 +68,6 @@ public class ClassViewActivity extends AppCompatActivity implements
     private ArrayList<Student> mStudents;
     private StudentListAdapter mStudentListAdapter;
 
-    //private HashMap<String, JSONArray> mAttendance = new HashMap<>();
     private HashMap<String, JSONArray> mAttendance = new HashMap<>();
     private ArrayList<String> mPresentList = new ArrayList<>();
     private ArrayList<String> mAbsentList = new ArrayList<>();
@@ -93,10 +92,15 @@ public class ClassViewActivity extends AppCompatActivity implements
             mStudents = Parcels.unwrap(extras.getParcelable("Studentlist"));
             String schoolName = extras.getString("schoolname");
             String className = extras.getString("classname");
+            String username = extras.getString("username");
             TextView mSchoolname = (TextView) findViewById(R.id.school_view);
             mSchoolname.setText(schoolName);
             TextView mClassname = (TextView) findViewById(R.id.class_name);
             mClassname.setText(className);
+            mProfileName = (TextView) findViewById(R.id.profile_name);
+            mProfileName.setText(username);
+            mProfileName.setFocusable(true);
+            mProfileName.setOnClickListener(this);
         }
 
         mListener = this;
@@ -113,10 +117,6 @@ public class ClassViewActivity extends AppCompatActivity implements
 
         Button mAddStudents = (Button) findViewById(R.id.add_student);
         mAddStudents.setOnClickListener(this);
-
-        mProfileName = (TextView) findViewById(R.id.profile_name);
-        mProfileName.setFocusable(true);
-        mProfileName.setOnClickListener(this);
 
         Button mSubmit = (Button) findViewById(R.id.submit_attendance);
         mSubmit.setOnClickListener(this);
@@ -239,6 +239,4 @@ public class ClassViewActivity extends AppCompatActivity implements
             }
         }
     }
-
-
 }
