@@ -47,15 +47,15 @@
             android:id="@+id/username_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/prompt_email"
+            android:text="@string/prompt_phone"
             android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/register_username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Email Address"
-            android:inputType="textWebEmailAddress"/>
+            android:hint="Enter Phone Number"
+            android:inputType="phone"/>
 
         <TextView
             android:id="@+id/password_textview"
