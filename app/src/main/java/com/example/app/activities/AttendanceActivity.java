@@ -2,11 +2,14 @@ package com.example.app.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.adapters.SchoolAttendanceAdapter;
+import com.example.app.models.Class;
+
 
 import org.parceler.Parcels;
 
@@ -22,6 +25,9 @@ public class AttendanceActivity extends AppCompatActivity {
         className.setText(selectedClass.getName());
 
         RecyclerView dailyAttendanceList = (RecyclerView) findViewById(R.id.attendances);
-        //SchoolAttendanceAdapter adapter = new SchoolAttendanceAdapter(this, selectedClass.)
+        SchoolAttendanceAdapter adapter = new SchoolAttendanceAdapter(this, selectedClass.getCalendars());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        dailyAttendanceList.setLayoutManager(mLayoutManager);
+        dailyAttendanceList.setAdapter(adapter);
     }
 }

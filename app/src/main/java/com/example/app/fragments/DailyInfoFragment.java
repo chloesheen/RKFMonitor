@@ -18,6 +18,7 @@ import com.example.app.R;
 import com.example.app.activities.AttendanceActivity;
 import com.example.app.adapters.ClassListAdapter;
 import com.example.app.asynctasks.HttpGetRequests;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.models.Class;
 import com.example.app.models.School;
@@ -32,7 +33,7 @@ import static com.example.app.util.DateUtils.setDate;
 import static com.example.app.util.DateUtils.setOnlyDate;
 import static java.util.Calendar.MONDAY;
 
-public class DailyInfoFragment extends Fragment implements ClickListener {
+public class DailyInfoFragment extends Fragment implements ClickListener, CallbackListener {
 
     private TextView mDate;
     private School mSchoolData;
@@ -87,4 +88,7 @@ public class DailyInfoFragment extends Fragment implements ClickListener {
             }
         });
     }
+
+    @Override
+    public void onCompletionHandler(boolean success, int requestcode, Object obj){}
 }

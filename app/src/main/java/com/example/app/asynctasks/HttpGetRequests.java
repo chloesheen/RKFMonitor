@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.app.util.Constants.GET_SCHOOL_ATTENDANCE;
+import static com.example.app.util.Constants.GET_CLASS_ATTENDANCE;
 import static com.example.app.util.Constants.GET_SCHOOL_FOOD;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
@@ -157,10 +157,11 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         mListener.onCompletionHandler(true, GET_TOTAL_ATTENDANCE, numofStudents);
                         break;
 
-                    case GET_SCHOOL_ATTENDANCE:
+                    case GET_CLASS_ATTENDANCE:
                         String schoolattendance = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                         JSONTokener schoolattendanceToken = new JSONTokener(schoolattendance);
                         break;
+
                 }
 
             }

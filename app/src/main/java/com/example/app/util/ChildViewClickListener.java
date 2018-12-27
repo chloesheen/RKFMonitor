@@ -22,14 +22,6 @@ public class ChildViewClickListener implements RecyclerView.OnItemTouchListener 
             @Override
             public boolean onSingleTapUp(MotionEvent e) { return true; }
 
-            @Override
-            public void onLongPress(MotionEvent e) {
-                View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
-
-                if (child != null && listener != null) {
-                    listener.onLongPress(child, recyclerView.getChildAdapterPosition(child));
-                }
-            }
         });
     }
     @Override

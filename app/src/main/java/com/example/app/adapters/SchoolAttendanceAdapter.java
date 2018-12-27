@@ -10,15 +10,17 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.util.Pair;
+import com.example.app.models.Calendar;
 
 import java.util.ArrayList;
 
+
 public class SchoolAttendanceAdapter extends RecyclerView.Adapter<SchoolAttendanceAdapter.AttendanceViewHolder> {
 
-    private ArrayList<Pair> mAttendanceList;
+    private ArrayList<Calendar> mAttendanceList;
     private Context mContext;
 
-    public SchoolAttendanceAdapter(Context context, ArrayList<Pair> classes) {
+    public SchoolAttendanceAdapter(Context context, ArrayList<Calendar> classes) {
         mAttendanceList = classes;
         mContext = context;
     }
@@ -26,7 +28,7 @@ public class SchoolAttendanceAdapter extends RecyclerView.Adapter<SchoolAttendan
     @Override
     public void onBindViewHolder(@NonNull AttendanceViewHolder viewHolder,
                                  int position) {
-        Pair classAttendance =  mAttendanceList.get(position);
+        com.example.app.models.Calendar classAttendance =  mAttendanceList.get(position);
         viewHolder.mDate.setText(classAttendance.getFirst().toString());
         viewHolder.mAttendance.setText(classAttendance.getSecond().toString());
     }

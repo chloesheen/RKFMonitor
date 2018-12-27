@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.app.R;
 import com.example.app.adapters.SchoolListAdapter;
+import com.example.app.models.Class;
 import com.example.app.models.School;
 
 import org.parceler.Parcels;
@@ -30,11 +31,11 @@ public class OrganizationDashboard extends AppCompatActivity implements AdapterV
         schoolList.setAdapter(adapter);
         schoolList.setOnItemClickListener(this);
 
-        School school1 = new School("Valley Academy", "0101");
-        School school2 = new School("Soko Primary", "0110");
-        School school3 = new School("NEXTGen", "0111");
-        School school4 = new School("SHAMCo", "1110");
-        School school5 = new School("Elimu de Ark", "1101");
+        School school1 = new School("Valley Academy", "0101", new ArrayList<Class>());
+        School school2 = new School("Soko Primary", "0110", new ArrayList<Class>());
+        School school3 = new School("NEXTGen", "0111", new ArrayList<Class>());
+        School school4 = new School("SHAMCo", "1110", new ArrayList<Class>());
+        School school5 = new School("Elimu de Ark", "1101", new ArrayList<Class>());
 
         mSchoolList.add(school1);
         mSchoolList.add(school2);

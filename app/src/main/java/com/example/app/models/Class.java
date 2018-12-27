@@ -2,6 +2,7 @@ package com.example.app.models;
 
 import java.util.ArrayList;
 
+@org.parceler.Parcel
 public class Class {
 
     private String mClassName;
@@ -13,6 +14,8 @@ public class Class {
     private String mHomeroomTeacher;
 
     private ArrayList<Calendar> mClasscalendar;
+
+    public Class(){}
 
     public Class(String name, String id, String size, String teacher) {
         mClassName = name;

@@ -32,7 +32,7 @@ public class Constants {
     public final static int GET_TEACHER_PROFILE = 1001;
     public final static int GET_STUDENTLIST_VIEW = 1010;
     public final static int GET_TOTAL_ATTENDANCE = 1011;
-    public final static int GET_SCHOOL_ATTENDANCE = 1100;
+    public final static int GET_CLASS_ATTENDANCE = 1100;
     public final static int GET_SCHOOL_FOOD = 1101;
 
     /**
