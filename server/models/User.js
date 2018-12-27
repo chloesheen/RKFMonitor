@@ -14,7 +14,10 @@ var userSchema = new Schema({
   class: {type: mongoose.Schema.Types.ObjectId, ref: 'Class'},
 	isAdministrator: {type: Boolean, default: false},
 	isTeacher: {type: Boolean, default: false},
-	isCook: {type: Boolean, default: false}
+	isCook: {type: Boolean, default: false},
+  gender: {type: String},
+  nationalId: {type: String},
+  telephoneNumber: {type: String}  
 });
 
 userSchema.pre('save', function(next) {

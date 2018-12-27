@@ -6,7 +6,7 @@ const express = require('express'),
       School = require('./../models/School'),
       Class = require('./../models/Class');
 
-router.post('/login', function (req, res) {
+router.post('/login', async function (req, res) {
   let getUser = User.findOne({username: req.body.username}).populate('school').exec();
   getUser.then(function(user) {
     if (!user) {
@@ -14,7 +14,8 @@ router.post('/login', function (req, res) {
     } else {
       user.comparePassword(req.body.password, async function(err, isMatch) {
         if (isMatch && !err) {
-          let token = jwt.sign({data: user}, secret);
+          let simplifiedUser = {_id: user._id};
+          let token = jwt.sign({data: simplifiedUser}, secret);
           let schoolId = user.school;
           let classId = user.class;
           let userSchool = await School.findById(schoolId).exec();

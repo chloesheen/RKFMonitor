@@ -17,36 +17,6 @@ module.exports = function(passport) {
 		})
 	})
 
-	router.get('/schools/:id/attendence', passport.authenticate('jwt', {session:false}), function(req,res) {
-		let getAttendences = Attendence.find({school: req.params.id}).populate('class').sort({date: -1}).exec();
-		getAttendences.then(function(attendences) {
-			let responseBody = {"daily": {}, "monthly": {}};
-			for (let i=0; i<attendences.length; i++) {
-	           	let date = moment(calendars[i].date).format('LL').split(",")[0];
-			 	let month = moment(calendars[i].date).format('LL').split(",")[0].split(" ")[0];
-			 	if (responseBody["daily"][date]) {
-			 		responseBody["daily"][date][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
-			 	} else {
-			 		responseBody["daily"][date] = {};
-			 		responseBody["daily"][date][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
-			 	}
-			 	if (responseBody["monthly"][month]) {
-			 		if (responseBody["monthly"][month][attendences[i].class.name]) {
-			 			responseBody["monthly"][month][attendences[i].class.name] += attendences[i].class.studentsPresent.length;
-			 		} else {
-			 			responseBody["monthly"][month][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
-			 		}
-			 	} else {
-			 		responseBody["monthly"][month] = {};
-			 		responseBody["monthly"][month][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
-			 	}
-			}
-			return res.status(200).json(responseBody);
-		}).catch(function(error) {
-			return res.status(400).json({message: "Error in fetching from database"});
-		})
-	})
-
 	router.get('/schools/:id/food', passport.authenticate('jwt', {session:false}), function(req,res) {
 		let getCalendars = Calendar.find({school: req.params.id}).sort({date: -1}).exec();
 		getCalendars.then(function(calendars) {
@@ -77,7 +47,37 @@ module.exports = function(passport) {
 		}).catch(function(error) {
 			return res.status(400).json({message: "Error in fetching from database"});
 		})
-	})	
+	})
+
+	router.get('/classes/:id/attendence', passport.authenticate('jwt', {session:false}), function(req,res) {
+		let getAttendences = Attendence.find({class: req.params.id}).populate('class').sort({date: -1}).exec();
+		getAttendences.then(function(attendences) {
+			let responseBody = {"daily": {}, "monthly": {}};
+			for (let i=0; i<attendences.length; i++) {
+	           	let date = moment(calendars[i].date).format('LL').split(",")[0];
+			 	let month = moment(calendars[i].date).format('LL').split(",")[0].split(" ")[0];
+			 	if (responseBody["daily"][date]) {
+			 		responseBody["daily"][date][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
+			 	} else {
+			 		responseBody["daily"][date] = {};
+			 		responseBody["daily"][date][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
+			 	}
+			 	if (responseBody["monthly"][month]) {
+			 		if (responseBody["monthly"][month][attendences[i].class.name]) {
+			 			responseBody["monthly"][month][attendences[i].class.name] += attendences[i].class.studentsPresent.length;
+			 		} else {
+			 			responseBody["monthly"][month][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
+			 		}
+			 	} else {
+			 		responseBody["monthly"][month] = {};
+			 		responseBody["monthly"][month][attendences[i].class.name] = attendences[i].class.studentsPresent.length;
+			 	}
+			}
+			return res.status(200).json(responseBody);
+		}).catch(function(error) {
+			return res.status(400).json({message: "Error in fetching from database"});
+		})
+	})		
 
 	return router;
 
