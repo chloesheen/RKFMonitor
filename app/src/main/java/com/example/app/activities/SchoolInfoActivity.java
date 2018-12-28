@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.app.R;
+import com.example.app.adapters.OrgFragmentAdapter;
 import com.example.app.adapters.SchoolDataPagerAdapter;
 import com.example.app.models.School;
 
@@ -27,7 +28,7 @@ public class SchoolInfoActivity extends AppCompatActivity {
         mSchoolName.setText(mSelectedSchool.getSchoolName());
 
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
-        viewpager.setAdapter(new SchoolDataPagerAdapter(getSupportFragmentManager(), this, mSelectedSchool));
+        viewpager.setAdapter(new OrgFragmentAdapter(getSupportFragmentManager(), this, mSelectedSchool));
 
         TabLayout layout = (TabLayout) findViewById(R.id.sliding_tabs);
         layout.setupWithViewPager(viewpager);

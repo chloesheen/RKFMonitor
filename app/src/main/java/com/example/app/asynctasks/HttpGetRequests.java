@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.app.activities.StudentProfileActivity;
 import com.example.app.interfaces.CallbackListener;
+import com.example.app.models.Calendar;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
 import com.example.app.models.TeacherProfile;
@@ -27,16 +28,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.app.util.Constants.GET_CLASS_ATTENDANCE;
+import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
+import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_SCHOOL_FOOD;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
+import static com.example.app.util.DateUtils.convertToDate;
 
 /**
  * Asynctask to handle all Get requests
@@ -157,9 +161,30 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         mListener.onCompletionHandler(true, GET_TOTAL_ATTENDANCE, numofStudents);
                         break;
 
-                    case GET_CLASS_ATTENDANCE:
+                    case GET_DAILY_ATTENDANCE:
+                        ArrayList<Calendar> dailyCalendars = new ArrayList<>();
                         String schoolattendance = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
-                        JSONTokener schoolattendanceToken = new JSONTokener(schoolattendance);
+                        JSONObject schoolAttendanceObj = (JSONObject) new JSONTokener(schoolattendance).nextValue();
+                        JSONObject dailyattendance =  schoolAttendanceObj.getJSONObject("daily");
+                        Iterator<String> dailyIterator = dailyattendance.keys();
+                        while (dailyIterator.hasNext()) {
+                            String key = dailyIterator.next();
+                            dailyCalendars.add(new Calendar(convertToDate(key), dailyattendance.get(key)));
+                        }
+                        mListener.onCompletionHandler(true, GET_DAILY_ATTENDANCE, dailyCalendars);
+                        break;
+
+                    case GET_MONTHLY_ATTENDANCE:
+                        ArrayList<Calendar> monthlyCalendars = new ArrayList<>();
+                        String schoolattendanceString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONObject attendanceObj = (JSONObject) new JSONTokener(schoolattendanceString).nextValue();
+                        JSONObject monthlyattendance =  attendanceObj.getJSONObject("monthly");
+                        Iterator<String> monthlyIterator = monthlyattendance.keys();
+                        while (monthlyIterator.hasNext()) {
+                            String key = monthlyIterator.next();
+                            monthlyCalendars.add(new Calendar(convertToDate(key), monthlyattendance.get(key)));
+                        }
+                        mListener.onCompletionHandler(true, GET_MONTHLY_ATTENDANCE, monthlyCalendars);
                         break;
 
                 }

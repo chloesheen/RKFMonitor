@@ -2,10 +2,6 @@ package com.example.app.util;
 
 public class Constants {
 
-    public final static String GET_REQUEST = "Get";
-    public final static String POST_REQUEST = "Post";
-    public final static String PUT_REQUEST = "Put";
-
     /**
      * Base URLs
      */
@@ -32,8 +28,10 @@ public class Constants {
     public final static int GET_TEACHER_PROFILE = 1001;
     public final static int GET_STUDENTLIST_VIEW = 1010;
     public final static int GET_TOTAL_ATTENDANCE = 1011;
-    public final static int GET_CLASS_ATTENDANCE = 1100;
-    public final static int GET_SCHOOL_FOOD = 1101;
+    public final static int GET_DAILY_ATTENDANCE = 1100;
+    public final static int GET_MONTHLY_ATTENDANCE = 1110;
+    public final static int GET_DAILY_FOOD = 1101;
+    public final static int GET_MONTHLY_FOOD = 1111;
 
     /**
      * POST Request Codes

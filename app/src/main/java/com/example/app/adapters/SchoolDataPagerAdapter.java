@@ -5,14 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.app.fragments.DailyInfoFragment;
+import com.example.app.fragments.AttendanceFragment;
 import com.example.app.fragments.MonthlyInfoFragment;
 import com.example.app.models.School;
 
 public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String mTabTitles[] = {"Daily", "Monthly"};
+    private String mTabTitles[] = {"Attending", "Feeding"};
     private Context mContext;
     private School mSchool;
 
@@ -30,7 +30,7 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return DailyInfoFragment.newInstance(mSchool);
+            return AttendanceFragment.newInstance(mSchool);
         } else if (position == 1) {
             return MonthlyInfoFragment.newInstance(mSchool);
         }

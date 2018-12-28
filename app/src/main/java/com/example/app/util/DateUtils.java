@@ -22,4 +22,22 @@ public class DateUtils {
         return dateFormatter.format(currentDate);
 
     }
+
+    public static Date convertToDate(String stringdate) {
+        SimpleDateFormat dateformatter = new SimpleDateFormat("EEEE, MMMM dd yyyy hh:mm a", Locale.US);
+        dateformatter.setTimeZone(TimeZone.getTimeZone("GMT+3"));
+        try {
+            return (Date) dateformatter.parse(stringdate);
+        }catch(Exception e) { e.printStackTrace();}
+        return null;
+    }
+
+    public static Date convertToMonthDate(String stringdate) {
+        SimpleDateFormat dateformatter = new SimpleDateFormat("MMMM", Locale.US);
+        dateformatter.setTimeZone(TimeZone.getTimeZone("GMT+3"));
+        try {
+            return (Date) dateformatter.parse(stringdate);
+        }catch(Exception e) { e.printStackTrace();}
+        return null;
+    }
 }
