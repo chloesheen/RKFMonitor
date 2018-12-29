@@ -28,7 +28,7 @@ public class SchoolInfoActivity extends AppCompatActivity {
         mSchoolName.setText(mSelectedSchool.getSchoolName());
 
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
-        //attach the onpagechangelistener
+        //attach the onpagechangelistener to the viewpager
         viewpager.setAdapter(new OrgFragmentAdapter(getSupportFragmentManager(), this, mSelectedSchool));
 
         TabLayout layout = (TabLayout) findViewById(R.id.sliding_tabs);

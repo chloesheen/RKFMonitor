@@ -34,7 +34,7 @@ public class OrgFragmentAdapter extends FragmentPagerAdapter {
             //pass in parameter for daily;
             return DailyFragment.newInstance(mSchool);
         } else if (position == 1) {
-            //
+            //add parameter for monthly;
             return MonthlyFragment.newInstance(mSchool);
         }
         return null;

@@ -43,6 +43,7 @@ public class DailyFragment extends Fragment {
 
         ViewPager viewpager = view.findViewById(R.id.dailypager);
 
+        //add the parameter for daily or monthly
         viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData));
 
         TabLayout layout = view.findViewById(R.id.sliding_tabs);

@@ -44,6 +44,7 @@ public class MonthlyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_daily, container, false);
 
         ViewPager viewpager = view.findViewById(R.id.dailypager);
+        //add parameter for monthly
         viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData));
 
         TabLayout layout = view.findViewById(R.id.sliding_tabs);

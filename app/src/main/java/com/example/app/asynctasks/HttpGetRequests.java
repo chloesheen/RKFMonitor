@@ -34,7 +34,6 @@ import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
-import static com.example.app.util.Constants.GET_SCHOOL_FOOD;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
