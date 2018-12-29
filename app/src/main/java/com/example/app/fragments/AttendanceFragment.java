@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.app.R;
 import com.example.app.activities.AttendanceActivity;
 import com.example.app.adapters.ClassListAdapter;
+import com.example.app.adapters.SchoolDataPagerAdapter;
 import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.interfaces.ClickListener;
@@ -38,7 +39,6 @@ import static com.example.app.util.DateUtils.setOnlyDate;
 
 public class AttendanceFragment extends Fragment implements ClickListener, CallbackListener {
 
-    private TextView mDate;
     private School mSchoolData;
     private ClassListAdapter mAdapter;
     private Class mSelectedclass;
@@ -66,8 +66,6 @@ public class AttendanceFragment extends Fragment implements ClickListener, Callb
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daily_info, container, false);
-        mDate = view.findViewById(R.id.date_name);
-        mDate.setText(setOnlyDate());
         RecyclerView mClasslistview = view.findViewById(R.id.class_list);
         mClasslistview.setFocusable(true);
         mAdapter = new ClassListAdapter(getContext(), mSchoolData.getClasses());
@@ -87,6 +85,7 @@ public class AttendanceFragment extends Fragment implements ClickListener, Callb
             @Override
             public void onClick(View v) {
                 v.requestFocus();
+                //Something here to send back to the OrgFragmentAdapter
                 mSelectedclass = mAdapter.getSelectedClass(position);
                 HttpGetRequests task = new HttpGetRequests(GET_DAILY_ATTENDANCE, mListener, getContext());
                 task.execute("");

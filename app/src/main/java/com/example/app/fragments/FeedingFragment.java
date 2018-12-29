@@ -15,8 +15,10 @@ import android.widget.TextView;
 import com.example.app.R;
 import com.example.app.activities.AttendanceActivity;
 import com.example.app.adapters.ClassListAdapter;
+import com.example.app.adapters.SchoolFeedingAdapter;
 import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.interfaces.CallbackListener;
+import com.example.app.interfaces.ClickListener;
 import com.example.app.models.Calendar;
 import com.example.app.models.School;
 import com.example.app.util.ChildViewClickListener;
@@ -24,17 +26,17 @@ import com.example.app.util.ChildViewClickListener;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.app.util.Constants.GET_DAILY_FOOD;
 import static com.example.app.util.Constants.GET_MONTHLY_FOOD;
 import static com.example.app.util.DateUtils.setOnlyDate;
 
-public class FeedingFragment extends Fragment implements CallbackListener {
+public class FeedingFragment extends Fragment implements CallbackListener, ClickListener {
 
-    private TextView mDate;
     private School mSchoolData;
-    private ClassListAdapter mAdapter;
-    private Class mSelectedclass;
+    private SchoolFeedingAdapter mAdapter;
+    private Date mSelecteddate;
     private CallbackListener mListener;
 
     public static FeedingFragment newInstance (School school){
@@ -58,30 +60,29 @@ public class FeedingFragment extends Fragment implements CallbackListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_daily_info, container, false);
-        mDate = view.findViewById(R.id.date_name);
-        mDate.setText(setOnlyDate());
-        RecyclerView mClasslistview = view.findViewById(R.id.class_list);
-        mClasslistview.setFocusable(true);
-        mAdapter = new ClassListAdapter(getContext(), mSchoolData.getClasses());
+        View view = inflater.inflate(R.layout.fragment_feeding, container, false);
+        RecyclerView mDatelistview = view.findViewById(R.id.dateList);
+        mDatelistview.setFocusable(true);
+
+        mAdapter = new SchoolFeedingAdapter(getContext(), mSchoolData.getCalendars());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mClasslistview.setLayoutManager(mLayoutManager);
-        mClasslistview.setAdapter(mAdapter);
-        mClasslistview.addOnItemTouchListener(new ChildViewClickListener( getContext(), mClasslistview, this));
+        mDatelistview.setLayoutManager(mLayoutManager);
+        mDatelistview.setAdapter(mAdapter);
+        mDatelistview.addOnItemTouchListener(new ChildViewClickListener( getContext(), mDatelistview, this));
 
         return view;
     }
 
     @Override
     public void onClick(View v, final int position) {
-        final TextView classname = v.findViewById(R.id.class_name);
-        classname.setFocusable(true);
-        classname.setOnClickListener(new View.OnClickListener() {
+        final TextView datename = v.findViewById(R.id.class_name);
+        datename.setFocusable(true);
+        datename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.requestFocus();
-                mSelectedclass = mAdapter.getSelectedClass(position);
-                HttpGetRequests task = new HttpGetRequests(GET_DAILY_ATTENDANCE, mListener, getContext());
+                mSelecteddate = mAdapter.getSelectedDate(position);
+                HttpGetRequests task = new HttpGetRequests(GET_DAILY_FOOD, mListener, getContext());
                 task.execute("");
             }
         });

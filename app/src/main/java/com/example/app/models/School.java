@@ -11,6 +11,8 @@ public class School {
 
     private ArrayList<Class> mClasses;
 
+    private ArrayList<Calendar> mSchoolCalendars;
+
 
     public School() {
 
@@ -20,6 +22,7 @@ public class School {
         mSchoolName = name;
         mSchoolID = schoolid;
         mClasses = classes;
+        mSchoolCalendars = new ArrayList<>();
     }
 
     public String getSchoolName() {
@@ -32,5 +35,13 @@ public class School {
 
     public ArrayList<Class> getClasses() {
         return mClasses;
+    }
+
+    public ArrayList<Calendar> getCalendars() {
+        return mSchoolCalendars;
+    }
+
+    public void addCalendar(Calendar calendar) {
+        mSchoolCalendars.add(calendar);
     }
 }

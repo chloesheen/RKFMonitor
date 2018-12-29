@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.app.fragments.AttendanceFragment;
+import com.example.app.fragments.FeedingFragment;
 import com.example.app.fragments.MonthlyInfoFragment;
 import com.example.app.models.School;
 
@@ -32,7 +33,16 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return AttendanceFragment.newInstance(mSchool);
         } else if (position == 1) {
-            return MonthlyInfoFragment.newInstance(mSchool);
+            return FeedingFragment.newInstance(mSchool);
+        }
+        return null;
+    }
+
+    public String getPosition(int position) {
+        if (position == 0) {
+            return "Attending";
+        } else if (position == 1){
+            return "Feeding";
         }
         return null;
     }
