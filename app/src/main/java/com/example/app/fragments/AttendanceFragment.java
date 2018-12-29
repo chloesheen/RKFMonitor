@@ -44,6 +44,7 @@ public class AttendanceFragment extends Fragment implements ClickListener, Callb
     private Class mSelectedclass;
     private CallbackListener mListener;
 
+    //add parameter for daily or monthly tab
     public static AttendanceFragment newInstance (School school){
         AttendanceFragment fragment = new AttendanceFragment();
         Bundle bundle = new Bundle();

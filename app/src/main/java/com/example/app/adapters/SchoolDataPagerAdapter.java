@@ -17,6 +17,7 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
     private Context mContext;
     private School mSchool;
 
+    //add parameter for daily or monthly tab
     public SchoolDataPagerAdapter(FragmentManager manager, Context context, School school) {
         super(manager);
         mContext = context;
@@ -31,21 +32,15 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
+            //daily or monthly argument passed into constructor of fragment; get request code for daily attendance
             return AttendanceFragment.newInstance(mSchool);
         } else if (position == 1) {
+            //get request code for daily attendance
             return FeedingFragment.newInstance(mSchool);
         }
         return null;
     }
-
-    public String getPosition(int position) {
-        if (position == 0) {
-            return "Attending";
-        } else if (position == 1){
-            return "Feeding";
-        }
-        return null;
-    }
+    
 
     @Override
     public CharSequence getPageTitle(int position) {

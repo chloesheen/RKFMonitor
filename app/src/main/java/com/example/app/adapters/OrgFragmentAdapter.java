@@ -31,8 +31,10 @@ public class OrgFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
+            //pass in parameter for daily;
             return DailyFragment.newInstance(mSchool);
         } else if (position == 1) {
+            //
             return MonthlyFragment.newInstance(mSchool);
         }
         return null;
