@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.activities.AttendanceActivity;
+import com.example.app.activities.FeedingActivity;
 import com.example.app.adapters.ClassListAdapter;
 import com.example.app.adapters.SchoolFeedingAdapter;
 import com.example.app.asynctasks.HttpGetRequests;
@@ -96,19 +97,19 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
                 case GET_DAILY_FOOD:
                     ArrayList<Calendar> dailycalendars = (ArrayList<Calendar>) obj;
                     for (Calendar calendar : dailycalendars) {
-                        mSelectedclass.addCalendar(calendar);
+                        mSchoolData.addCalendar(calendar);
                     }
-                    Intent intent = new Intent(getContext(), AttendanceActivity.class);
-                    intent.putExtra("selectedclass", Parcels.wrap(mSelectedclass));
+                    Intent intent = new Intent(getContext(), FeedingActivity.class);
+                    intent.putExtra("selectedclass", Parcels.wrap(mSchoolData));
                     startActivity(intent);
                     break;
                 case GET_MONTHLY_FOOD:
                     ArrayList<Calendar> monthlycalendars = (ArrayList<Calendar>) obj;
                     for (Calendar calendar : monthlycalendars) {
-                        mSelectedclass.addCalendar(calendar);
+                        mSchoolData.addCalendar(calendar);
                     }
                     Intent monthlyintent = new Intent(getContext(), AttendanceActivity.class);
-                    monthlyintent.putExtra("selectedclass", Parcels.wrap(mSelectedclass));
+                    monthlyintent.putExtra("selectedclass", Parcels.wrap(mSchoolData));
                     startActivity(monthlyintent);
                     break;
             }
