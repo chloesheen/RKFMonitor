@@ -33,6 +33,7 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
+import static com.example.app.util.Constants.GET_DAILY_FOOD;
 import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
@@ -184,6 +185,10 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                             monthlyCalendars.add(new Calendar(convertToDate(key), monthlyattendance.get(key)));
                         }
                         mListener.onCompletionHandler(true, GET_MONTHLY_ATTENDANCE, monthlyCalendars);
+                        break;
+
+                    case GET_DAILY_FOOD:
+
                         break;
 
                 }

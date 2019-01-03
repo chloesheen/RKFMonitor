@@ -36,15 +36,17 @@ import static com.example.app.util.DateUtils.setOnlyDate;
 public class FeedingFragment extends Fragment implements CallbackListener, ClickListener {
 
     private School mSchoolData;
+    private int mRequestCode;
     private SchoolFeedingAdapter mAdapter;
     private Date mSelecteddate;
     private CallbackListener mListener;
 
     //parameter for request code
-    public static FeedingFragment newInstance (School school){
+    public static FeedingFragment newInstance (School school, int request){
         FeedingFragment fragment = new FeedingFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("SchoolInformation", Parcels.wrap(school));
+        bundle.putInt("RequestCode", request);
         fragment.setArguments(bundle);
         return fragment;
     };
@@ -56,6 +58,7 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
         mListener = this;
         if (getArguments() != null) {
             mSchoolData = Parcels.unwrap(getArguments().getParcelable("SchoolInformation"));
+            mRequestCode = getArguments().getInt("RequestCode");
         }
     }
 
@@ -84,7 +87,7 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
             public void onClick(View v) {
                 v.requestFocus();
                 mSelecteddate = mAdapter.getSelectedDate(position);
-                HttpGetRequests task = new HttpGetRequests(GET_DAILY_FOOD, mListener, getContext());
+                HttpGetRequests task = new HttpGetRequests(mRequestCode, mListener, getContext());
                 task.execute("");
             }
         });
