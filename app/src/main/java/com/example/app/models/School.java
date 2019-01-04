@@ -18,11 +18,11 @@ public class School {
 
     }
 
-    public School(String name, String schoolid, ArrayList<Class> classes) {
+    public School(String name, String schoolid) {
         mSchoolName = name;
         mSchoolID = schoolid;
-        mClasses = classes;
         mSchoolCalendars = new ArrayList<>();
+        mClasses = new ArrayList<>();
     }
 
     public String getSchoolName() {
@@ -43,5 +43,9 @@ public class School {
 
     public void addCalendar(Calendar calendar) {
         mSchoolCalendars.add(calendar);
+    }
+
+    public void addClasses(ArrayList<Class> classesList) {
+        mClasses.addAll(classesList);
     }
 }

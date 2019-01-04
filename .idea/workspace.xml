@@ -16,14 +16,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98683b3c-149c-4ea8-9934-67b45264ab7b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/FoodDataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/food_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_feeding.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,6 +43,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="OrganizationDashboard.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="School.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SchoolInfoActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/SchoolInfoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AttendanceFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/AttendanceFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="71" column="67" selection-start-line="71" selection-start-column="67" selection-end-line="71" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeedingFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="78" column="5" lean-forward="true" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AttendanceActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AttendanceActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,41 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AttendanceFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/AttendanceFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="105" column="68" selection-start-line="105" selection-start-column="68" selection-end-line="105" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HttpGetRequests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="190" selection-start-line="190" selection-end-line="190" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedingFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="66" column="57" lean-forward="true" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedingActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="2760">
+              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
             </state>
           </provider>
         </entry>
@@ -2395,18 +2407,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Pair.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolAttendanceAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/AttendanceActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/ChildViewClickListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/DateUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyInfoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyAttendanceFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_feeding.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/single_view_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolDataPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/DailyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/MonthlyFragment.java" />
@@ -2418,14 +2426,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/food_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/FoodDataAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="68" />
-    <option name="y" value="23" />
+    <option name="x" value="201" />
+    <option name="y" value="24" />
     <option name="width" value="1372" />
     <option name="height" value="877" />
   </component>
@@ -2465,6 +2477,13 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="adapters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="asynctasks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2473,6 +2492,20 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kokak--student_list_view" type="1abcf292:AndroidViewProjectNode" />
@@ -2659,7 +2692,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="23" width="1372" height="877" extended-state="0" />
+    <frame x="201" y="24" width="1372" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
@@ -2867,13 +2900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -2895,20 +2921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="35" column="68" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -2974,13 +2986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="51" column="30" lean-forward="true" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/interfaces/ClickListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2992,20 +2997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="126" column="68" lean-forward="true" selection-start-line="126" selection-start-column="68" selection-end-line="126" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/SchoolInfoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/OrgFragmentAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -3035,13 +3026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolFeedingAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="55" column="51" lean-forward="true" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -3082,16 +3066,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="190" selection-start-line="190" selection-end-line="190" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/FoodDataAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="535">
@@ -3109,10 +3083,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/AttendanceFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="105" column="68" selection-start-line="105" selection-start-column="68" selection-end-line="105" selection-end-column="68" />
+        <state relative-caret-position="210">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/util/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="43" column="54" lean-forward="true" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/SchoolFeedingAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -3123,17 +3118,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/FeedingActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/asynctasks/HttpGetRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="2760">
+          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/FeedingFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="66" column="57" lean-forward="true" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
+        <state relative-caret-position="40">
+          <caret line="78" column="5" lean-forward="true" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/adapters/OrgFragmentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/SchoolInfoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/fragments/AttendanceFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="71" column="67" selection-start-line="71" selection-start-column="67" selection-end-line="71" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/models/School.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/activities/OrganizationDashboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
         </state>
       </provider>
     </entry>

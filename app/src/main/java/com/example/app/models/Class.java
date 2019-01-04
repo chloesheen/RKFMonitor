@@ -17,6 +17,14 @@ public class Class {
 
     public Class(){}
 
+    public Class(String name, String id) {
+        mClassName = name;
+        mId = id;
+        mClassSize = "0";
+        mHomeroomTeacher = "";
+        mClasscalendar = new ArrayList<>();
+    }
+
     public Class(String name, String id, String size, String teacher) {
         mClassName = name;
         mId = id;

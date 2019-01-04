@@ -11,6 +11,8 @@ import android.util.Log;
 import com.example.app.activities.StudentProfileActivity;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Calendar;
+import com.example.app.models.Class;
+import com.example.app.models.School;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
 import com.example.app.models.TeacherProfile;
@@ -32,9 +34,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.example.app.util.Constants.GET_CLASSES;
 import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_DAILY_FOOD;
 import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
+import static com.example.app.util.Constants.GET_SCHOOLS;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
@@ -188,9 +192,35 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         break;
 
                     case GET_DAILY_FOOD:
-
                         break;
 
+                    case GET_SCHOOLS:
+                        ArrayList<School> mSchools = new ArrayList<>();
+                        String schoolString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONObject schoolObj = (JSONObject) new JSONTokener(schoolString).nextValue();
+                        JSONArray schoolArray =  (JSONArray) schoolObj.get("schools");
+                        for (int i = 0; i < schoolArray.length(); i++) {
+                            JSONObject sch = schoolArray.getJSONObject(i);
+                            School school = new School(sch.getString("name"),
+                                    sch.getString("id"));
+                            mSchools.add(school);
+                        }
+                        mListener.onCompletionHandler(true, GET_SCHOOLS, mSchools);
+                        break;
+
+                    case GET_CLASSES:
+                        ArrayList<Class> mClasses = new ArrayList<>();
+                        String classesString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONObject classObj = (JSONObject) new JSONTokener(classesString).nextValue();
+                        JSONArray classesArray =  (JSONArray) classObj.get("classes");
+                        for (int i = 0; i < classesArray.length(); i++) {
+                            JSONObject cl = classesArray.getJSONObject(i);
+                            Class thisclass = new Class(cl.getString("name"),
+                                    cl.getString("id"));
+                            mClasses.add(thisclass);
+                        }
+                        mListener.onCompletionHandler(true, GET_CLASSES, mClasses);
+                        break;
                 }
 
             }

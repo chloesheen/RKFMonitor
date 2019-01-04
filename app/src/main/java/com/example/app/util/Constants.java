@@ -32,6 +32,8 @@ public class Constants {
     public final static int GET_MONTHLY_ATTENDANCE = 1110;
     public final static int GET_DAILY_FOOD = 1101;
     public final static int GET_MONTHLY_FOOD = 1111;
+    public final static int GET_SCHOOLS = 10;
+    public final static int GET_CLASSES = 101;
 
     /**
      * POST Request Codes

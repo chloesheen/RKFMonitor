@@ -11,6 +11,8 @@ import android.widget.ListView;
 
 import com.example.app.R;
 import com.example.app.adapters.SchoolListAdapter;
+import com.example.app.asynctasks.HttpGetRequests;
+import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Class;
 import com.example.app.models.School;
 
@@ -18,9 +20,13 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class OrganizationDashboard extends AppCompatActivity implements AdapterView.OnItemClickListener {
+import static com.example.app.util.Constants.GET_CLASSES;
+import static com.example.app.util.Constants.GET_SCHOOLS;
+
+public class OrganizationDashboard extends AppCompatActivity implements AdapterView.OnItemClickListener, CallbackListener {
 
     private ArrayList<School> mSchoolList = new ArrayList<>();
+    private School mSelectedSchool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,24 +37,33 @@ public class OrganizationDashboard extends AppCompatActivity implements AdapterV
         schoolList.setAdapter(adapter);
         schoolList.setOnItemClickListener(this);
 
-        School school1 = new School("Valley Academy", "0101", new ArrayList<Class>());
-        School school2 = new School("Soko Primary", "0110", new ArrayList<Class>());
-        School school3 = new School("NEXTGen", "0111", new ArrayList<Class>());
-        School school4 = new School("SHAMCo", "1110", new ArrayList<Class>());
-        School school5 = new School("Elimu de Ark", "1101", new ArrayList<Class>());
-
-        mSchoolList.add(school1);
-        mSchoolList.add(school2);
-        mSchoolList.add(school3);
-        mSchoolList.add(school4);
-        mSchoolList.add(school5);
+        HttpGetRequests task = new HttpGetRequests(GET_SCHOOLS, this, this);
+        task.execute("");
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        School selectedschool = (School) parent.getItemAtPosition(position);
-        Intent intent = new Intent(this, SchoolInfoActivity.class);
-        intent.putExtra("SelectedSchoolInfo", Parcels.wrap(selectedschool));
-        startActivity(intent);
+        mSelectedSchool = (School) parent.getItemAtPosition(position);
+        HttpGetRequests task = new HttpGetRequests(GET_CLASSES, this, this);
+        task.execute("");
+    }
+
+    @Override
+    public void onCompletionHandler(boolean success, int requestcode, Object obj) {
+        if (success) {
+            switch (requestcode) {
+                case GET_SCHOOLS:
+                    mSchoolList = (ArrayList<School>) obj;
+                    break;
+
+                case GET_CLASSES:
+                    ArrayList<Class> mClassList = (ArrayList<Class>) obj;
+                    mSelectedSchool.addClasses(mClassList);
+                    Intent intent = new Intent(this, SchoolInfoActivity.class);
+                    intent.putExtra("SelectedSchoolInfo", Parcels.wrap(mSelectedSchool));
+                    startActivity(intent);
+                    break;
+            }
+        }
     }
 }
