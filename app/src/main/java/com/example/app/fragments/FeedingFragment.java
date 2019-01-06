@@ -31,7 +31,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_DAILY_FOOD;
+import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_MONTHLY_FOOD;
 import static com.example.app.util.DateUtils.setOnlyDate;
 
@@ -42,14 +44,15 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
     private SchoolFeedingAdapter mAdapter;
     private Date mSelecteddate;
     private CallbackListener mListener;
+    private static boolean monthly;
 
     //parameter for request code
-    public static FeedingFragment newInstance (School school, int request){
+    public static FeedingFragment newInstance (School school, boolean isMonthly){
         FeedingFragment fragment = new FeedingFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("SchoolInformation", Parcels.wrap(school));
-        bundle.putInt("RequestCode", request);
         fragment.setArguments(bundle);
+        monthly = isMonthly;
         return fragment;
     };
 
@@ -63,7 +66,7 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
             mRequestCode = getArguments().getInt("RequestCode");
         }
         //add get request for retrieving feeding calendar from db
-        HttpGetRequests task = new HttpGetRequests(mRequestCode, mListener, getContext());
+        HttpGetRequests task = new HttpGetRequests(getRequestCode(monthly), mListener, getContext());
         task.execute("");
     }
 
@@ -99,6 +102,13 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
 
             }
         });
+    }
+
+    private int getRequestCode (boolean isMonthly){
+        if (isMonthly)
+            return GET_MONTHLY_ATTENDANCE;
+        else
+            return GET_DAILY_ATTENDANCE;
     }
 
     @Override
