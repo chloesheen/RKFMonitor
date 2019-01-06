@@ -20,12 +20,17 @@ import org.parceler.Parcels;
 public class MonthlyFragment extends Fragment {
 
     private School mSchoolData;
+    public static boolean isMonthly; // class variable set to true to show that it is a monthly fragment 
+    //same variable in Daily Fragment (set to false obviously)
+    // used when creating food/attendance fragments in School Data Pager Adapter 
+
 
     public static MonthlyFragment newInstance (School school){
         MonthlyFragment fragment = new MonthlyFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("SchoolInformation", Parcels.wrap(school));
         fragment.setArguments(bundle);
+        isMonthly = true;
         return fragment;
     };
 
@@ -45,7 +50,7 @@ public class MonthlyFragment extends Fragment {
 
         ViewPager viewpager = view.findViewById(R.id.dailypager);
         //add parameter for monthly
-        viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData));
+        viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData,isMonthly)); // isMonthly - MonthlyFragment class variable 
 
         TabLayout layout = view.findViewById(R.id.sliding_tabs);
         layout.setupWithViewPager(viewpager);

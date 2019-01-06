@@ -16,10 +16,15 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
     private String mTabTitles[] = {"Attending", "Feeding"};
     private Context mContext;
     private School mSchool;
+    public static boolean monthly; // boolean to see if we should get monthly or daily information,
+    // monthly = true -> month data
+    // monthly = false -> daily data
+
 
     //add parameter for daily or monthly tab
-    public SchoolDataPagerAdapter(FragmentManager manager, Context context, School school) {
+    public SchoolDataPagerAdapter(FragmentManager manager, Context context, School school, boolean isMonthly) {
         super(manager);
+        monthly = isMonthly;
         mContext = context;
         mSchool = school;
     }
@@ -30,13 +35,11 @@ public class SchoolDataPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
-        if (position == 0) {
-            //daily or monthly argument passed into constructor of fragment; get request code for daily attendance
-            return AttendanceFragment.newInstance(mSchool);
-        } else if (position == 1) {
-            //get request code for daily attendance
-            return FeedingFragment.newInstance(mSchool);
+    public Fragment getItem(int position) { // tabs for attendance/ feeding
+        if (position == 0) { // attendance
+            return AttendanceFragment.newInstance(mSchool,this.monthly);
+        } else if (position == 1) { // feeding
+            return FeedingFragment.newInstance(mSchool,this.monthly);
         }
         return null;
     }

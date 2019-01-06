@@ -43,13 +43,16 @@ public class AttendanceFragment extends Fragment implements ClickListener, Callb
     private ClassListAdapter mAdapter;
     private Class mSelectedclass;
     private CallbackListener mListener;
+    private static boolean monthly; // class variable that will copy in variable from new instance 
+
 
     //add parameter for appropriate request code
-    public static AttendanceFragment newInstance (School school){
+    public static AttendanceFragment newInstance (School school, boolean isMonthly){
         AttendanceFragment fragment = new AttendanceFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("SchoolInformation", Parcels.wrap(school));
         fragment.setArguments(bundle);
+        monthly = isMonthly; // copies in variable that will be the value of the fragment's boolean variable  of whether it is daily or monthly
         return fragment;
     };
 
@@ -88,10 +91,19 @@ public class AttendanceFragment extends Fragment implements ClickListener, Callb
                 v.requestFocus();
                 //Something here to send back to the OrgFragmentAdapter
                 mSelectedclass = mAdapter.getSelectedClass(position);
-                HttpGetRequests task = new HttpGetRequests(GET_DAILY_ATTENDANCE, mListener, getContext());
+                HttpGetRequests task = new HttpGetRequests(getRequestCode(monthly), mListener, getContext()); // fetches data
                 task.execute("");
             }
         });
+    }
+    // helper function that returns request code based on the boolean value 
+    // needs to be copied in the Feeding fragment 
+    //used on line 94
+    private int getRequestCode (boolean isMonthly){
+        if (isMonthly)
+            return GET_MONTHLY_ATTENDANCE;
+        else
+            return GET_DAILY_ATTENDANCE;
     }
 
     @Override

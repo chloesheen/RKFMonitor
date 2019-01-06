@@ -18,12 +18,14 @@ import org.parceler.Parcels;
 
 public class DailyFragment extends Fragment {
     private School mSchoolData;
+    public static boolean isMonthly; // class 
 
     public static DailyFragment newInstance (School school){
         DailyFragment fragment = new DailyFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("SchoolInformation", Parcels.wrap(school));
         fragment.setArguments(bundle);
+        isMonthly = false;
         return fragment;
     };
 
@@ -44,7 +46,7 @@ public class DailyFragment extends Fragment {
         ViewPager viewpager = view.findViewById(R.id.dailypager);
 
         //add the parameter for daily or monthly
-        viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData));
+        viewpager.setAdapter(new SchoolDataPagerAdapter(getFragmentManager(), getContext(), mSchoolData,isMonthly)); // isMonthly - Daily fragment class variable 
 
         TabLayout layout = view.findViewById(R.id.sliding_tabs);
         layout.setupWithViewPager(viewpager);
