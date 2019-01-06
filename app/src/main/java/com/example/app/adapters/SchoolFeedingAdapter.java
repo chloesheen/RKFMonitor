@@ -44,8 +44,8 @@ public class SchoolFeedingAdapter extends RecyclerView.Adapter<SchoolFeedingAdap
     }
 
 
-    public Date getSelectedDate(int position) {
-        return (Date) mFeedingList.get(position).getFirst();
+    public Calendar getSelectedDate(int position) {
+        return mFeedingList.get(position);
     }
 
 

@@ -21,11 +21,13 @@ import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.interfaces.ClickListener;
 import com.example.app.models.Calendar;
+import com.example.app.models.Food;
 import com.example.app.models.School;
 import com.example.app.util.ChildViewClickListener;
 
 import org.parceler.Parcels;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -60,6 +62,9 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
             mSchoolData = Parcels.unwrap(getArguments().getParcelable("SchoolInformation"));
             mRequestCode = getArguments().getInt("RequestCode");
         }
+        //add get request for retrieving feeding calendar from db
+        HttpGetRequests task = new HttpGetRequests(mRequestCode, mListener, getContext());
+        task.execute("");
     }
 
     @Override
@@ -86,9 +91,12 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
             @Override
             public void onClick(View v) {
                 v.requestFocus();
-                mSelecteddate = mAdapter.getSelectedDate(position);
-                HttpGetRequests task = new HttpGetRequests(mRequestCode, mListener, getContext());
-                task.execute("");
+                Calendar selectedDate = mAdapter.getSelectedDate(position);
+                ArrayList<Food> foodServed = (ArrayList<Food>) selectedDate.getSecond();
+                Intent intent = new Intent(getContext(), FeedingActivity.class);
+                intent.putExtra("selectedfood", Parcels.wrap(foodServed));
+                startActivity(intent);
+
             }
         });
     }
@@ -102,18 +110,12 @@ public class FeedingFragment extends Fragment implements CallbackListener, Click
                     for (Calendar calendar : dailycalendars) {
                         mSchoolData.addCalendar(calendar);
                     }
-                    Intent intent = new Intent(getContext(), FeedingActivity.class);
-                    intent.putExtra("selectedclass", Parcels.wrap(mSchoolData));
-                    startActivity(intent);
                     break;
                 case GET_MONTHLY_FOOD:
                     ArrayList<Calendar> monthlycalendars = (ArrayList<Calendar>) obj;
                     for (Calendar calendar : monthlycalendars) {
                         mSchoolData.addCalendar(calendar);
                     }
-                    Intent monthlyintent = new Intent(getContext(), AttendanceActivity.class);
-                    monthlyintent.putExtra("selectedclass", Parcels.wrap(mSchoolData));
-                    startActivity(monthlyintent);
                     break;
             }
         }

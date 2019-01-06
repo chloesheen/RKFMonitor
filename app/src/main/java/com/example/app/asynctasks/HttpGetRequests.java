@@ -12,6 +12,7 @@ import com.example.app.activities.StudentProfileActivity;
 import com.example.app.interfaces.CallbackListener;
 import com.example.app.models.Calendar;
 import com.example.app.models.Class;
+import com.example.app.models.Food;
 import com.example.app.models.School;
 import com.example.app.models.Student;
 import com.example.app.models.StudentProfile;
@@ -30,6 +31,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -38,6 +40,7 @@ import static com.example.app.util.Constants.GET_CLASSES;
 import static com.example.app.util.Constants.GET_DAILY_ATTENDANCE;
 import static com.example.app.util.Constants.GET_DAILY_FOOD;
 import static com.example.app.util.Constants.GET_MONTHLY_ATTENDANCE;
+import static com.example.app.util.Constants.GET_MONTHLY_FOOD;
 import static com.example.app.util.Constants.GET_SCHOOLS;
 import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.GET_STUDENT_PROFILE;
@@ -45,6 +48,7 @@ import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.GET_TOTAL_ATTENDANCE;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.DateUtils.convertToDate;
+import static com.example.app.util.DateUtils.convertToMonthDate;
 
 /**
  * Asynctask to handle all Get requests
@@ -186,12 +190,53 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         Iterator<String> monthlyIterator = monthlyattendance.keys();
                         while (monthlyIterator.hasNext()) {
                             String key = monthlyIterator.next();
-                            monthlyCalendars.add(new Calendar(convertToDate(key), monthlyattendance.get(key)));
+                            monthlyCalendars.add(new Calendar(convertToMonthDate(key), monthlyattendance.get(key)));
                         }
                         mListener.onCompletionHandler(true, GET_MONTHLY_ATTENDANCE, monthlyCalendars);
                         break;
 
                     case GET_DAILY_FOOD:
+                        ArrayList<Calendar> dailyFeedingCalendars = new ArrayList<>();
+                        String dailyFeedingString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONObject feedingObj = (JSONObject) new JSONTokener(dailyFeedingString).nextValue();
+                        JSONObject dailyFeeding =  feedingObj.getJSONObject("daily");
+                        Iterator<String> feedingIterator = dailyFeeding.keys();
+                        while (feedingIterator.hasNext()) {
+                            String day = feedingIterator.next();
+                            JSONObject mealIngredients = (JSONObject) dailyFeeding.get(day);
+                            HashMap<String, String> foodRatios = new HashMap<>();
+                            Food ingredientRatios = new Food(mealIngredients.getString("MealType"), foodRatios);
+                            Iterator<String> ratios = mealIngredients.keys();
+                            ratios.next();
+                            while (ratios.hasNext()) {
+                                String mealKey = ratios.next();
+                                foodRatios.put(mealKey, mealIngredients.getString(mealKey));
+                            }
+                            dailyFeedingCalendars.add(new Calendar(convertToDate(day), ingredientRatios));
+                        }
+                        mListener.onCompletionHandler(true, GET_DAILY_FOOD, dailyFeedingCalendars);
+                        break;
+
+                    case GET_MONTHLY_FOOD:
+                        ArrayList<Calendar> monthlyFeedingCalendars = new ArrayList<>();
+                        String monthlyFeedingString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
+                        JSONObject monthlyFeedingObj = (JSONObject) new JSONTokener(monthlyFeedingString).nextValue();
+                        JSONObject monthlyFeeding =  monthlyFeedingObj.getJSONObject("monthly");
+                        Iterator<String> monthlyFeedingIterator = monthlyFeeding.keys();
+                        while (monthlyFeedingIterator.hasNext()) {
+                            String key = monthlyFeedingIterator.next();
+                            JSONObject mealIngredients = (JSONObject) monthlyFeeding.get(key);
+                            HashMap<String, String> foodRatios = new HashMap<>();
+                            Food ingredientRatios = new Food(mealIngredients.getString("MealType"), foodRatios);
+                            Iterator<String> ratios = mealIngredients.keys();
+                            ratios.next();
+                            while (ratios.hasNext()) {
+                                String mealKey = ratios.next();
+                                foodRatios.put(mealKey, mealIngredients.getString(mealKey));
+                            }
+                            monthlyFeedingCalendars.add(new Calendar(convertToMonthDate(key), ingredientRatios));
+                        }
+                        mListener.onCompletionHandler(true, GET_MONTHLY_FOOD, monthlyFeedingCalendars);
                         break;
 
                     case GET_SCHOOLS:
@@ -224,7 +269,6 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                 }
 
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
