@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 import static com.example.app.util.Constants.GET_CLASSES;
 import static com.example.app.util.Constants.GET_SCHOOLS;
+import static com.example.app.util.Constants.REQUEST_CLASS_LIST;
+import static com.example.app.util.Constants.REQUEST_ORG_DASHBOARD;
 
 public class OrganizationDashboard extends AppCompatActivity implements AdapterView.OnItemClickListener, CallbackListener {
 
@@ -38,14 +40,14 @@ public class OrganizationDashboard extends AppCompatActivity implements AdapterV
         schoolList.setOnItemClickListener(this);
 
         HttpGetRequests task = new HttpGetRequests(GET_SCHOOLS, this, this);
-        task.execute("");
+        task.execute(REQUEST_ORG_DASHBOARD);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mSelectedSchool = (School) parent.getItemAtPosition(position);
         HttpGetRequests task = new HttpGetRequests(GET_CLASSES, this, this);
-        task.execute("");
+        task.execute(REQUEST_CLASS_LIST + "/" + mSelectedSchool.getSchoolID() + "/" + "classes");
     }
 
     @Override
@@ -63,7 +65,9 @@ public class OrganizationDashboard extends AppCompatActivity implements AdapterV
                     intent.putExtra("SelectedSchoolInfo", Parcels.wrap(mSelectedSchool));
                     startActivity(intent);
                     break;
+
             }
         }
     }
 }
+

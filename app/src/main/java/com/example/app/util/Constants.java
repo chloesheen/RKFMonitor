@@ -2,24 +2,34 @@ package com.example.app.util;
 
 public class Constants {
 
+    public final static String SHARED_PREFS_KEY="user_keys";
+
     /**
-     * Base URLs
+     * Teacher Base URLs
      */
-    public final static String REQUEST_STUDENT_PROFILE = "";
-    public final static String REQUEST_TEACHER_PROFILE ="d";
-    public final static String REQUEST_UPDATE_TEACHER_PROFILE = "blah";
+    public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
+    public final static String REQUEST_STUDENT_PROFILE = "https://kotak.herokuapp.com/teachers/students";
+    public final static String REQUEST_TEACHER_PROFILE ="https://kotak.herokuapp.com/profile";
     public final static String REQUEST_STUDENT_LIST = "https://kotak.herokuapp.com/teachers/students";
     public final static String REQUEST_SUBMIT_ATTENDANCE = "https://kotak.herokuapp.com/teachers/students";
-    public final static String REQUEST_ORG_DASHBOARD = "https://kotak.herokuapp.com/organization/schools";
-    public final static String REQUEST_COOK_DASHBOARD = "https://kotak.herokuapp.com/cook";
-
-    public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
-
-    public final static String REQUEST_ADD_NEW_STUDENT = "a";
-    public final static String REQUEST_ADD_FOOD="https://kotak.herokuapp.com/cook/food";
+    public final static String REQUEST_ADD_NEW_STUDENT = "https://kotak.herokuapp.com/teachers/students";
     public final static String REQUEST_REGISTER_TEACHER="c";
 
-    public final static String SHARED_PREFS_KEY="user_keys";
+
+    /**
+     * Food Base urls
+     */
+    public final static String REQUEST_COOK_DASHBOARD = "https://kotak.herokuapp.com/cook";
+    public final static String REQUEST_ADD_FOOD="https://kotak.herokuapp.com/cook/food";
+
+    /**
+     * Organization Base urls
+     */
+    public final static String REQUEST_ORG_DASHBOARD = "https://kotak.herokuapp.com/organization/schools";
+    public final static String REQUEST_CLASS_LIST="https://kotak.herokuapp.com/schools";
+    public final static String REQUEST_FOOD_INFO="https://kotak.herokuapp.com/schools";
+    public final static String REQUEST_ATTENDANCE_INFO="https://kotak.herokuapp.com/classes";
+
 
     /**
      * GET Request Codes

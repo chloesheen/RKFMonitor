@@ -76,8 +76,9 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
         //base url
         String baseurl = params[0];
 
-        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
-        String authorization = getAuthorization.getString("authorization", null);
+        //SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        //String authorization = getAuthorization.getString("authorization", null);
+        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNkNWQ4NWE0MThmY2NhNzNmZCJ9LCJpYXQiOjE1NDcwMjIwMjB9.tkgIyvJFFB9eB45MOrweEUNyA0Yg9XML-EYBRk1_1yw";
         //Log.v("auth", authorization);
         //Log.v("url", baseurl);
 
@@ -96,7 +97,7 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
             urlConnection.setRequestProperty("Content-Type", "application/json");
 
             //Read in the data
-            Log.v("test5", String.valueOf(urlConnection.getResponseCode()));
+            //Log.v("test5", String.valueOf(urlConnection.getResponseCode()));
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = new BufferedInputStream(urlConnection.getInputStream());
                 arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
@@ -141,6 +142,7 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                                     stud.getBoolean("attending"));
                             mStudents.add(std);
                         }
+                        Log.v("studentlist", mStudents.toString());
                         mListener.onCompletionHandler(true, GET_STUDENTLIST_VIEW, mStudents);
                         break;
 

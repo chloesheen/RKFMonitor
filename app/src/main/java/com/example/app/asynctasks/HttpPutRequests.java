@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.example.app.util.Constants.GET_STUDENTLIST_VIEW;
 import static com.example.app.util.Constants.PUT_FOOD;
 import static com.example.app.util.Constants.PUT_STUDENT_ATTENDANCE;
 import static com.example.app.util.Constants.PUT_STUDENT_PROFILE;
@@ -72,8 +73,9 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
         InputStream inputStream;
         ByteArrayOutputStream arrayOutputStream;
 
-        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
-        String authorization = getAuthorization.getString("authorization", null);
+        //SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        //String authorization = getAuthorization.getString("authorization", null);
+        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNkNWQ4NWE0MThmY2NhNzNmZCJ9LCJpYXQiOjE1NDcwMjIwMjB9.tkgIyvJFFB9eB45MOrweEUNyA0Yg9XML-EYBRk1_1yw";
 
         try {
             url = new URL(params[0]);
@@ -139,7 +141,9 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                             String updatePassword = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                             JSONObject changeMessage = (JSONObject) new JSONTokener(updatePassword).nextValue();
                             boolean succ = changeMessage.getBoolean("success");
+                            Log.v("issuccess", String.valueOf(succ));
                             String message = changeMessage.getString("message");
+                            Log.v("message", message);
                             mListener.onCompletionHandler(succ, UPDATE_PASSWORD, message);
                         } catch (Exception e) {e.printStackTrace();}
                         break;
@@ -155,8 +159,8 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
                             String successString = new String(arrayOutputStream.toByteArray(), Charset.defaultCharset());
                             JSONObject successObj = (JSONObject) new JSONTokener(successString).nextValue();
                             Boolean success = successObj.getBoolean("success");
-
-                            mListener.onCompletionHandler(success, PUT_STUDENT_ATTENDANCE, null);
+                            Log.v("issuccess", String.valueOf(success));
+                            mListener.onCompletionHandler(true, PUT_STUDENT_ATTENDANCE, null);
                         } catch (Exception e) {e.printStackTrace();}
                         break;
                 }

@@ -48,7 +48,7 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
     private TextView mProfilename;
 
     //Infor we need from shared preferences, teacher log in name, class name,
-    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+    //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         mShoesize = (EditText) findViewById(R.id.student_shoesize);
 
         mProfilename = (TextView) findViewById(R.id.profile_name);
-        mProfilename.setText(mSharedPreferences.getString("username", null));
+        //mProfilename.setText(mSharedPreferences.getString("username", null));
         mProfilename.setFocusable(true);
         mProfilename.setOnClickListener(this);
 
@@ -95,8 +95,10 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         studentProfile.put("lastname", mLastname.getText().toString());
         studentProfile.put("gender", mStudentGender);
         studentProfile.put("dob", mDateOfBirth.getText().toString());
-        studentProfile.put("schoolname", mSharedPreferences.getString("school", ""));
-        studentProfile.put("classname", mSharedPreferences.getString("class", ""));
+        studentProfile.put("schoolname", "Valley Academy");
+        studentProfile.put("classname", "Standard One");
+        //studentProfile.put("schoolname", mSharedPreferences.getString("school", ""));
+        //studentProfile.put("classname", mSharedPreferences.getString("class", ""));
         studentProfile.put("guardian", mParentname.getText().toString());
         studentProfile.put("contact", mParentContact.getText().toString());
         studentProfile.put("nationalid", mParentID.getText().toString());

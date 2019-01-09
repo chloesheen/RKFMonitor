@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -16,11 +17,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.app.R;
 import com.example.app.adapters.StudentListAdapter;
@@ -42,6 +45,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.parceler.Parcel;
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -61,10 +65,11 @@ import static com.example.app.util.Constants.REQUEST_STUDENT_LIST;
 import static com.example.app.util.Constants.REQUEST_STUDENT_PROFILE;
 import static com.example.app.util.Constants.REQUEST_SUBMIT_ATTENDANCE;
 import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
+import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.DateUtils.setDate;
 
 public class ClassViewActivity extends AppCompatActivity implements
-        View.OnClickListener, CallbackListener {
+        View.OnClickListener, CallbackListener{
 
     private ArrayList<Student> mStudents;
     private StudentListAdapter mStudentListAdapter;
@@ -82,27 +87,36 @@ public class ClassViewActivity extends AppCompatActivity implements
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             mStudents = Parcels.unwrap(extras.getParcelable("Studentlist"));
-            String schoolName = extras.getString("schoolname");
-            String className = extras.getString("classname");
-            String username = extras.getString("username");
-            TextView mSchoolname = (TextView) findViewById(R.id.school_view);
-            mSchoolname.setText(schoolName);
-            TextView mClassname = (TextView) findViewById(R.id.class_name);
-            mClassname.setText(className);
-            mProfileName = (TextView) findViewById(R.id.profile_name);
-            mProfileName.setText(username);
-            mProfileName.setFocusable(true);
-            mProfileName.setOnClickListener(this);
+            //String schoolName = extras.getString("schoolname");
+            //String className = extras.getString("classname");
+            //String username = extras.getString("username");
+            //TextView mSchoolname = (TextView) findViewById(R.id.school_view);
+            //mSchoolname.setText(schoolName);
+            //TextView mClassname = (TextView) findViewById(R.id.class_name);
+            //mClassname.setText(className);
+            //mProfileName = (TextView) findViewById(R.id.teacherprofile);
+            //mProfileName.setFocusable(true);
+            //mProfileName.setOnClickListener(this);
+            //mProfileName.setText(username);
+
         }
+
+        mProfileName = (TextView) findViewById(R.id.teacherprofile);
+        mProfileName.setText("lgoloh");
+        mProfileName.setFocusable(true);
+        //mProfileName.setOnClickListener(this);
+
 
         TextView date = (TextView) findViewById(R.id.currentDate);
         date.setText(setDate());
@@ -128,9 +142,9 @@ public class ClassViewActivity extends AppCompatActivity implements
         mClickListener = new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                final CheckBox attendance = view.findViewById(R.id.attendance);
+                final CheckBox attendance = (CheckBox) view.findViewById(R.id.attendance);
                 attendance.setFocusable(true);
-                final TextView studentname = view.findViewById(R.id.student_name);
+                final TextView studentname = (TextView) view.findViewById(R.id.student_name);
                 studentname.setFocusable(true);
 
                 attendance.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +153,9 @@ public class ClassViewActivity extends AppCompatActivity implements
                         if (v == attendance) {
                             attendance.requestFocus();
                             Student curStudent = mStudentListAdapter.getStudent(position);
+                            Log.v("pastattendance", String.valueOf(curStudent.isPresent()));
                             curStudent.updateAttendance(attendance.isChecked());
+                            Log.v("currattendance", String.valueOf(curStudent.isPresent()));
                         } else if (v == studentname) {
                             studentname.requestFocus();
                             Student student = mStudentListAdapter.getStudent(position);
@@ -157,6 +173,24 @@ public class ClassViewActivity extends AppCompatActivity implements
         mStudentView.addOnItemTouchListener(new ChildViewClickListener( this, mStudentView, mClickListener));
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.teacherprofile) {
+            mProfileName.requestFocus();
+            HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this, this);
+            gettask.execute(REQUEST_TEACHER_PROFILE);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     public void onClick(View view) {
@@ -167,7 +201,7 @@ public class ClassViewActivity extends AppCompatActivity implements
                 startActivity(intent);
                 break;
 
-            case R.id.profile_name:
+            case R.id.teacherprofile:
                 mProfileName.requestFocus();
                 HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this, this);
                 gettask.execute(REQUEST_TEACHER_PROFILE);
@@ -227,7 +261,6 @@ public class ClassViewActivity extends AppCompatActivity implements
                     break;
 
                 case PUT_STUDENT_ATTENDANCE:
-                    mStudents = (ArrayList<Student>) object;
                     HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, mListener, mContext);
                     task.execute(REQUEST_STUDENT_LIST);
                     Fragment successIndicator = SuccessDialog.newInstance("Attendance Recorded!");
@@ -235,6 +268,14 @@ public class ClassViewActivity extends AppCompatActivity implements
                             .add(successIndicator, "SuccessFragment")
                             .commit();
                     break;
+
+                case GET_STUDENTLIST_VIEW:
+                    mStudents = (ArrayList<Student>) object;
+                    for (Student stud : mStudents) {
+                        Log.v("student", stud.toString());
+                    }
+                    break;
+
             }
         }
     }

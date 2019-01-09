@@ -33,16 +33,16 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
     private int mTotalAttendance;
     private TextView mDisplayAttendance;
 
-    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+    //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeding_dashboard);
         TextView schoolname = (TextView) findViewById(R.id.cookdashboard_schoolname);
-        schoolname.setText(mSharedPreferences.getString("school", ""));
+        //schoolname.setText(mSharedPreferences.getString("school", ""));
         TextView profilename = (TextView) findViewById(R.id.profile_name);
-        profilename.setText(mSharedPreferences.getString("username", ""));
+        //profilename.setText(mSharedPreferences.getString("username", ""));
 
         CardView mLunchCard = (CardView) findViewById(R.id.lunch_card);
         mLunchCard.setOnClickListener(this);
@@ -50,13 +50,21 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
         CardView mBreakfastCard = (CardView) findViewById(R.id.breakfast_card);
         mBreakfastCard.setOnClickListener(this);
 
-        mDisplayAttendance = (TextView) findViewById(R.id.attendance_num);
-
         TextView mDate = (TextView) findViewById(R.id.dashboard_date);
         mDate.setText(setDate());
         HttpGetRequests task = new HttpGetRequests(GET_TOTAL_ATTENDANCE, this, this);
         task.execute(REQUEST_COOK_DASHBOARD);
+
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mDisplayAttendance = (TextView) findViewById(R.id.attendance_num);
+        mDisplayAttendance.setText(String.valueOf(mTotalAttendance));
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -84,6 +92,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
 
     /**
      * Might have to do these on a different thread. Monitor frames skipped
@@ -116,7 +125,7 @@ public class FeedingDashboard extends AppCompatActivity implements View.OnClickL
             mTotalAttendance = (int) object;
             Log.v("totalattendance", String.valueOf(mTotalAttendance));
             //???
-            mDisplayAttendance.setText(String.valueOf(mTotalAttendance));
+
         }
     }
 }

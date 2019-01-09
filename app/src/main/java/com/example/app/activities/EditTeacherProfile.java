@@ -21,7 +21,7 @@ import org.parceler.Parcels;
 import java.util.HashMap;
 
 import static com.example.app.util.Constants.PUT_TEACHER_PROFILE;
-import static com.example.app.util.Constants.REQUEST_UPDATE_TEACHER_PROFILE;
+import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 public class EditTeacherProfile extends AppCompatActivity implements View.OnClickListener, CallbackListener {
@@ -97,7 +97,7 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         teacherProfile.put("contact", contact);
         teacherProfile.put("nationalid", nationalid);
         HttpPutRequests task = new HttpPutRequests(teacherProfile, PUT_TEACHER_PROFILE, this, this);
-        task.execute(REQUEST_UPDATE_TEACHER_PROFILE);
+        task.execute(REQUEST_TEACHER_PROFILE);
         return new TeacherProfile(firstname, lastname, schoolid, gender,
                 classname, contact, nationalid);
     }

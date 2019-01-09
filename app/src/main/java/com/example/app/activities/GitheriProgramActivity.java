@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.app.util.Constants.POST_FOOD;
+import static com.example.app.util.Constants.PUT_FOOD;
 import static com.example.app.util.Constants.REQUEST_ADD_FOOD;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 import static com.example.app.util.DateUtils.setDate;
@@ -32,7 +33,7 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
     private Food mGitheri;
     private TextView mCurentDate;
     private TextView mCurrentAttendance;
-    private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+    //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,10 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
         mCurrentAttendance.setText(String.valueOf(attendancenum));
 
         TextView mProfilename = (TextView) findViewById(R.id.profile_name);
-        mProfilename.setText(mSharedPreferences.getString("username", null));
+        //mProfilename.setText(mSharedPreferences.getString("username", null));
 
         TextView schoolname = (TextView) findViewById(R.id.githactivity_schoolname);
-        schoolname.setText(mSharedPreferences.getString("school", null));
+        //schoolname.setText(mSharedPreferences.getString("school", null));
 
         mRatioPairs = populateList(mGitheri);
         mCurentDate = (TextView) findViewById(R.id. githactivity_date);
@@ -63,14 +64,14 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
     public void onStart() {
         super.onStart();
         HashMap<String, String> ratios = mGitheri.getRatios();
-        HashMap<String, String> foodInfo = new HashMap<>();
-        foodInfo.put("Date", mCurentDate.getText().toString());
-        foodInfo.put("MealType", "Breakfast");
+        HashMap<String, Object> foodInfo = new HashMap<>();
+        foodInfo.put("MealType", mGitheri.getFoodName());
         for (Map.Entry<String, String> ratio : ratios.entrySet()) {
-            foodInfo.put(ratio.getKey(), ratio.getValue());
+            String val = ratio.getValue();
+            foodInfo.put(ratio.getKey(), Double.valueOf(val.substring(0, 4)));
         }
-        //HttpPutRequests task = new HttpPutRequests(foodInfo, POST_FOOD, this, this);
-        //task.execute(REQUEST_ADD_FOOD);
+        HttpPutRequests task = new HttpPutRequests(foodInfo, PUT_FOOD, this, this);
+        task.execute(REQUEST_ADD_FOOD);
     }
 
     @Override
