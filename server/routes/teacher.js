@@ -15,6 +15,7 @@ module.exports = function(passport) {
 	router.get('/profile', passport.authenticate('jwt', {session:false}), function(req,res) {
 		let findUser = User.findById(req.user._id).populate('school').populate('class').exec();
 		findUser.then(function(user) {
+			console.log("The user is", user);
 			res.status(200).json({
 				id: user._id,
 				firstName : user.firstName,
@@ -26,6 +27,7 @@ module.exports = function(passport) {
 	  			class: user.class.name
 			})
 		}).catch(function(error) {
+			console.log("error is for get", error);
 			return res.status(400).json({message: "Error in fetching from database"});			
 		})
 	})
@@ -33,6 +35,7 @@ module.exports = function(passport) {
 	router.put('/profile', passport.authenticate('jwt', {session:false}), function(req,res) {
 		let findUser = User.findOneAndUpdate({_id: req.user._id}, {$set: {firstName: req.body.firstName, lastName: req.body.lastName, gender: req.body.gender, nationalId: req.body.nationalid, telephoneNumber: req.body.telephone}}, {new: true}).populate('school').populate('class').exec();
 		findUser.then(function(user) {
+			console.log("User is for put", user);
 			res.status(200).json({
 				id: user._id,
 				firstName : user.firstName,
@@ -44,6 +47,7 @@ module.exports = function(passport) {
 	  			class: user.class.name 
 			})
 		}).catch(function(error) {
+			console.log("error is for put", error);
 			return res.status(400).json({message: "Error in fetching from database"});			
 		})
 	})
@@ -51,6 +55,7 @@ module.exports = function(passport) {
 	router.get('/students/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
 		let findStudent = Student.findById(req.params.id).exec();
 		findStudent.then(function(students) {
+			console.log("req body in get students", req.body);
 			res.status(200).json({
 				id: student._id,
 				firstName: student.firstName,
@@ -94,9 +99,10 @@ module.exports = function(passport) {
 
 	router.get('/students', passport.authenticate('jwt', {session:false}), function(req,res) {
 		const currDate = new Date();
-		const midNight = new Date(Math.floor(currDate.getTime() / (1000*60*60*24))*1000*60*60*24);			
+		const midNight = new Date(Math.floor(currDate.getTime() / (1000*60*60*24))*1000*60*60*24);		
 		let getAttendence = Attendence.findOne({class: req.user.class, date: midNight}).populate('class').populate('studentsPresent').populate('studentsNotPresent').select('studentsPresent studentsNotPresent').exec();
 		getAttendence.then(function(attendence) {
+			console.log("attendence in get", attendence._id);
 			let i = 0, 
 				j = 0,
 				attendenceList = [];
@@ -129,6 +135,7 @@ module.exports = function(passport) {
 	})
 
 	router.post('/students', passport.authenticate('jwt', {session: false}), function(req, res) {
+		console.log("req body in student post", req.body);
         let birthArr = req.body.dateofbirth.split("/");
         let birthMonth = Number((birthArr[0][0] == "0") ? birthArr[0][1] : birthArr[0]);
         let birthDay = Number(birthArr[1]);
@@ -193,7 +200,7 @@ module.exports = function(passport) {
         })
 	})
 
-	router.put('/students', passport.authenticate('jwt', {session:false}), function(req,res) {
+	router.put('/students', passport.authenticate('jwt', {session:false}), function(req,res) {		
 		const currDate = new Date();
 		const midNight = new Date(Math.floor(currDate.getTime() / (1000*60*60*24))*1000*60*60*24);
 		let updateAttendence = Attendence.findOneAndUpdate({class: req.user.class, date: midNight}, {$set: {studentsPresent: req.body.attending, studentsNotPresent: req.body.notAttending}}, {new: true}).exec();	
