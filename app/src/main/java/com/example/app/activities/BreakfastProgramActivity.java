@@ -38,29 +38,24 @@ import static com.example.app.util.FoodRatios.populateList;
 
 public class BreakfastProgramActivity extends AppCompatActivity implements CallbackListener {
 
-    private ArrayList<Pair> mRatioPairs = new ArrayList<>();
     private Food mUji;
-    private TextView mCurrentDate;
 
     //Info we need from shared preferences, teacher log in name, class name,
     //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breakfast_program);
         mUji = Parcels.unwrap(getIntent().getParcelableExtra("UjiMeal"));
+
+        ArrayList<Pair> mRatioPairs = new ArrayList<>();
         mRatioPairs = populateList(mUji);
-        mCurrentDate = (TextView) findViewById(R.id.bfactivity_date);
+        TextView mCurrentDate = (TextView) findViewById(R.id.bfactivity_date);
         mCurrentDate.setText(setDate());
         ListView ratiosList = (ListView) findViewById(R.id.ujilist);
         FoodRatioAdapter pairArrayAdapter = new FoodRatioAdapter(this, mRatioPairs);
         ratiosList.setAdapter(pairArrayAdapter);
-
-        TextView mProfilename = (TextView) findViewById(R.id.profile_name);
-        //mProfilename.setText(mSharedPreferences.getString("username", null));
 
         TextView schoolname = (TextView) findViewById(R.id.bfactivity_schoolname);
         //schoolname.setText(mSharedPreferences.getString("school", null));

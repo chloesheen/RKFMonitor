@@ -14,6 +14,7 @@
             android:background="@color/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/home_subtitle"
+            app:titleTextAppearance="@style/TitleText"
             app:titleTextColor="@color/colorFont">
         </android.support.v7.widget.Toolbar>
 

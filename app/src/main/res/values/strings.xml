@@ -110,6 +110,11 @@
     <string name="lunch">Lunch</string>
 
 
+    <!-- Feeding Programs Strings -->
+    <string name="uji_title">Uji</string>
+    <string name="githeri_title">Githeri</string>
+    <string name="rb_title">Rice &amp; Beans </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="success_message"></string>

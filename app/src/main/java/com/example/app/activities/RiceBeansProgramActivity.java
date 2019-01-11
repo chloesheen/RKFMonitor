@@ -30,10 +30,7 @@ import static com.example.app.util.FoodRatios.populateList;
 
 public class RiceBeansProgramActivity extends AppCompatActivity implements CallbackListener {
 
-    private ArrayList<Pair> mRatioPairs = new ArrayList<>();
     private Food mRiceBeans;
-    private TextView mCurentDate;
-    private TextView mCurrentAttendance;
     //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
@@ -42,7 +39,7 @@ public class RiceBeansProgramActivity extends AppCompatActivity implements Callb
         setContentView(R.layout.activity_rice_beans_program);
         mRiceBeans = Parcels.unwrap(getIntent().getParcelableExtra("RiceBeansMeal"));
         int attendancenum = getIntent().getIntExtra("attendancenum", 0);
-        mCurrentAttendance = (TextView) findViewById(R.id.ricebeans_attendance);
+        TextView mCurrentAttendance = (TextView) findViewById(R.id.ricebeans_attendance);
         mCurrentAttendance.setText(String.valueOf(attendancenum));
 
         TextView mProfilename = (TextView) findViewById(R.id.profile_name);
@@ -51,8 +48,9 @@ public class RiceBeansProgramActivity extends AppCompatActivity implements Callb
         TextView schoolname = (TextView) findViewById(R.id.riceactivity_schoolname);
         //schoolname.setText(mSharedPreferences.getString("school", null));
 
+        ArrayList<Pair> mRatioPairs = new ArrayList<>();
         mRatioPairs = populateList(mRiceBeans);
-        mCurentDate = (TextView) findViewById(R.id. riceactivity_date);
+        TextView mCurentDate = (TextView) findViewById(R.id. riceactivity_date);
         mCurentDate.setText(setDate());
         ListView ratioList = (ListView) findViewById(R.id.ricelist);
         FoodRatioAdapter adapter = new FoodRatioAdapter(this, mRatioPairs);

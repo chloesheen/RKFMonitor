@@ -29,10 +29,7 @@ import static com.example.app.util.FoodRatios.populateList;
 
 public class GitheriProgramActivity extends AppCompatActivity implements CallbackListener {
 
-    private ArrayList<Pair> mRatioPairs = new ArrayList<>();
     private Food mGitheri;
-    private TextView mCurentDate;
-    private TextView mCurrentAttendance;
     //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
     @Override
@@ -41,17 +38,15 @@ public class GitheriProgramActivity extends AppCompatActivity implements Callbac
         setContentView(R.layout.activity_githeri_program);
         mGitheri = Parcels.unwrap(getIntent().getParcelableExtra("GitheriMeal"));
         int attendancenum = getIntent().getIntExtra("attendancenum", 0);
-        mCurrentAttendance = (TextView) findViewById(R.id.githeri_attendance);
+        TextView mCurrentAttendance = (TextView) findViewById(R.id.githeri_attendance);
         mCurrentAttendance.setText(String.valueOf(attendancenum));
-
-        TextView mProfilename = (TextView) findViewById(R.id.profile_name);
-        //mProfilename.setText(mSharedPreferences.getString("username", null));
 
         TextView schoolname = (TextView) findViewById(R.id.githactivity_schoolname);
         //schoolname.setText(mSharedPreferences.getString("school", null));
 
+        ArrayList<Pair> mRatioPairs = new ArrayList<>();
         mRatioPairs = populateList(mGitheri);
-        mCurentDate = (TextView) findViewById(R.id. githactivity_date);
+        TextView mCurentDate = (TextView) findViewById(R.id. githactivity_date);
         mCurentDate.setText(setDate());
         ListView ratioList = (ListView) findViewById(R.id.githerilist);
         FoodRatioAdapter adapter = new FoodRatioAdapter(this, mRatioPairs);
