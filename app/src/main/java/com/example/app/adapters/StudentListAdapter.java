@@ -47,7 +47,6 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     }
 
     public Student getStudent(int position) {
-        //View positionview = rv.findChild
         return mStudents.get(position);
     }
 

@@ -75,7 +75,7 @@ public class HttpPutRequests extends AsyncTask<String, Void, Void> {
 
         //SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
         //String authorization = getAuthorization.getString("authorization", null);
-        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNkNWQ4NWE0MThmY2NhNzNmZCJ9LCJpYXQiOjE1NDcwMjIwMjB9.tkgIyvJFFB9eB45MOrweEUNyA0Yg9XML-EYBRk1_1yw";
+        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNjNWQ4NWE0MThmY2NhNzNmYyJ9LCJpYXQiOjE1NDcxOTI1NDR9.aP3tzty2pWqrhEHc3meEwA0S6vdmbryZYbewAWyfYzk";
 
         try {
             url = new URL(params[0]);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">app</string>
+    <string name="app_name">RFKMonitor</string>
     <!-- Strings related to login -->
     <string name="prompt_phone">Phone Number</string>
     <string name="prompt_password">Password</string>
@@ -18,11 +18,14 @@
     </string>
     <string name="title_activity_teacher_dashboard">TeacherDashboard</string>
 
+
+
     <!-- Teachers Dashboard -->
     <string name="school_name">Valley Academy</string>
     <string name="class_name">Standard One</string>
     <string name="class_size">20</string>
-    <string name="title_activity_class_view">ClassViewActivity</string>
+    <string name="home_subtitle">Home</string>
+    <string name="home_title">RFKMonitor</string>
 
     <!-- Class View of Students -->
     <string name="student_name">Chanel Coco</string>
@@ -36,6 +39,7 @@
 
 
     <!-- Add Students Activity -->
+    <string name="addStudent_title">New Student</string>
     <string name="firstname">First Name</string>
     <string name="lastname"> Last Name</string>
     <string name="age"> Age </string>
@@ -58,6 +62,7 @@
 
 
     <!-- Teacher Profile Activity -->
+    <string name="teacherProfile_title">Profile</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="teachers_name">Bryan Hammond</string>
     <string name="national_id">004469</string>
@@ -74,6 +79,7 @@
     <string name="first_name">Bryan</string>
     <string name="last_name">Hammond</string>
     <string name="logout">Logout</string>
+    <string name="exit_profile">Exit Profile</string>
 
 
     <!-- Student Profile Activity -->

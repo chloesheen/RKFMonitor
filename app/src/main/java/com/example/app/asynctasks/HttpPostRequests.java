@@ -50,7 +50,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
     private CallbackListener mListener;
     private Context mContext;
 
-    public HttpPostRequests(HashMap<String, String> post, int request, CallbackListener listener, Context context) {
+    public <T> HttpPostRequests(HashMap<String, T> post, int request, CallbackListener listener, Context context) {
         mPostData = new JSONObject(post);
         mRequestType = request;
         mListener = listener;
@@ -65,8 +65,9 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
         InputStream inputStream;
         ByteArrayOutputStream arrayOutputStream;
 
-        SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
-        String authorization = getAuthorization.getString("authorization", null);
+        //SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
+        //String authorization = getAuthorization.getString("authorization", null);
+        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNjNWQ4NWE0MThmY2NhNzNmYyJ9LCJpYXQiOjE1NDcxOTI1NDR9.aP3tzty2pWqrhEHc3meEwA0S6vdmbryZYbewAWyfYzk";
 
         Log.v("urlforpost", params[0]);
 
@@ -77,7 +78,7 @@ public class HttpPostRequests extends AsyncTask<String, Void, Void> {
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
             urlConnection.setRequestMethod("POST");
-            //urlConnection.setRequestProperty("Authorization", authorization);
+            urlConnection.setRequestProperty("Authorization", authorization);
             urlConnection.setRequestProperty("Content-Type", "application/json");
 
 

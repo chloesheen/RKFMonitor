@@ -7,28 +7,28 @@ public class Constants {
     /**
      * Teacher Base URLs
      */
-    public final static String REQUEST_LOGIN = "https://kotak.herokuapp.com/login";
-    public final static String REQUEST_STUDENT_PROFILE = "https://kotak.herokuapp.com/teachers/students";
-    public final static String REQUEST_TEACHER_PROFILE ="https://kotak.herokuapp.com/profile";
-    public final static String REQUEST_STUDENT_LIST = "https://kotak.herokuapp.com/teachers/students";
-    public final static String REQUEST_SUBMIT_ATTENDANCE = "https://kotak.herokuapp.com/teachers/students";
-    public final static String REQUEST_ADD_NEW_STUDENT = "https://kotak.herokuapp.com/teachers/students";
+    public final static String REQUEST_LOGIN = "http://933d3529.ngrok.io/login";
+    public final static String REQUEST_STUDENT_PROFILE = "http://933d3529.ngrok.io/teachers/students";
+    public final static String REQUEST_TEACHER_PROFILE ="http://933d3529.ngrok.io/teachers/profile";
+    public final static String REQUEST_STUDENT_LIST = "http://933d3529.ngrok.io/teachers/students";
+    public final static String REQUEST_SUBMIT_ATTENDANCE = "http://933d3529.ngrok.io/teachers/students";
+    public final static String REQUEST_ADD_NEW_STUDENT = "http://933d3529.ngrok.io/teachers/students";
     public final static String REQUEST_REGISTER_TEACHER="c";
 
 
     /**
      * Food Base urls
      */
-    public final static String REQUEST_COOK_DASHBOARD = "https://kotak.herokuapp.com/cook";
-    public final static String REQUEST_ADD_FOOD="https://kotak.herokuapp.com/cook/food";
+    public final static String REQUEST_COOK_DASHBOARD = "http://933d3529.ngrok.io/cook";
+    public final static String REQUEST_ADD_FOOD="http://933d3529.ngrok.io/cook/food";
 
     /**
      * Organization Base urls
      */
-    public final static String REQUEST_ORG_DASHBOARD = "https://kotak.herokuapp.com/organization/schools";
-    public final static String REQUEST_CLASS_LIST="https://kotak.herokuapp.com/schools";
-    public final static String REQUEST_FOOD_INFO="https://kotak.herokuapp.com/schools";
-    public final static String REQUEST_ATTENDANCE_INFO="https://kotak.herokuapp.com/classes";
+    public final static String REQUEST_ORG_DASHBOARD = "http://933d3529.ngrok.io/organization/schools";
+    public final static String REQUEST_CLASS_LIST="http://933d3529.ngrok.io/schools";
+    public final static String REQUEST_FOOD_INFO="http://933d3529.ngrok.io/schools";
+    public final static String REQUEST_ATTENDANCE_INFO="http://933d3529.ngrok.io/classes";
 
 
     /**

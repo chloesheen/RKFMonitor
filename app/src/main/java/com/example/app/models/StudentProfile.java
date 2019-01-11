@@ -91,8 +91,8 @@ public class StudentProfile{
         return mAttendance;
     }
 
-    public Boolean updateAttendance(Boolean bool) {
-        return mAttendance = bool;
+    public void updateAttendance(boolean bool) {
+        mAttendance = bool;
     }
 
     public String getId() {

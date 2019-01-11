@@ -3,6 +3,7 @@ package com.example.app.models;
 @org.parceler.Parcel
 public class Student extends StudentProfile {
 
+
     public Student() {
     }
 
@@ -16,4 +17,5 @@ public class Student extends StudentProfile {
                 + "Last name: " + getLastName() + " " + "Id: " + getId()
                 + " " + "Attendance: " + Boolean.toString(isPresent()));
     }
+
 }

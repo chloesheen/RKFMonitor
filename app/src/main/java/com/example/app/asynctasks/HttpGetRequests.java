@@ -78,9 +78,10 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
 
         //SharedPreferences getAuthorization = mContext.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
         //String authorization = getAuthorization.getString("authorization", null);
-        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNkNWQ4NWE0MThmY2NhNzNmZCJ9LCJpYXQiOjE1NDcwMjIwMjB9.tkgIyvJFFB9eB45MOrweEUNyA0Yg9XML-EYBRk1_1yw";
+        String authorization = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVjMjI0NmNjNWQ4NWE0MThmY2NhNzNmYyJ9LCJpYXQiOjE1NDcxOTI1NDR9.aP3tzty2pWqrhEHc3meEwA0S6vdmbryZYbewAWyfYzk";
         //Log.v("auth", authorization);
         //Log.v("url", baseurl);
+        Log.v("profile1", "testing teacher profile");
 
 
         try {
@@ -98,6 +99,7 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
 
             //Read in the data
             //Log.v("test5", String.valueOf(urlConnection.getResponseCode()));
+            Log.v("profile2", String.valueOf(urlConnection.getResponseCode()));
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = new BufferedInputStream(urlConnection.getInputStream());
                 arrayOutputStream = new ByteArrayOutputStream(); //reading the output into this byte array
@@ -152,12 +154,11 @@ public class HttpGetRequests extends AsyncTask<String, Void, Void> {
                         JSONObject teacher = (JSONObject) teachertoken.nextValue();
                         TeacherProfile teacherProfile = new TeacherProfile(teacher.getString("firstName"),
                                 teacher.getString("lastName"),
-                                teacher.getString("id"),
-                                teacher.getString("gender"),
                                 teacher.getString("schoolid"),
-                                teacher.getString("nationalid"),
+                                teacher.getString("gender"),
                                 teacher.getString("classname"),
-                                teacher.getString("telephone"));
+                                teacher.getString("telephone"),
+                                teacher.getString("nationalid"));
 
                         mListener.onCompletionHandler(true, GET_TEACHER_PROFILE, teacherProfile);
                         break;

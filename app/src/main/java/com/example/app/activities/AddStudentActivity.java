@@ -1,5 +1,6 @@
 package com.example.app.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.app.R;
+import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.asynctasks.HttpPostRequests;
 import com.example.app.fragments.SuccessDialog;
 import com.example.app.interfaces.CallbackListener;
@@ -31,6 +35,8 @@ import java.util.HashMap;
 
 import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
 import static com.example.app.util.Constants.POST_NEW_STUDENT;
+import static com.example.app.util.Constants.REQUEST_ADD_NEW_STUDENT;
+import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 public class AddStudentActivity extends AppCompatActivity implements View.OnClickListener,
@@ -47,6 +53,9 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
     private String mStudentGender;
     private TextView mProfilename;
 
+    private CallbackListener mListener;
+    private Context mContext;
+
     //Infor we need from shared preferences, teacher log in name, class name,
     //private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
@@ -56,6 +65,9 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_add_student);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mListener = this;
+        mContext = this;
 
         mFirstname = (EditText) findViewById(R.id.student_firstname);
         mLastname = (EditText) findViewById(R.id.student_lastname);
@@ -79,18 +91,32 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
 
         Button mAddStudent = (Button) findViewById(R.id.add_new_student);
         mAddStudent.setOnClickListener(this);
+    }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return true;
     }
 
     @Override
-    public void onClick(View view){
-        switch(view.getId()) {
-            case R.id.profile_name:
-                mProfilename.requestFocus();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
+        if (id == R.id.action_profile) {
+            HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, mListener, mContext);
+            Log.v("profile", "testing teacher profile");
+            gettask.execute(REQUEST_TEACHER_PROFILE);
         }
-        HashMap<String, String> studentProfile = new HashMap<>();
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onClick(View view){
+
+        HashMap<String, Object> studentProfile = new HashMap<>();
         studentProfile.put("firstname", mFirstname.getText().toString());
         studentProfile.put("lastname", mLastname.getText().toString());
         studentProfile.put("gender", mStudentGender);
@@ -101,12 +127,12 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         //studentProfile.put("classname", mSharedPreferences.getString("class", ""));
         studentProfile.put("guardian", mParentname.getText().toString());
         studentProfile.put("contact", mParentContact.getText().toString());
-        studentProfile.put("nationalid", mParentID.getText().toString());
-        studentProfile.put("avegrade", "0.0");
+        studentProfile.put("nationalid", Integer.valueOf(mParentID.getText().toString()));
+        studentProfile.put("avegrade", 0.0);
         studentProfile.put("shoesize", mShoesize.getText().toString());
         HttpPostRequests task = new HttpPostRequests(studentProfile, POST_NEW_STUDENT, this, this);
         //need url for this
-        task.execute("");
+        task.execute(REQUEST_ADD_NEW_STUDENT);
 
     }
 
@@ -116,7 +142,6 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
     }
 
     private void launchTeacherProfile(TeacherProfile profile) {

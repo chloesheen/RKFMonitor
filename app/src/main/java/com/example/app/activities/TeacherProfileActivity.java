@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,17 +21,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.app.R;
+import com.example.app.asynctasks.HttpGetRequests;
 import com.example.app.models.TeacherProfile;
 
 import org.parceler.Parcels;
 
+import static com.example.app.util.Constants.GET_TEACHER_PROFILE;
+import static com.example.app.util.Constants.REQUEST_TEACHER_PROFILE;
 import static com.example.app.util.Constants.SHARED_PREFS_KEY;
 
 public class TeacherProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final static int REQUEST_EDIT_PROFILE = 101;
 
-    private ImageView mEdit;
     private TextView mProfileName;
     private EditText mGender;
     private EditText mSchoolId;
@@ -37,7 +42,7 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
     private EditText mClassName;
     private Button mLogout;
 
-    private SharedPreferences mSharedPreferences = this.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
+    //private SharedPreferences mSharedPreferences = this.getSharedPreferences("SHARED_PREFS_KEY", MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +52,6 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         setSupportActionBar(toolbar);
 
         TeacherProfile profile = Parcels.unwrap(getIntent().getParcelableExtra("TeacherProfile"));
-
-        mEdit = (ImageView) findViewById(R.id.edit);
-        mEdit.setFocusable(true);
-        mEdit.setOnClickListener(this);
 
         mSchoolId = (EditText) findViewById(R.id.school_id);
         mNationalId = (EditText) findViewById(R.id.national_id);
@@ -64,9 +65,37 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
         mLogout.setOnClickListener(this);
 
         TextView mSchoolName = (TextView) findViewById(R.id.schoolName);
-        mSchoolName.setText(mSharedPreferences.getString("school", null));
+        //mSchoolName.setText(mSharedPreferences.getString("school", null));
 
         populateView(profile);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profile_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch(id) {
+            case R.id.action_edit:
+                TeacherProfile currentProfile = currentProfile();
+                Intent intent = new Intent (this, EditTeacherProfile.class);
+                intent.putExtra("CurrentTeacherProfile", Parcels.wrap(currentProfile));
+                startActivityForResult(intent, REQUEST_EDIT_PROFILE);
+                break;
+
+            case R.id.action_exit:
+                Intent homeintent = new Intent(this, ClassViewActivity.class);
+                startActivity(homeintent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -91,23 +120,15 @@ public class TeacherProfileActivity extends AppCompatActivity implements View.On
      */
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.edit:
-                mEdit.requestFocus();
-                TeacherProfile currentProfile = currentProfile();
-                Intent intent = new Intent (this, EditTeacherProfile.class);
-                intent.putExtra("CurrentTeacherProfile", Parcels.wrap(currentProfile));
-                startActivityForResult(intent, REQUEST_EDIT_PROFILE);
-                break;
-
-            case R.id.logout:
-                mLogout.requestFocus();
-                SharedPreferences preferences = getSharedPreferences(SHARED_PREFS_KEY,Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.commit();
-                finish();
-                break;
+        if (view.getId() == R.id.logout) {
+            mLogout.requestFocus();
+            SharedPreferences preferences = getSharedPreferences(SHARED_PREFS_KEY,Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
+            finish();
+            Intent loginIntent = new Intent(this, LoginActivity.class);
+            startActivity(loginIntent);
         }
     }
 

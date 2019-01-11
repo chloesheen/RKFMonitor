@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -112,12 +113,6 @@ public class ClassViewActivity extends AppCompatActivity implements
 
         }
 
-        mProfileName = (TextView) findViewById(R.id.teacherprofile);
-        mProfileName.setText("lgoloh");
-        mProfileName.setFocusable(true);
-        //mProfileName.setOnClickListener(this);
-
-
         TextView date = (TextView) findViewById(R.id.currentDate);
         date.setText(setDate());
 
@@ -152,10 +147,17 @@ public class ClassViewActivity extends AppCompatActivity implements
                     public void onClick(View v) {
                         if (v == attendance) {
                             attendance.requestFocus();
+                            Log.v("attendance", String.valueOf(attendance.isChecked()));
                             Student curStudent = mStudentListAdapter.getStudent(position);
-                            Log.v("pastattendance", String.valueOf(curStudent.isPresent()));
-                            curStudent.updateAttendance(attendance.isChecked());
-                            Log.v("currattendance", String.valueOf(curStudent.isPresent()));
+                            Log.v("name", curStudent.getFirstName());
+                            Log.v("id", curStudent.getId());
+                            Log.v("pastpresent", String.valueOf(curStudent.isPresent()));
+                            if (attendance.isChecked()) {
+                                curStudent.updateAttendance(true);
+                            } else if (attendance.isChecked() == false) {
+                                curStudent.updateAttendance(false);
+                            }
+                            Log.v("finalpresent", String.valueOf(curStudent.isPresent()));
                         } else if (v == studentname) {
                             studentname.requestFocus();
                             Student student = mStudentListAdapter.getStudent(position);
@@ -174,16 +176,18 @@ public class ClassViewActivity extends AppCompatActivity implements
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.teacherprofile) {
-            mProfileName.requestFocus();
-            HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this, this);
+        if (id == R.id.action_profile) {
+            HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, mListener, mContext);
+            Log.v("profile", "testing teacher profile");
             gettask.execute(REQUEST_TEACHER_PROFILE);
         }
 
@@ -201,11 +205,6 @@ public class ClassViewActivity extends AppCompatActivity implements
                 startActivity(intent);
                 break;
 
-            case R.id.teacherprofile:
-                mProfileName.requestFocus();
-                HttpGetRequests gettask = new HttpGetRequests(GET_TEACHER_PROFILE, this, this);
-                gettask.execute(REQUEST_TEACHER_PROFILE);
-                break;
 
             case R.id.submit_attendance:
                 getAttendanceStudents();
@@ -237,14 +236,21 @@ public class ClassViewActivity extends AppCompatActivity implements
     }
 
     private void getAttendanceStudents() {
-        for(Student stud:mStudents) {
+        mPresentList = new ArrayList<>();
+        mAbsentList = new ArrayList<>();
+        for (int i = 0; i < mStudents.size(); i++) {
+            Student stud = mStudentListAdapter.getStudent(i);
+            Log.v("name", stud.getFirstName());
+            Log.v("id", stud.getId());
+            Log.v("present", String.valueOf(stud.isPresent()));
             if (stud.isPresent()) {
                 mPresentList.add(stud.getId());
-            } else {
+            } else if (!(stud.isPresent())) {
                 mAbsentList.add(stud.getId());
             }
         }
     }
+
 
     @Override
     public void onCompletionHandler(boolean success, int requestcode, Object object) {
@@ -261,12 +267,12 @@ public class ClassViewActivity extends AppCompatActivity implements
                     break;
 
                 case PUT_STUDENT_ATTENDANCE:
-                    HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, mListener, mContext);
-                    task.execute(REQUEST_STUDENT_LIST);
                     Fragment successIndicator = SuccessDialog.newInstance("Attendance Recorded!");
                     getSupportFragmentManager().beginTransaction()
                             .add(successIndicator, "SuccessFragment")
                             .commit();
+                    HttpGetRequests task = new HttpGetRequests(GET_STUDENTLIST_VIEW, mListener, mContext);
+                    task.execute(REQUEST_STUDENT_LIST);
                     break;
 
                 case GET_STUDENTLIST_VIEW:

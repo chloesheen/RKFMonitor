@@ -33,7 +33,6 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
     private EditText mNationalId;
     private EditText mContactNum;
     private EditText mClassName;
-    private Button mSave;
 
     private SharedPreferences mSharedPreferences = this.getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
@@ -60,7 +59,7 @@ public class EditTeacherProfile extends AppCompatActivity implements View.OnClic
         TextView mProfileName = (TextView) findViewById(R.id.profile_name);
         mProfileName.setText(mSharedPreferences.getString("username", ""));
 
-        mSave = (Button) findViewById(R.id.save);
+        Button mSave = (Button) findViewById(R.id.save);
         mSave.setOnClickListener(this);
     }
 

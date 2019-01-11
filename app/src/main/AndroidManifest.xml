@@ -27,15 +27,15 @@
         </activity>
         <activity
             android:name=".activities.ClassViewActivity"
-            android:label="@string/title_activity_class_view"
+            android:label="@string/home_subtitle"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.OrganizationDashboard"
-            android:label="@string/title_activity_add_student"
+            android:label="@string/addStudent_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.AddStudentActivity"
-            android:label="@string/title_activity_teacher_profile"
+            android:label="@string/addStudent_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.StudentProfileActivity"
