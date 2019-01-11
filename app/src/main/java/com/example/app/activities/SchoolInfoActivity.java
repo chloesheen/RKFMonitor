@@ -16,15 +16,12 @@ import org.parceler.Parcels;
 
 public class SchoolInfoActivity extends AppCompatActivity {
 
-    private School mSelectedSchool;
-    private TextView mSchoolName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_info);
-        mSelectedSchool = Parcels.unwrap(getIntent().getParcelableExtra("SelectedSchoolInfo"));
-        mSchoolName = (TextView) findViewById(R.id.dashboard_schoolname);
+        School mSelectedSchool = Parcels.unwrap(getIntent().getParcelableExtra("SelectedSchoolInfo"));
+        TextView mSchoolName = (TextView) findViewById(R.id.dashboard_schoolname);
         mSchoolName.setText(mSelectedSchool.getSchoolName());
 
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
